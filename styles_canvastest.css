@@ -1,0 +1,165 @@
+*, *::before, *::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body
+{
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#title
+{
+    color: rgba(255, 255, 255, 255);
+    font-family: JetBrains Mono;
+    font-size: 60pt; /* size of the font */
+    margin: -25px auto; /* vertical margin from top, horizontal centering (using auto) */
+    width: max-content; /* Takes up full width of screen */
+    justify-content:flex-start;
+    height: 25vh;
+}
+
+
+.container
+{
+    width: 500px;
+    height: 746px;
+    max-width: 80%;
+    background-color: blanchedalmond;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px;
+    position: relative;
+    text-align: left;
+}
+
+.narrator_image
+{
+    position: absolute;
+    border: 3px solid #73AD21;
+}
+
+/* Tästä määritetään mihin kertojan teksti menee */
+.narrator_text
+{
+    position: absolute;
+    top: 83px;
+    left: 23px;
+    font-family: JetBrains Mono;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    max-width: 454px;
+ /*    border: 3px solid #73AD21; */
+ padding-top: 30px;
+    padding-left: 10px;
+    z-index:3;
+    text-align: left;
+}
+
+/* Buttoneiden paikat */
+.btn-grid {
+    position: absolute;
+ /*    border: 3px solid #73AD21; */
+    top: 469px;
+    left: 23px;
+    display: grid;
+    grid-template-columns: 1fr; 
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 20px;
+    grid-gap: 80px; 
+    align-items: left; 
+    text-align: left; 
+
+}
+
+.btn-grid img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+
+}
+
+/* Buttoni tyyli*/
+.button 
+{
+    font-family: JetBrains Mono;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+    text-align: left; 
+    width: 410px;
+    border: none;
+    background-color: transparent;
+}
+
+/* 
+.btn-hover
+{
+    border-color: black;
+}
+*/
+
+#wrapper {
+    border: 1px solid grey;
+    width: 500px;
+    height: 746px;
+    position: absolute;
+    overflow: hidden;
+    background: url('graphics/backgrounds/RisteysProto.png');
+}
+
+/* Menuikonin sijainti*/
+
+#menuicon {
+    position: absolute;
+    top: 28px;
+    left: 436px;
+}
+
+
+/* Narrator-tekstin taustalla olevan kuvan sijainti*/
+
+#textboxes {
+    position: absolute;
+    top: 83px;
+    left: 23px;
+    z-index:2;
+}
+
+#character_placeholder{
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    z-index:0;
+
+}
+
+/* Buttonien takana olevien kuvien sijainti*/
+
+#button_option1 {
+    position: absolute;
+    top: 469px;
+    left: 23px;
+}
+
+#button_option2 {
+    position: absolute;
+    top: 583px;
+    left: 23px;
+}
