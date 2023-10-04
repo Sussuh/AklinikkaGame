@@ -1,18 +1,47 @@
+const GAME_STATE = {
+    START_SCENE: 0,
+    SCENE1: 1,
+    SCENE2: 2,
+    // Add more scenes as needed
+  };
+  
+  let currentGameState = GAME_STATE.START_SCENE;
+
+  function startGame() {
+    const startButton = document.getElementById('startbutton');
+    startButton.style.display = 'none'; // Hide the start button
+  
+    const title = document.getElementById('title');
+    title.style.display = 'none'; // Hide the title
+  
+    const teksti = document.getElementById('teksti');
+    teksti.innerHTML = 'Welcome to Scene 1'; // Update text
+    teksti.style.display = 'block'; // Show text
+  
+    const valinnat = document.getElementById('valinnat');
+    valinnat.style.display = 'block'; // Show buttons
+  
+    currentGameState = GAME_STATE.SCENE1; // Change game state
+  }
+
+  const startButton = document.getElementById('startbutton');
+startButton.addEventListener('click', startGame);
+
 //const startbutton = document.getElementById('startbutton'); <- Pitää tehä HTML tiedostoon ja CSS tiedostoon tyylittely
-var isGameStarted = false;
+//var isGameStarted = false;
 
 
-function startGame() {
-    isGameStarted = true; //<- Tämä on tärkeä jotta peli ei käynnisty uudestaan jos pelaaja painaa start buttonia uudestaan
-    currentState = data['Hukkaputki tarina'][0]; // <---- Tämä aloittaa tarinan alusta
-    startbutton.style.display = "none";   // <---- Tämä piilottaa start buttonin kun peli on käynnissä
-}
+//function startGame() {
+   // isGameStarted = true; //<- Tämä on tärkeä jotta peli ei käynnisty uudestaan jos pelaaja painaa start buttonia uudestaan
+  //  currentState = data['Hukkaputki tarina'][0]; // <---- Tämä aloittaa tarinan alusta
+  //  startbutton.style.display = "none";   // <---- Tämä piilottaa start buttonin kun peli on käynnissä
+//}
 
-startButton.addEventListener('click', () => {
-    if (!isGameStarted) {
-        startGame();
-    }
-})
+//startButton.addEventListener('click', () => {
+   // if (!isGameStarted) {
+        //startGame();
+   // }
+//})
 
 fetch('Data/textdata.json')  // Haetaan JSON databasesta sisältä toiminnolla fetch('tiedostonnimi_tyyppi')
     .then(response => response.json())
