@@ -29,6 +29,14 @@ body
     height: 25vh;
 }
 
+#startbutton
+{
+    width: auto;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
 
 .container
 {

@@ -1,3 +1,19 @@
+//const startbutton = document.getElementById('startbutton'); <- Pitää tehä HTML tiedostoon ja CSS tiedostoon tyylittely
+var isGameStarted = false;
+
+
+function startGame() {
+    isGameStarted = true; //<- Tämä on tärkeä jotta peli ei käynnisty uudestaan jos pelaaja painaa start buttonia uudestaan
+    currentState = data['Hukkaputki tarina'][0]; // <---- Tämä aloittaa tarinan alusta
+    startbutton.style.display = "none";   // <---- Tämä piilottaa start buttonin kun peli on käynnissä
+}
+
+startButton.addEventListener('click', () => {
+    if (!isGameStarted) {
+        startGame();
+    }
+})
+
 fetch('Data/textdata.json')  // Haetaan JSON databasesta sisältä toiminnolla fetch('tiedostonnimi_tyyppi')
     .then(response => response.json())
     .then(data => {
@@ -35,4 +51,4 @@ fetch('Data/textdata.json')  // Haetaan JSON databasesta sisältä toiminnolla f
                 alert('The story has ended.');             // Tarinan päätökseen liittyvät seikat
             }   
         }
-})
+});
