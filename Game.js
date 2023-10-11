@@ -15,7 +15,6 @@ const GAME_STATE = {
     title.style.display = 'none'; // Hide the title
   
     const teksti = document.getElementById('teksti');
-    teksti.innerHTML = 'Welcome to Scene 1'; // Update text
     teksti.style.display = 'block'; // Show text
   
     const valinnat = document.getElementById('valinnat');
