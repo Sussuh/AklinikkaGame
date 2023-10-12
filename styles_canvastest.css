@@ -37,7 +37,7 @@ body
     width: 500px;
     height: 746px;
     max-width: 80%;
-    background-color: blanchedalmond;
+/*    background-color: blanchedalmond;*/
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px 2px;
@@ -64,7 +64,7 @@ body
     line-height: normal; 
     max-width: 454px;
  /*    border: 3px solid #73AD21; */
- padding-top: 30px;
+    padding-top: 30px;
     padding-left: 10px;
     z-index:3;
     text-align: left;
@@ -79,7 +79,6 @@ body
     display: grid;
     grid-template-columns: 1fr; 
     padding-top: 30px;
-    padding-left: 10px;
     padding-right: 20px;
     grid-gap: 80px; 
     align-items: left; 
@@ -94,7 +93,7 @@ body
 
 }
 
-/* Buttoni tyyli*/
+/* Buttonin muokattu tyyli*/
 .button 
 {
     font-family: JetBrains Mono;
@@ -162,4 +161,47 @@ body
     position: absolute;
     top: 583px;
     left: 23px;
+}
+
+/* Pilkotuilla elementeillä luodun buttonin kokeilu */
+
+.story-button {
+    position: relative;
+    display: inline-block;
+    width: 475px; 
+    min-height: 45px; /* Set a minimum height */
+    padding: 10px 20px;  /* Teksting padding */
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    background: url('graphics/buttons/story_button_middle_image.png') repeat-y center center;
+    color: #333; /* Adjust the text color as needed */
+    background-color: transparent;
+    background-size: 100% auto; /* This will stretch the width of the middle part to cover the entire width of the button */
+    z-index: 1; /* Sijoittaa buttonit hahmo-assetin eteen */
+}
+
+.story-button::before, .story-button::after {
+    content: "";
+    width: 475px; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-size: cover;
+}
+
+.story-button::before {
+    height: 27px; /* Height of your top image */
+    top: -27px; /* This pushes the top image to sit just above the button */
+    background-image: url('graphics/buttons/story_button_top_image.png');
+}
+
+.story-button::after {
+    height: 17px; /* Height of your bottom image */
+    bottom: -17px; /* This pushes the bottom image to sit just below the button */
+  background-image: url('graphics/buttons/story_button_bottom_image.png');
+}
+
 }
