@@ -1,5 +1,5 @@
 {
-    "Hukkaputki tarina": [
+    "Hukkaputki tarina": [ 
       { 
         "id": 1,
         "teksti": "Olet menossa ostamaan energiajuomaa koulun kioskiautomaatista, kun Sofi kiskaisee sua hihasta.",
@@ -89,7 +89,21 @@
                 "seuraava_id": 1
             }
         ]
-      }
+      },
+    {
+      "id": 2,
+      "teksti": "Sofi saa sut ylipuhuttua ja lähdette tsekkaamaan mitä Lydia tekee. Huomaatte kouluterkan kävelevän ohi. Pitäiskö sille kertoa tästä?",
+      "valinnat": [
+        {
+          "teksti": "Ehkä käydään eka kattoo onko sillä kaikki ok.",
+          "seuraava_id": 3
+        },
+        {
+          "teksti": "Joo, kerrotaan.",
+          "seuraava_id": 3
+        }
+      ]
+    }
     ]
   }
   

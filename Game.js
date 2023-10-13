@@ -5,7 +5,7 @@ const GAME_STATE = {
     // Add more scenes as needed
   };
   
-  let currentGameState = GAME_STATE.START_SCENE;
+  let currentGameState = GAME_STATE.START_SCENE;          
 
   function startGame() {
     const startButton = document.getElementById('startbutton');
