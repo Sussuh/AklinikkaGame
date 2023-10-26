@@ -1,0 +1,84 @@
+.scene {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+/* Add more styles as needed */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #524f4f;
+}
+
+.scene {
+  background-color: #000000;
+  padding: 20px;
+  margin-top: 300px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.scene button {
+  margin-top: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.scene h1 {
+  display: inline-block;
+  font-size: 24px;
+  color: #fff;
+  text-shadow:
+    -1px -1px 0 #333,
+    1px -1px 0 #333,
+    -1px 1px 0 #333,
+    1px 1px 0 #333;
+  padding: 5px;
+}
+
+#scene1 {
+  background-color: red;
+  color: aliceblue;
+
+}
+
+#scene2 {
+  background-color: blue;
+  color: aliceblue;
+
+}
+
+#scene3 {
+  background-color: #4CAF50;
+  color: aliceblue;
+
+}
+
+#scene4 {
+  background-color: #000000;
+  color: aliceblue;
+
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4CAF50;
+  color: rgb(0, 0, 0);
+}

@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>aklinikka-game</title>
-    <link rel="stylesheet" href="stylesheet.css" />
-  </head>
-  <body>
-    <div class="maincontainer">
-      <div class="canvas-container-bg">
-        <canvas id="background-canvas"></canvas>
-        <h1 class="canvas-text">Background Canvas</h1>
-      </div>
-      <div class="canvas-container-ui">
-        <canvas id="ui-canvas"></canvas>
-        <h1 class="canvas-text">UI Canvas</h1>
-      </div>
-      <div class="canvas-container-gameobjects">
-        <canvas id="gameobjects-canvas"></canvas>
-        <h1 class="canvas-text">Game Objects Canvas</h1>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="scene1" class="scene visible">
+    <!-- content for scene 1 -->
+    <h1>Scene 1</h1>
+    <div class="button">
+      <button id="scene1Button">Go to Scene 2</button>
     </div>
+</div>
 
-    <script src="/maingame.js" type="text/javascript"></script>
-  </body>
+<div id="scene2" class="scene">
+    <!-- content for scene 2 -->
+    <h1>Scene 2</h1>
+    <div class="button">
+      <button id="scene2Button">Go to Scene 3</button>
+    </div>
+</div>
+
+<div id="scene3" class="scene">
+    <!-- content for scene 3 -->
+    <h1>Scene 3</h1>
+    <div class="button">
+      <button id="scene3Button">Go to Scene 4</button>
+    </div>
+</div>
+
+<div id="scene4" class="scene">
+    <!-- content for scene 4 -->
+    <h1>Scene 4</h1>
+    <div class="button">
+      <button id="scene4Button">Go back to Scene 1</button>
+    </div>
+</div>
+
+  <script src="sceneswitch.js"></script>
+</body>
 </html>
