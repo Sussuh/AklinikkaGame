@@ -94,6 +94,12 @@ body {
   top: 2%;
   z-index: 2;
 }
+#scene_1image {
+  position: absolute;
+  background-image: url('images/Scene_1.png');
+  background-size: cover;
+  z-index: 2;
+}
 
 .container {
   width: 100%;
@@ -102,6 +108,7 @@ body {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 2px;
+  z-index: 2;
 }
 
 .btn-grid {
