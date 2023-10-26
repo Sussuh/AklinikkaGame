@@ -1,82 +1,78 @@
-const GAME_STATE = {
-    START_SCENE: 0,
-    SCENE1: 1,
-    SCENE2: 2,
-    // Add more scenes as needed
-  };
-  
-  let currentGameState = GAME_STATE.START_SCENE;          
+'use strict';
 
-  function startGame() {
-    const startButton = document.getElementById('startbutton');
-    startButton.style.display = 'none'; // Hide the start button
-  
-    const title = document.getElementById('title');
-    title.style.display = 'none'; // Hide the title
-  
-    const teksti = document.getElementById('teksti');
-    teksti.style.display = 'block'; // Show text
-  
-    const valinnat = document.getElementById('valinnat');
-    valinnat.style.display = 'block'; // Show buttons
-  
-    currentGameState = GAME_STATE.SCENE1; // Change game state
-  }
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const button1 = document.getElementById('btn1');
+const button2 = document.getElementById('btn2');
+const startButton = document.getElementById('start_btn');
+const optionsButton = document.getElementById('options_button');
+const questContainer = document.querySelector('.container');
+let backgroundImage = new Image();
+document.body.appendChild(canvas);
 
-  const startButton = document.getElementById('startbutton');
-startButton.addEventListener('click', startGame);
+const scenes = {
+  menu: () => {
+    button1.style.display = 'none';
+    button2.style.display = 'none';
+    questContainer.style.display = 'none';
+    backgroundImage.src = 'images/starter.png';
+    backgroundImage.onload = () => {
+      ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+    };
+  },
+  options: () => {},
+  scene_1: () => {},
+  scene_2: () => {},
+};
 
-//const startbutton = document.getElementById('startbutton'); <- Pitää tehä HTML tiedostoon ja CSS tiedostoon tyylittely
-//var isGameStarted = false;
+let currentScene = 'menu';
 
+function piirrä() {
+  scenes[currentScene]();
+}
 
-//function startGame() {
-   // isGameStarted = true; //<- Tämä on tärkeä jotta peli ei käynnisty uudestaan jos pelaaja painaa start buttonia uudestaan
-  //  currentState = data['Hukkaputki tarina'][0]; // <---- Tämä aloittaa tarinan alusta
-  //  startbutton.style.display = "none";   // <---- Tämä piilottaa start buttonin kun peli on käynnissä
-//}
+piirrä();
 
-//startButton.addEventListener('click', () => {
-   // if (!isGameStarted) {
-        //startGame();
-   // }
-//})
+// ----------------------TARINAN KULKU---------------------------------------------
 
-fetch('Data/textdata.json')  // Haetaan JSON databasesta sisältä toiminnolla fetch('tiedostonnimi_tyyppi')
-    .then(response => response.json())
-    .then(data => {
-        let currentState = data['Hukkaputki tarina'][0];        // Nimetään indexit jotta pysytään mukana missä kohtaa tarinaa mennään
-        let currentChoiceIndex = 0;
+fetch('Data/textdata.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Lataus Jsonfile epäonnistuu');
+    }
+    return response.json();
+  })
+  .then(data => {
+    let currentState = data['Hukkaputki tarina'][0];
+    let currentChoiceIndex = 0;
 
-        function updateUI() {      // UIn päivityksen Implementointi
-            document.getElementById('btn1').innerText = currentState['valinnat'][0]['teksti'];
-            document.getElementById('btn2').innerText = currentState['valinnat'][1]['teksti'];
-            document.getElementById('teksti').innerText = currentState['teksti'];
-        }
+    function updateUI() {
+      document.getElementById('btn1').innerText =
+        currentState['valinnat'][0]['teksti'];
+      document.getElementById('btn2').innerText =
+        currentState['valinnat'][1]['teksti'];
+      document.getElementById('teksti').innerText = currentState['teksti'];
+    }
 
+    updateUI();
 
-        updateUI();        // Päivitetään UI!
+    document.getElementById('btn1').addEventListener('click', function () {
+      currentChoiceIndex = 0;
+      nextState();
+    });
 
+    document.getElementById('btn2').addEventListener('click', function () {
+      currentChoiceIndex = 1;
+      nextState();
+    });
 
-        document.getElementById('btn1').addEventListener('click', function() {
-            currentChoiceIndex = 0;
-            nextState();
-        });        // Lisätään eventti tapahtuma buttoneille "click"
+    function nextState() {
+      const nextID =
+        currentState['valinnat'][currentChoiceIndex]['seuraava_id'];
+      currentState = data['Hukkaputki tarina'].find(
+        state => state['id'] === nextID
+      );
+    }
+  });
 
-        document.getElementById('btn2').addEventListener('click', function() {
-            currentChoiceIndex = 1;
-            nextState();
-        });
-
-
-        function nextState() {        // Functionaalisuus pelaajan valintaan liittyen mihin suuntaan tarinaa jatketaan
-            const nextID = currentState['valinnat'][currentChoiceIndex]['seuraava_id'];
-            currentState = data['Hukkaputki tarina'].find(state => state['id'] === nextID);
-            if (currentState) {
-                updateUI();
-            } else {
-
-                alert('The story has ended.');             // Tarinan päätökseen liittyvät seikat
-            }   
-        }
-});
+//-------------------------------------------------------------------------------

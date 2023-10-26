@@ -1,83 +1,132 @@
-*, *::before, *::after
-{
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-
-body
-{
-    padding: 0;
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: blueviolet;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(142, 14, 247, 0.781);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-#title
-{
-    color: rgba(255, 255, 255, 255);
-    font-family: 'VT323', 'monospace'; /* font family */
-    font-size: 60pt; /* size of the font */
-    margin: -25px auto; /* vertical margin from top, horizontal centering (using auto) */
-    width: max-content; /* Takes up full width of screen */
-    justify-content:flex-start;
-    height: 25vh;
+.canvas-container {
+  position: relative;
+  width: 500px;
+  height: 750px;
 }
 
-#startbutton
-{
-    width: auto;
-    height: auto;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    
+#gameCanvas {
+  position: absolute;
+  border: 5px solid black;
 }
 
+#logo {
+  position: absolute;
+  width: auto;
+  height: auto;
+  left: 20%;
+  top: 20%;
+  z-index: 2;
+}
 
-.container
-{
-    width: 880px;
-    max-width: 80%;
-    background-color: blanchedalmond;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 2px;
+#sohvi {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  top: 44%;
+}
+
+#miro {
+  position: absolute;
+  width: auto;
+  height: auto;
+  left: 78%;
+  top: 43.5%;
+  z-index: 1;
+}
+
+#Kielivaihtoehto1 {
+  position: absolute;
+  background-image: url('images/Button_Images/English.png');
+  background-size: cover;
+  left: 32%;
+  top: 70%;
+  width: 177px;
+  height: 62px;
+  z-index: 1;
+}
+
+#Kielivaihtoehto2 {
+  position: absolute;
+  background-image: url('images/Button_Images/Svenska.png');
+  background-size: cover;
+  left: 32%;
+  top: 80%;
+  width: 177px;
+  height: 62px;
+  z-index: 1;
+}
+
+#start_btn {
+  position: absolute;
+  background-image: url('images/startbutton.png');
+  background-size: cover;
+  width: 253px;
+  height: 136px;
+  left: 25%;
+  top: 45%;
+  z-index: 2;
+}
+#options_btn {
+  position: absolute;
+  background-image: url('images/setting_icon.png');
+  width: 100px;
+  height: 95px;
+  left: 78%;
+  top: 2%;
+  z-index: 2;
+}
+
+.container {
+  width: 100%;
+  max-width: 475px;
+  background-color: blanchedalmond;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px;
 }
 
 .btn-grid {
-    display: grid;
-    grid-template-columns: 1fr; 
-    grid-gap: 10px; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .btn-grid img {
-    max-width: 100%;
-    height: auto;
-    margin: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
 }
 
-
-
-.btn 
-{
-    background-color: hsl(200, 100%, 50%);
-    border: 1px solid hsl(200, 100%, 30%);
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: white;
-    outline: none;
+.btn {
+  background-color: hsl(200, 100%, 50%);
+  border: 1px solid hsl(200, 100%, 30%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
 }
 
-.btn-hover
-{
-    border-color: black;
+.btn:hover {
+  border-color: black;
 }
