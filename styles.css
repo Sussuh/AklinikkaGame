@@ -40,6 +40,7 @@ body {
   position: absolute;
   width: auto;
   height: auto;
+  right: 79%;
   z-index: 1;
   top: 44%;
 }
@@ -95,7 +96,7 @@ body {
   z-index: 2;
 }
 
-.container {
+.questContainer {
   width: 100%;
   max-width: 475px;
   background-color: blanchedalmond;
