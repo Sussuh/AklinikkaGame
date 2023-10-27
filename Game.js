@@ -9,13 +9,16 @@ const optionsButton = document.getElementById('options_button');
 const questContainer = document.getElementById('questContainer');
 const kieliYksi = document.getElementById('Kielivaihtoehto1');
 const kieliKaksi = document.getElementById('Kielivaihtoehto2');
+const logo = document.getElementById('logo');
+const sofi = document.getElementById('sofi');
+const miro = document.getElementById('miro');
 let backgroundImage = new Image();
 document.body.appendChild(canvas);
 
 //--------------------------------------Scenet
 const scenes = {
   menu: () => {
-    backgroundImage.src = 'images/starter.png';
+    backgroundImage.src = 'images/Scenes/starter.png';
     button1.style.display = 'none';
     button2.style.display = 'none';
     backgroundImage.onload = () => {
@@ -23,10 +26,15 @@ const scenes = {
     };
   },
   scene_1: () => {
-    backgroundImage.src = 'images/Scene_2.png';
+    backgroundImage.src = 'images/Scenes/starter.png';
+    logo.style.display = 'none';
     startButton.style.display = 'none';
     kieliYksi.style.display = 'none';
     kieliKaksi.style.display = 'none';
+    miro.style.display = 'none';
+    sofi.style.display = 'none';
+    button1.style.display = 'block';
+    button2.style.display = 'block';
     backgroundImage.onload = () => {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     };
