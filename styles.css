@@ -99,26 +99,35 @@ body {
 }
 
 .questContainer {
-  width: 100%;
-  max-width: 475px;
-  background-color: blanchedalmond;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 2px;
+  position: absolute;
+  width: 454px;
+  height: 100px;
+  top: 10%;
+  left: 3%;
   z-index: 2;
 }
 
+.questContainer #teksti {
+  text-align: center;
+  line-height: 1.5;
+  font: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px;
+  background-image: url(images/UI/narrator.png);
+}
+
 .btn-grid {
+  position: absolute;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
   justify-content: flex-end;
   align-items: center;
-  z-index: 4;
+  z-index: 3;
 }
 
-.btn-grid img {
-  max-width: 100%;
-  height: auto;
-  z-index: 4;
+.btn-grid #btn1 {
+  position: absolute;
+  width: 40%;
+  height: 40%;
 }

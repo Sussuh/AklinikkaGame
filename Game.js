@@ -1,12 +1,11 @@
 'use strict';
-
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const button1 = document.getElementById('btn1');
 const button2 = document.getElementById('btn2');
 const startButton = document.getElementById('start_btn');
 const optionsButton = document.getElementById('options_button');
-const questContainer = document.getElementById('questContainer');
+const questBox = document.getElementById('teksti');
 const kieliYksi = document.getElementById('Kielivaihtoehto1');
 const kieliKaksi = document.getElementById('Kielivaihtoehto2');
 const logo = document.getElementById('logo');
@@ -19,6 +18,7 @@ document.body.appendChild(canvas);
 const scenes = {
   menu: () => {
     backgroundImage.src = 'images/Scenes/starter.png';
+    questBox.style.display = 'none';
     button1.style.display = 'none';
     button2.style.display = 'none';
     backgroundImage.onload = () => {
@@ -27,14 +27,13 @@ const scenes = {
   },
   scene_1: () => {
     backgroundImage.src = 'images/Scenes/starter.png';
+    questBox.style.display = 'block';
     logo.style.display = 'none';
     startButton.style.display = 'none';
     kieliYksi.style.display = 'none';
     kieliKaksi.style.display = 'none';
     miro.style.display = 'none';
     sofi.style.display = 'none';
-    button1.style.display = 'block';
-    button2.style.display = 'block';
     backgroundImage.onload = () => {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     };
@@ -117,5 +116,4 @@ fetch('Data/textdata.json')
       );
     }
   });
-
 //-------------------------------------------------------------------------------
