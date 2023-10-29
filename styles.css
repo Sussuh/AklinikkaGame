@@ -101,7 +101,7 @@ body {
 .questContainer {
   position: absolute;
   width: 454px;
-  height: 100px;
+  height: 250px;
   top: 10%;
   left: 3%;
   z-index: 2;
@@ -110,24 +110,41 @@ body {
 .questContainer #teksti {
   text-align: center;
   line-height: 1.5;
+  height: auto;
   font: 16px;
   border-radius: 10px;
   box-shadow: 0 0 10px 2px;
   background-image: url(images/UI/narrator.png);
+  vertical-align: baseline;
 }
 
 .btn-grid {
-  position: absolute;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 3;
+  z-index: 2;
 }
 
 .btn-grid #btn1 {
   position: absolute;
-  width: 40%;
-  height: 40%;
+  left: 5%;
+  top: 55%;
+  background-image: url(images/Button_Images/Story_button_Whole.png);
+  width: 457px;
+  height: 84px;
+  border: 0;
+  z-index: 4;
+  padding-top: 30px;
+}
+
+.btn-grid #btn2 {
+  position: absolute;
+  z-index: 4;
+  width: 457px;
+  height: 84px;
+  border: 0;
+  background-image: url(images/Button_Images/Story_button_Whole.png);
+  left: 5%;
+  top: 70%;
+  padding-top: 30px;
 }

@@ -1,16 +1,15 @@
 'use strict';
-const canvas = document.getElementById('gameCanvas');
+const canvas = document.querySelector('#gameCanvas');
 const ctx = canvas.getContext('2d');
-const button1 = document.getElementById('btn1');
-const button2 = document.getElementById('btn2');
-const startButton = document.getElementById('start_btn');
-const optionsButton = document.getElementById('options_button');
-const questBox = document.getElementById('teksti');
-const kieliYksi = document.getElementById('Kielivaihtoehto1');
-const kieliKaksi = document.getElementById('Kielivaihtoehto2');
-const logo = document.getElementById('logo');
-const sofi = document.getElementById('sofi');
-const miro = document.getElementById('miro');
+const chooseButtons = document.querySelector('.btn-grid');
+const startButton = document.querySelector('#start_btn');
+const optionsButton = document.querySelector('#options_button');
+const questBox = document.querySelector('#teksti');
+const kieliYksi = document.querySelector('#Kielivaihtoehto1');
+const kieliKaksi = document.querySelector('#Kielivaihtoehto2');
+const logo = document.querySelector('#logo');
+const sofi = document.querySelector('#sofi');
+const miro = document.querySelector('#miro');
 let backgroundImage = new Image();
 document.body.appendChild(canvas);
 
@@ -19,14 +18,14 @@ const scenes = {
   menu: () => {
     backgroundImage.src = 'images/Scenes/starter.png';
     questBox.style.display = 'none';
-    button1.style.display = 'none';
-    button2.style.display = 'none';
+    chooseButtons.style.display = 'none';
     backgroundImage.onload = () => {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     };
   },
   scene_1: () => {
     backgroundImage.src = 'images/Scenes/starter.png';
+    chooseButtons.style.display = 'block';
     questBox.style.display = 'block';
     logo.style.display = 'none';
     startButton.style.display = 'none';
@@ -38,7 +37,9 @@ const scenes = {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     };
   },
-  scene_2: () => {},
+  scene_2: () => {
+    backgroundImage.src = 'images/Scenes/starter.png';
+  },
 };
 
 //---------------------------------------------------------
@@ -57,12 +58,24 @@ startButton.addEventListener('click', function () {
   }
 });
 
+chooseButtons.addEventListener('click', function () {
+  const nextSceneName = getNextSceneName(currentScene);
+  if (scenes[nextSceneName]) {
+    currentScene = nextSceneName;
+    piirrä();
+  } else {
+    console.log('Ei ole uusia scenejä.');
+  }
+});
+
 function getNextSceneName(currentSceneName) {
   switch (currentSceneName) {
     case 'menu':
       return 'scene_1';
     case 'scene_1':
       return 'scene_2';
+    case 'scene_2':
+      return 'scene_3';
     default:
       return currentScene;
   }
