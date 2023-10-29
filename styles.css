@@ -119,7 +119,7 @@ body {
   background-image: url(images/UI/narrator.png);
   vertical-align: baseline;
 }
-
+/*
 .btn-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -151,4 +151,69 @@ body {
   left: 5%;
   top: 70%;
   padding-top: 30px;
+}
+*/
+
+/* Pilkotuilla elementeillä luodun buttonin kokeilu, kopioitu styles_canvastest.css:stä */
+
+/* Buttoneiden paikat */
+.btn-grid {
+  position: absolute;
+  border: 3px solid #73AD21; 
+  top: 469px;
+  left: 23px;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-top: 30px;
+  padding-right: 20px;
+  align-items: left; 
+  text-align: left; 
+  z-index: 2;
+}
+
+.story-button {
+  position: relative;
+  display: inline-block;
+  width: 475px; 
+  min-height: 45px; /* Set a minimum height */
+  padding: 10px 20px;  /* Teksting padding */
+  font-size: 16px;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  background: url('graphics/buttons/StoryButton_Middle.png') repeat-y center center;
+  color: #333; /* Adjust the text color as needed */
+  background-color: transparent;
+  background-size: 100% auto; /* This will stretch the width of the middle part to cover the entire width of the button */
+  z-index: 2; /* Sijoittaa buttonit hahmo-assetin eteen */
+  grid-column: auto;
+}
+
+.story-button + .story-button {
+  margin-top: 50px; /* Adjust the gap as needed */
+}
+
+.story-button::before, .story-button::after {
+  content: "";
+  width: 475px; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  grid-column: auto;
+
+}
+
+.story-button::before {
+  height: 27px; /* Height of your top image */
+  top: -27px; /* This pushes the top image to sit just above the button */
+  background-image: url('graphics/buttons/StoryButton_Top.png');
+  grid-row: auto;
+}
+
+.story-button::after {
+  height: 17px; /* Height of your bottom image */
+  bottom: -17px; /* This pushes the bottom image to sit just below the button */
+background-image: url('graphics/buttons/StoryButton_Bottom.png');
+grid-row: auto;
 }
