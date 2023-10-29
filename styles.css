@@ -100,6 +100,7 @@ body {
 
 .questContainer {
   position: absolute;
+
   width: 454px;
   height: 250px;
   top: 10%;
@@ -109,6 +110,7 @@ body {
 
 .questContainer #teksti {
   text-align: center;
+  padding-top: 30px;
   line-height: 1.5;
   height: auto;
   font: 16px;
@@ -140,9 +142,9 @@ body {
 .btn-grid #btn2 {
   position: absolute;
   z-index: 4;
+  border: 0;
   width: 457px;
   height: 84px;
-  border: 0;
   background-image: url(images/Button_Images/Story_button_Whole.png);
   left: 5%;
   top: 70%;
