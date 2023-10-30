@@ -1,69 +1,92 @@
 'use strict';
-
-const canvas = document.getElementById('gameCanvas');
+const canvas = document.querySelector('#gameCanvas');
 const ctx = canvas.getContext('2d');
-const button1 = document.getElementById('btn1');
-const button2 = document.getElementById('btn2');
-const startButton = document.getElementById('start_btn');
-const optionsButton = document.getElementById('options_button');
-const questContainer = document.querySelector('.container');
+const chooseButtons = document.querySelector('.btn-grid');
+const startButton = document.querySelector('#start_btn');
+const optionsButton = document.querySelector('#options_button');
+const questBox = document.querySelector('#teksti');
+const kieliYksi = document.querySelector('#Kielivaihtoehto1');
+const kieliKaksi = document.querySelector('#Kielivaihtoehto2');
+const logo = document.querySelector('#logo');
+const sofi = document.querySelector('#sofi');
+const miro = document.querySelector('#miro');
 let backgroundImage = new Image();
-const scene1Container = document.getElementById('scene-1-container'); //
-const scene1Image = document.getElementById('scene_1Image'); //
 document.body.appendChild(canvas);
 
-// Function to handle the transition to Scene 1
-function transitionToScene1() {
-  // Hide the initial content
-  const canvasContainer = document.querySelector('.canvas-container');
-  canvasContainer.style.display = 'none';
-
-  // Show the Scene 1 content
-  scene1Container.style.display = 'block';
-
-  // Load and display the Scene 1 image
-}
-
-// Add an event listener to the "Start" button to transition to Scene 1
-startButton.addEventListener('click', () => {
-  transitionToScene1();
-});
-
+//--------------------------------------Scenet
 const scenes = {
   menu: () => {
-    button1.style.display = 'none';
-    button2.style.display = 'none';
-    //questContainer.style.display = 'none'; // tämä poistaa scene 2 taustakuvan mutta jos se on päällä niin poistaa scene 1 taustakuvan???
-    backgroundImage.src = 'images/starter.png';
+    backgroundImage.src = 'images/Scenes/starter.png';
+    questBox.style.display = 'none';
+    chooseButtons.style.display = 'none';
     backgroundImage.onload = () => {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     };
   },
-  options: () => {},
   scene_1: () => {
+    backgroundImage.src = 'images/Scenes/starter.png';
+    chooseButtons.style.display = 'block';
+    questBox.style.display = 'block';
+    logo.style.display = 'none';
     startButton.style.display = 'none';
-    questContainer.style.display = 'none';
-    backgroundImage.src = 'images/Scene_1.png';
+    kieliYksi.style.display = 'none';
+    kieliKaksi.style.display = 'none';
+    miro.style.display = 'none';
+    sofi.style.display = 'none';
     backgroundImage.onload = () => {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     };
-    //scenes.menu();
-    // Add an event listener to the "Start" button to switch to the next scene
-    //startButton.addEventListener('click', () => {
-    //scenes.scene_2();
-    //});
   },
-
-  scene_2: () => {},
+  scene_2: () => {
+    backgroundImage.src = 'images/Scenes/starter.png';
+  },
 };
+
+//---------------------------------------------------------
+
+//-------------------Scenen vaihto Start buttonista------------
 
 let currentScene = 'menu';
 
-function piirra() {
+startButton.addEventListener('click', function () {
+  const nextSceneName = getNextSceneName(currentScene);
+  if (scenes[nextSceneName]) {
+    currentScene = nextSceneName;
+    piirrä();
+  } else {
+    console.log('Ei ole uusia scenejä.');
+  }
+});
+
+chooseButtons.addEventListener('click', function () {
+  const nextSceneName = getNextSceneName(currentScene);
+  if (scenes[nextSceneName]) {
+    currentScene = nextSceneName;
+    piirrä();
+  } else {
+    console.log('Ei ole uusia scenejä.');
+  }
+});
+
+function getNextSceneName(currentSceneName) {
+  switch (currentSceneName) {
+    case 'menu':
+      return 'scene_1';
+    case 'scene_1':
+      return 'scene_2';
+    case 'scene_2':
+      return 'scene_3';
+    default:
+      return currentScene;
+  }
+}
+
+function piirrä() {
   scenes[currentScene]();
 }
 
-piirra();
+piirrä();
+//---------------------------------------------------------------------
 
 // ----------------------TARINAN KULKU---------------------------------------------
 
@@ -106,5 +129,4 @@ fetch('Data/textdata.json')
       );
     }
   });
-
 //-------------------------------------------------------------------------------

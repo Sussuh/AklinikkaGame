@@ -1,12 +1,11 @@
-*,
-*::before,
-*::after {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 body {
-  padding: 0;
-  margin: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(142, 14, 247, 0.781);
@@ -36,12 +35,13 @@ body {
   z-index: 2;
 }
 
-#sohvi {
+#sofi {
   position: absolute;
   width: auto;
   height: auto;
-  z-index: 1;
+  right: 79%;
   top: 44%;
+  z-index: 1;
 }
 
 #miro {
@@ -54,86 +54,101 @@ body {
 }
 
 #Kielivaihtoehto1 {
+  cursor: pointer;
   position: absolute;
-  background-image: url('images/Button_Images/English.png');
-  background-size: cover;
   left: 32%;
   top: 70%;
   width: 177px;
   height: 62px;
   z-index: 1;
+  border: 0;
 }
 
 #Kielivaihtoehto2 {
+  cursor: pointer;
   position: absolute;
-  background-image: url('images/Button_Images/Svenska.png');
-  background-size: cover;
   left: 32%;
   top: 80%;
   width: 177px;
   height: 62px;
   z-index: 1;
+  border: 0;
 }
 
 #start_btn {
+  cursor: pointer;
   position: absolute;
-  background-image: url('images/startbutton.png');
-  background-size: cover;
   width: 253px;
   height: 136px;
   left: 25%;
   top: 45%;
   z-index: 2;
+  border: 0;
 }
+
 #options_btn {
+  cursor: pointer;
   position: absolute;
-  background-image: url('images/setting_icon.png');
-  width: 100px;
-  height: 95px;
-  left: 78%;
+  width: 38px;
+  height: 39px;
+  left: 90%;
   top: 2%;
-  z-index: 2;
+  border-radius: 56px;
+  border: 0;
+  z-index: 5;
 }
-#scene_1image {
+
+.questContainer {
   position: absolute;
-  background-image: url('images/Scene_1.png');
-  background-size: cover;
+
+  width: 454px;
+  height: 250px;
+  top: 10%;
+  left: 3%;
   z-index: 2;
 }
 
-.container {
-  width: 100%;
-  max-width: 475px;
-  background-color: blanchedalmond;
-  padding: 10px;
+.questContainer #teksti {
+  text-align: center;
+  padding-top: 30px;
+  line-height: 1.5;
+  height: auto;
+  font: 16px;
   border-radius: 10px;
   box-shadow: 0 0 10px 2px;
-  z-index: 2;
+  background-image: url(images/UI/narrator.png);
+  vertical-align: baseline;
 }
 
 .btn-grid {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
-  justify-content: flex-end;
-  align-items: center;
+  z-index: 2;
 }
 
-.btn-grid img {
-  max-width: 100%;
-  height: auto;
-  margin: 0;
+.btn-grid #btn1 {
+  cursor: pointer;
+  position: absolute;
+  left: 5%;
+  top: 55%;
+  background-image: url(images/Button_Images/Story_button_Whole.png);
+  width: 457px;
+  height: 84px;
+  border: 0;
+  z-index: 4;
+  padding-top: 30px;
 }
 
-.btn {
-  background-color: hsl(200, 100%, 50%);
-  border: 1px solid hsl(200, 100%, 30%);
-  border-radius: 5px;
-  padding: 5px 10px;
-  color: white;
-  outline: none;
-}
-
-.btn:hover {
-  border-color: black;
+.btn-grid #btn2 {
+  cursor: pointer;
+  position: absolute;
+  z-index: 4;
+  border: 0;
+  width: 457px;
+  height: 84px;
+  background-image: url(images/Button_Images/Story_button_Whole.png);
+  left: 5%;
+  top: 70%;
+  padding-top: 30px;
 }
