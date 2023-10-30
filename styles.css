@@ -85,6 +85,16 @@ body {
   z-index: 2;
   border: 0;
 }
+#info-screen {
+  position: absolute;
+  width: auto;
+  height: auto;
+}
+#player-customize {
+  position: absolute;
+  width: auto;
+  height: auto;
+}
 
 #options_btn {
   cursor: pointer;

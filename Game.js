@@ -10,6 +10,8 @@ const kieliKaksi = document.querySelector('#Kielivaihtoehto2');
 const logo = document.querySelector('#logo');
 const sofi = document.querySelector('#sofi');
 const miro = document.querySelector('#miro');
+const Info_Screen = document.querySelector('#info-screen');
+const playerCustomize = document.querySelector('#player-customize');
 let backgroundImage = new Image();
 document.body.appendChild(canvas);
 
@@ -33,12 +35,24 @@ const scenes = {
     kieliKaksi.style.display = 'none';
     miro.style.display = 'none';
     sofi.style.display = 'none';
-    backgroundImage.onload = () => {
-      ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-    };
   },
   scene_2: () => {
-    backgroundImage.src = 'images/Scenes/starter.png';
+    backgroundImage.src = 'images/Scenes/Info_Screen.png';
+  },
+  scene_3: () => {
+    backgroundImage.src = 'images/Scenes/Player Character customization.png';
+  },
+  scene_4: () => {
+    backgroundImage.src = 'images/Scenes/Scene ALT UI.png';
+  },
+  scene_5: () => {
+    backgroundImage.src = 'images/Scenes/Scene 1.1.png';
+  },
+  scene_6: () => {
+    backgroundImage.src = 'images/Scenes/Scene 1.1.sofii.png';
+  },
+  scene_7: () => {
+    backgroundImage.src = 'images/Scenes/Scene 1.1 Option 1.png';
   },
 };
 
@@ -76,6 +90,17 @@ function getNextSceneName(currentSceneName) {
       return 'scene_2';
     case 'scene_2':
       return 'scene_3';
+    case 'scene_3':
+      return 'scene_4';
+    case 'scene_4':
+      return 'scene_5';
+    case 'scene_5':
+      return 'return_6';
+    case 'scene_6':
+      return 'scene_7';
+    case 'scene_7':
+      return 'scene_8';
+    case 'scene_8':
     default:
       return currentScene;
   }
@@ -127,6 +152,7 @@ fetch('Data/textdata.json')
       currentState = data['Hukkaputki tarina'].find(
         state => state['id'] === nextID
       );
+      updateUI(); // Päivitä tekstit uuteen tilaan
     }
   });
 //-------------------------------------------------------------------------------
