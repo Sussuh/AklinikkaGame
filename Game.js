@@ -10,14 +10,36 @@ const kieliKaksi = document.querySelector('#Kielivaihtoehto2');
 const logo = document.querySelector('#logo');
 const sofi = document.querySelector('#sofi');
 const miro = document.querySelector('#miro');
+const infoBox = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const closeInfoBox = document.querySelector('.close-modal');
+const openInfoBox = document.querySelectorAll('.show-modal');
 let backgroundImage = new Image();
 document.body.appendChild(canvas);
+
+//------------------------------LisätietoBoxit, työnalla
+console.log(openInfoBox);
+
+for (let i = 0; i < openInfoBox.length; i++) {
+  console.log(
+    openInfoBox[i].addEventListener('click', function () {
+      console.log('Button Clicked.. Boxi avautuu');
+      infoBox.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+    })
+  );
+}
+
+closeInfoBox.addEventListener('click', function () {
+  infoBox.classList.add('hidden');
+  overlay.classList.add('hidden');
+});
 
 //--------------------------------------Scenet
 const scenes = {
   menu: () => {
     backgroundImage.src = 'images/Scenes/starter.png';
-    questBox.style.display = 'none';
+    questBox.style.display = 'none'; //None = Ei näy ja Block = Näkyy
     chooseButtons.style.display = 'none';
     backgroundImage.onload = () => {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
@@ -33,11 +55,11 @@ const scenes = {
     kieliKaksi.style.display = 'none';
     miro.style.display = 'none';
     sofi.style.display = 'none';
-    backgroundImage.onload = () => {
-      ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-    };
   },
   scene_2: () => {
+    backgroundImage.src = 'images/Scenes/Info_Screen.png';
+  }, // Nuoli funktio () => { Sisältö }, <-- muista pilkku loppuun.
+  scene_3: () => {
     backgroundImage.src = 'images/Scenes/starter.png';
   },
 };
@@ -69,6 +91,7 @@ chooseButtons.addEventListener('click', function () {
 });
 
 function getNextSceneName(currentSceneName) {
+  //Muista päivittää GetNextScene Switchi
   switch (currentSceneName) {
     case 'menu':
       return 'scene_1';
@@ -76,6 +99,8 @@ function getNextSceneName(currentSceneName) {
       return 'scene_2';
     case 'scene_2':
       return 'scene_3';
+    case 'scene_3':
+      return 'scene_4';
     default:
       return currentScene;
   }
@@ -127,6 +152,7 @@ fetch('Data/textdata.json')
       currentState = data['Hukkaputki tarina'].find(
         state => state['id'] === nextID
       );
+      updateUI(); // Päivitä tekstit uuteen tilaan
     }
   });
 //-------------------------------------------------------------------------------
