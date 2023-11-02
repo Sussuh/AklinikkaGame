@@ -127,6 +127,8 @@ fetch('Data/textdata.json')
     let currentChoiceIndex = 0;
 
     function updateUI() {
+      // document.querySelector('#background').src =
+      //   currentState['scene_background'];
       document.getElementById('btn1').innerText =
         currentState['valinnat'][0]['teksti'];
       document.getElementById('btn2').innerText =

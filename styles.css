@@ -74,6 +74,11 @@ body {
   z-index: 1;
   border: 0;
 }
+/* #background {
+  position: absolute;
+  width: auto;
+  height: auto;
+} */
 
 #start_btn {
   cursor: pointer;
@@ -84,6 +89,10 @@ body {
   top: 45%;
   z-index: 2;
   border: 0;
+}
+
+#start_btn:active {
+  transform: translate(-5%, 25px);
 }
 
 #options_btn {
