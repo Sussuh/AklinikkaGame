@@ -111,10 +111,15 @@ function piirrä() {
 }
 
 piirrä();
-//---------------------------------------------------------------------
+//---------------------------------------------------------------------------------
 
 // ----------------------TARINAN KULKU---------------------------------------------
 
+//-------- Päivitä Json tiedoston haku
+//----- Tutustu parse ja Fetch eroihin? Tallentuuko muisteihin jotain, onko raskas.
+//------- https://github.com/Massimosch/AklinikkaGame/blob/RikuTestground/Data/json_format_example.json
+//-------- https://github.com/Massimosch/AklinikkaGame/blob/RikuTestground/Data/suomi.json
+//----------------------------------------------------------------------------------
 fetch('Data/textdata.json')
   .then(response => {
     if (!response.ok) {
