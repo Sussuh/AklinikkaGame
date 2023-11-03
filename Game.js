@@ -10,16 +10,36 @@ const kieliKaksi = document.querySelector('#Kielivaihtoehto2');
 const logo = document.querySelector('#logo');
 const sofi = document.querySelector('#sofi');
 const miro = document.querySelector('#miro');
-const Info_Screen = document.querySelector('#info-screen');
-const playerCustomize = document.querySelector('#player-customize');
+const infoBox = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const closeInfoBox = document.querySelector('.close-modal');
+const openInfoBox = document.querySelectorAll('.show-modal');
 let backgroundImage = new Image();
 document.body.appendChild(canvas);
+
+//------------------------------LisätietoBoxit, työnalla
+console.log(openInfoBox);
+
+for (let i = 0; i < openInfoBox.length; i++) {
+  console.log(
+    openInfoBox[i].addEventListener('click', function () {
+      console.log('Button Clicked.. Boxi avautuu');
+      infoBox.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+    })
+  );
+}
+
+closeInfoBox.addEventListener('click', function () {
+  infoBox.classList.add('hidden');
+  overlay.classList.add('hidden');
+});
 
 //--------------------------------------Scenet
 const scenes = {
   menu: () => {
     backgroundImage.src = 'images/Scenes/starter.png';
-    questBox.style.display = 'none';
+    questBox.style.display = 'none'; //None = Ei näy ja Block = Näkyy
     chooseButtons.style.display = 'none';
     backgroundImage.onload = () => {
       ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
@@ -38,21 +58,9 @@ const scenes = {
   },
   scene_2: () => {
     backgroundImage.src = 'images/Scenes/Info_Screen.png';
-  },
+  }, // Nuoli funktio () => { Sisältö }, <-- muista pilkku loppuun.
   scene_3: () => {
-    backgroundImage.src = 'images/Scenes/Player Character customization.png';
-  },
-  scene_4: () => {
-    backgroundImage.src = 'images/Scenes/Scene ALT UI.png';
-  },
-  scene_5: () => {
-    backgroundImage.src = 'images/Scenes/Scene 1.1.png';
-  },
-  scene_6: () => {
-    backgroundImage.src = 'images/Scenes/Scene 1.1.sofii.png';
-  },
-  scene_7: () => {
-    backgroundImage.src = 'images/Scenes/Scene 1.1 Option 1.png';
+    backgroundImage.src = 'images/Scenes/starter.png';
   },
 };
 
@@ -83,6 +91,7 @@ chooseButtons.addEventListener('click', function () {
 });
 
 function getNextSceneName(currentSceneName) {
+  //Muista päivittää GetNextScene Switchi
   switch (currentSceneName) {
     case 'menu':
       return 'scene_1';
@@ -92,15 +101,6 @@ function getNextSceneName(currentSceneName) {
       return 'scene_3';
     case 'scene_3':
       return 'scene_4';
-    case 'scene_4':
-      return 'scene_5';
-    case 'scene_5':
-      return 'return_6';
-    case 'scene_6':
-      return 'scene_7';
-    case 'scene_7':
-      return 'scene_8';
-    case 'scene_8':
     default:
       return currentScene;
   }
