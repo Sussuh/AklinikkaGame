@@ -1,9 +1,6 @@
 /*
 jos background ei liiku tai muutu usein. Pidetään se canvaksen ulkopuolella. Tai 2 canvasta: hahmot ja background. 
 
-alkaa: SofillaOnTietoa_1 
-skene objecti funktioon, joka:
-
 checkaa scenen type:
   "linear": mihin tahansa clickaamalla menee seuraavaan sceneen
   "options": tulee dialogi/infobox, jonka jälkeen pienellä delaylla(click nopeuttaa?) 
@@ -23,3 +20,38 @@ Jos linear type, next_scene ohjaa seuraavaan sceneen clickistä.
 Jos options scene:
   Delayn jälkeen foreach buttontext in player_options lisää nappula niiden event listenereillä
 */
+
+import StartSceneData from "/Data/StartSceneData.js";
+import Suomi from "./Data/suomi.js";
+
+const textField = document.querySelector('#teksti');
+
+let currentBackground;
+let language = Suomi;
+let currentScene;
+
+ChangeScene(StartSceneData.SofillaOnTietoa_1);
+
+function ChangeScene(scene) {
+  currentScene = scene;
+  SceneChange();
+}
+
+function SceneChange() {
+  if (currentScene.type == "linear") {
+    // event listener here?
+    //.addEventListener('click', function () {
+    //ChangeScene(currentScene.next_scene);} ???
+  }
+  if (currentScene.background != currentBackground){
+    currentBackground = currentScene.background;
+    // change background here
+  }
+  if (currentScene.characters != null){
+    for (let i = 0; i < currentScene.characters.length; i++) {
+      // draw characters here
+    }
+  }
+  let textId = currentScene.text;
+  textField.innerHTML = language[textId];
+}

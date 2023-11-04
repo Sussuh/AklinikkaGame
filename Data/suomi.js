@@ -1,4 +1,4 @@
-{
+const Suomi = {
   "t_sofi_outside_narrator_1" : "Olet tulossa kouluun, kun Sofi juoksee sun perään.",
   "t_sofi_outside_drama" : "Mä luulen että Lydialla on taas jotain draamaa. Mä näin sen roskiksilla vapettamassa. Eiks sen pitäny lopettaa?",
   "t_sofi_outside_option_1" : "Mitämitä? Mennään kattomaan.",
@@ -17,3 +17,4 @@
   "t_sofia_lydia_vape_5" : "Antakaa mun olla, mul on täl hetkellä riittävästi vaikeuksii!",
   "t_sofia_lydia_vape_6" : "Saan varmaan paniikkikohtauksen, jos en vapeta!"
 }
+export default Suomi;
