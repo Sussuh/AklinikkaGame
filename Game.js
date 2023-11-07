@@ -1,4 +1,6 @@
 'use strict';
+import StartSceneData from '/Data/StartSceneData.js';
+import Suomi from './Data/suomi.js';
 const canvas = document.querySelector('#gameCanvas');
 const ctx = canvas.getContext('2d');
 const chooseButtons = document.querySelector('.btn-grid');
@@ -120,46 +122,65 @@ piirrä();
 //------- https://github.com/Massimosch/AklinikkaGame/blob/RikuTestground/Data/json_format_example.json
 //-------- https://github.com/Massimosch/AklinikkaGame/blob/RikuTestground/Data/suomi.json
 //----------------------------------------------------------------------------------
-fetch('Data/textdata.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Lataus Jsonfile epäonnistuu');
+
+const textField = document.querySelector('#teksti');
+
+let currentBackground;
+let language = Suomi;
+let currentScenes;
+
+ChangeScene(StartSceneData.SofillaOnTietoa_1);
+
+function ChangeScene(scene) {
+  currentScenes = scene;
+  SceneChange();
+}
+
+function SceneChange() {
+  if (currentScene.type == 'linear') {
+    // event listener here?
+    //.addEventListener('click', function () {
+    //ChangeScene(currentScene.next_scene);} ???
+  }
+  if (currentScene.background != currentBackground) {
+    currentBackground = currentScene.background;
+    // change background here
+  }
+  if (currentScene.characters != null) {
+    for (let i = 0; i < currentScene.characters.length; i++) {
+      // draw characters here
     }
-    return response.json();
-  })
-  .then(data => {
-    let currentState = data['Hukkaputki tarina'][0];
-    let currentChoiceIndex = 0;
+  }
+  let textId = currentScene.text;
+  textField.innerHTML = language[textId];
+}
+function updateUI() {
+  // document.querySelector('#background').src =
+  //   currentState['scene_background'];
+  document.getElementById('btn1').innerText =
+    currentState['valinnat'][0]['teksti'];
+  document.getElementById('btn2').innerText =
+    currentState['valinnat'][1]['teksti'];
+  document.getElementById('teksti').innerText = currentState['teksti'];
+}
 
-    function updateUI() {
-      // document.querySelector('#background').src =
-      //   currentState['scene_background'];
-      document.getElementById('btn1').innerText =
-        currentState['valinnat'][0]['teksti'];
-      document.getElementById('btn2').innerText =
-        currentState['valinnat'][1]['teksti'];
-      document.getElementById('teksti').innerText = currentState['teksti'];
-    }
+updateUI();
 
-    updateUI();
+document.getElementById('btn1').addEventListener('click', function () {
+  currentChoiceIndex = 0;
+  nextState();
+});
 
-    document.getElementById('btn1').addEventListener('click', function () {
-      currentChoiceIndex = 0;
-      nextState();
-    });
+document.getElementById('btn2').addEventListener('click', function () {
+  currentChoiceIndex = 1;
+  nextState();
+});
 
-    document.getElementById('btn2').addEventListener('click', function () {
-      currentChoiceIndex = 1;
-      nextState();
-    });
-
-    function nextState() {
-      const nextID =
-        currentState['valinnat'][currentChoiceIndex]['seuraava_id'];
-      currentState = data['Hukkaputki tarina'].find(
-        state => state['id'] === nextID
-      );
-      updateUI(); // Päivitä tekstit uuteen tilaan
-    }
-  });
+function nextState() {
+  const nextID = currentState['valinnat'][currentChoiceIndex]['seuraava_id'];
+  currentState = data['Hukkaputki tarina'].find(
+    state => state['id'] === nextID
+  );
+  updateUI(); // Päivitä tekstit uuteen tilaan
+}
 //-------------------------------------------------------------------------------

@@ -39,8 +39,8 @@ body {
   position: absolute;
   width: auto;
   height: auto;
-  right: 79%;
-  top: 44%;
+  right: 78%;
+  top: 44.8%;
   z-index: 1;
 }
 
@@ -48,7 +48,7 @@ body {
   position: absolute;
   width: auto;
   height: auto;
-  left: 78%;
+  left: 79%;
   top: 43.5%;
   z-index: 1;
 }
