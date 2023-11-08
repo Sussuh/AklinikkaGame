@@ -1,6 +1,6 @@
 'use strict';
 import StartSceneData from '/Data/StartSceneData.js';
-import Suomi from './Data/suomi.js';
+import Suomi from './data/suomi.js';
 const textField = document.querySelector('.top-infobox');
 const speechBubble = document.querySelector('.SpeechBubble');
 const choiceBox = document.querySelector('.ChoiceBox');
