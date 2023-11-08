@@ -14,206 +14,75 @@ body {
   align-items: center;
   flex-direction: column;
 }
-
-.canvas-container {
-  position: relative;
-  width: 500px;
-  height: 750px;
-}
-
-#gameCanvas {
+.background-container{
   position: absolute;
-  border: 5px solid black;
+  height: 100vh;
+  width: 100vw;
+  max-width: 700px;
+  
+  background-color: rgba(71, 204, 89, 0.357);
 }
-
-#logo {
-  position: absolute;
-  width: auto;
-  height: auto;
-  left: 20%;
-  top: 20%;
-  z-index: 2;
+.character-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgba(113, 204, 71, 0.079);
 }
-
-#sofi {
-  position: absolute;
-  width: auto;
-  height: auto;
-  right: 79%;
-  top: 44%;
-  z-index: 1;
-}
-
-#miro {
-  position: absolute;
-  width: auto;
-  height: auto;
-  left: 78%;
-  top: 43.5%;
-  z-index: 1;
-}
-
-#Kielivaihtoehto1 {
-  cursor: pointer;
-  position: absolute;
-  left: 32%;
-  top: 70%;
-  width: 177px;
-  height: 62px;
-  z-index: 1;
-  border: 0;
-}
-
-#Kielivaihtoehto2 {
-  cursor: pointer;
-  position: absolute;
-  left: 32%;
-  top: 80%;
-  width: 177px;
-  height: 62px;
-  z-index: 1;
-  border: 0;
-}
-
-#start_btn {
-  cursor: pointer;
-  position: absolute;
-  width: 253px;
-  height: 136px;
-  left: 25%;
-  top: 45%;
-  z-index: 2;
-  border: 0;
-}
-
-#options_btn {
-  cursor: pointer;
-  position: absolute;
-  width: 38px;
-  height: 39px;
-  left: 90%;
-  top: 2%;
-  border-radius: 56px;
-  border: 0;
-  z-index: 5;
-}
-
-.questContainer {
-  position: absolute;
-
-  width: 454px;
-  height: 250px;
-  top: 10%;
-  left: 3%;
-  z-index: 2;
-}
-
-.questContainer #teksti {
-  text-align: center;
-  padding-top: 30px;
-  line-height: 1.5;
-  height: auto;
-  font: 16px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 2px;
-  background-image: url(images/UI/narrator.png);
-  vertical-align: baseline;
-}
-/*
-.btn-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 10px;
-  z-index: 2;
-}
-
-.btn-grid #btn1 {
-  cursor: pointer;
-  position: absolute;
-  left: 5%;
-  top: 55%;
-  background-image: url(images/Button_Images/Story_button_Whole.png);
-  width: 457px;
-  height: 84px;
-  border: 0;
-  z-index: 4;
-  padding-top: 30px;
-}
-
-.btn-grid #btn2 {
-  cursor: pointer;
-  position: absolute;
-  z-index: 4;
-  border: 0;
-  width: 457px;
-  height: 84px;
-  background-image: url(images/Button_Images/Story_button_Whole.png);
-  left: 5%;
-  top: 70%;
-  padding-top: 30px;
-}
+/* tiedän että tästä tulee painful... 
+  kaikki hahmojen asetukset tänne...
 */
+.character{
+  aspect-ratio: 1/1;
+  max-width: 500px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  height: 70vh;
+  background-image:url("images/characters/HahmoSofi.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  z-index: 1;
+}
 
-/* Pilkotuilla elementeillä luodun buttonin kokeilu, kopioitu styles_canvastest.css:stä */
+.game-flex-container{
+  display: flex;
+  height: 100vh;
+  max-width: 700px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+  background-color: rgba(45, 247, 14, 0.781);
+}
+.top-options-menu{
+  align-self: flex-end;
+}
 
-/* Buttoneiden paikat */
-.btn-grid {
-  position: absolute;
-  border: 3px solid #73AD21; 
-  top: 469px;
-  left: 23px;
-  display: grid;
-  grid-template-columns: 1fr;
-  padding-top: 30px;
-  padding-right: 20px;
-  align-items: left; 
-  text-align: left; 
+.top-text-container{
+  width: 100%;
+  padding: 3%;
+  flex-grow: 1;
+  background-color: rgba(138, 64, 94, 0.781);
+}
+.infobox{
+  font-family: 'Jura', sans-serif;
   z-index: 2;
+  background-color: rgba(188, 126, 151, 0.781);
+}
+.speech-bubble{
+  font-family: 'Jura', sans-serif;
+  z-index: 2;
+  background-color: rgba(221, 39, 112, 0.781);
 }
 
-.story-button {
-  position: relative;
-  display: inline-block;
-  width: 475px; 
-  min-height: 45px; /* Set a minimum height */
-  padding: 10px 20px;  /* Teksting padding */
-  font-size: 16px;
-  text-align: left;
-  border: none;
-  cursor: pointer;
-  background: url('graphics/buttons/StoryButton_Middle.png') repeat-y center center;
-  color: #333; /* Adjust the text color as needed */
-  background-color: transparent;
-  background-size: 100% auto; /* This will stretch the width of the middle part to cover the entire width of the button */
-  z-index: 2; /* Sijoittaa buttonit hahmo-assetin eteen */
-  grid-column: auto;
+.bottom-choice-container{
+width: 100%;
+}
+.choice-button {
+  z-index: 3;
+  background-color: rgba(59, 67, 133, 0.781);
 }
 
-.story-button + .story-button {
-  margin-top: 50px; /* Adjust the gap as needed */
-}
-
-.story-button::before, .story-button::after {
-  content: "";
-  width: 475px; 
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-size: cover;
-  grid-column: auto;
-
-}
-
-.story-button::before {
-  height: 27px; /* Height of your top image */
-  top: -27px; /* This pushes the top image to sit just above the button */
-  background-image: url('graphics/buttons/StoryButton_Top.png');
-  grid-row: auto;
-}
-
-.story-button::after {
-  height: 17px; /* Height of your bottom image */
-  bottom: -17px; /* This pushes the bottom image to sit just below the button */
-background-image: url('graphics/buttons/StoryButton_Bottom.png');
-grid-row: auto;
+.hidden {
+  display: none;
 }

@@ -1,132 +1,57 @@
-'use strict';
-const canvas = document.querySelector('#gameCanvas');
-const ctx = canvas.getContext('2d');
-const chooseButtons = document.querySelector('.btn-grid');
-const startButton = document.querySelector('#start_btn');
-const optionsButton = document.querySelector('#options_button');
-const questBox = document.querySelector('#teksti');
-const kieliYksi = document.querySelector('#Kielivaihtoehto1');
-const kieliKaksi = document.querySelector('#Kielivaihtoehto2');
-const logo = document.querySelector('#logo');
-const sofi = document.querySelector('#sofi');
-const miro = document.querySelector('#miro');
-let backgroundImage = new Image();
-document.body.appendChild(canvas);
+/*
+jos background ei liiku tai muutu usein. Pidetään se canvaksen ulkopuolella. Tai 2 canvasta: hahmot ja background. 
 
-//--------------------------------------Scenet
-const scenes = {
-  menu: () => {
-    backgroundImage.src = 'images/Scenes/starter.png';
-    questBox.style.display = 'none';
-    chooseButtons.style.display = 'none';
-    backgroundImage.onload = () => {
-      ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-    };
-  },
-  scene_1: () => {
-    backgroundImage.src = 'images/Scenes/starter.png';
-    chooseButtons.style.display = 'block';
-    questBox.style.display = 'block';
-    logo.style.display = 'none';
-    startButton.style.display = 'none';
-    kieliYksi.style.display = 'none';
-    kieliKaksi.style.display = 'none';
-    miro.style.display = 'none';
-    sofi.style.display = 'none';
-    backgroundImage.onload = () => {
-      ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-    };
-  },
-  scene_2: () => {
-    backgroundImage.src = 'images/Scenes/starter.png';
-  },
-};
+checkaa scenen type:
+  "linear": mihin tahansa clickaamalla menee seuraavaan sceneen
+  "options": tulee dialogi/infobox, jonka jälkeen pienellä delaylla(click nopeuttaa?) 
+    tulee pelaajan vaihtoehdot event listenereillä. 
+checkaa background: 
+  jos let bg != scene.background { vaihda background}
+checkaa character arrayn:
+  Parasta varmaan vaan piirtää uudestaan hahmot, joka kerta, niin ei tarvi checkailla mitään ja ilmeet vaihtuu helposti. 
+  canvakseen piirretään hahmot tai jotenkin muuten isketään ne screenille. foreach character in scene.characters?
+  Positiot ja animaatiot voidaan miettiä joskus?
+checkaa text_type:
+  infobox tyylinen vai puhekupla.
+  Pitäskö yhdistää text_type ja position? Luo yhden classin muotoilun mukaisen puhe boxin, jota saa säätää css puolella?
+Lisää text boxiin: 
+  valitusta language jsonista etsitään text kohdassa olleella id:llä. Oletus suomi
+Jos linear type, next_scene ohjaa seuraavaan sceneen clickistä. 
+Jos options scene:
+  Delayn jälkeen foreach buttontext in player_options lisää nappula niiden event listenereillä
+*/
 
-//---------------------------------------------------------
+import StartSceneData from "/Data/StartSceneData.js";
+import Suomi from "./data/suomi.js";
 
-//-------------------Scenen vaihto Start buttonista------------
+const textField = document.querySelector('.infobox');
 
-let currentScene = 'menu';
+let currentBackground;
+let language = Suomi;
+let currentScene;
 
-startButton.addEventListener('click', function () {
-  const nextSceneName = getNextSceneName(currentScene);
-  if (scenes[nextSceneName]) {
-    currentScene = nextSceneName;
-    piirrä();
-  } else {
-    console.log('Ei ole uusia scenejä.');
-  }
-});
+ChangeScene(StartSceneData.SofillaOnTietoa_1);
 
-chooseButtons.addEventListener('click', function () {
-  const nextSceneName = getNextSceneName(currentScene);
-  if (scenes[nextSceneName]) {
-    currentScene = nextSceneName;
-    piirrä();
-  } else {
-    console.log('Ei ole uusia scenejä.');
-  }
-});
-
-function getNextSceneName(currentSceneName) {
-  switch (currentSceneName) {
-    case 'menu':
-      return 'scene_1';
-    case 'scene_1':
-      return 'scene_2';
-    case 'scene_2':
-      return 'scene_3';
-    default:
-      return currentScene;
-  }
+function ChangeScene(scene) {
+  currentScene = scene;
+  SceneChange();
 }
 
-function piirrä() {
-  scenes[currentScene]();
+function SceneChange() {
+  if (currentScene.type == "linear") {
+    // event listener here?
+    //.addEventListener('click', function () {
+    //ChangeScene(currentScene.next_scene);} ???
+  }
+  if (currentScene.background != currentBackground){
+    currentBackground = currentScene.background;
+    // change background here
+  }
+  if (currentScene.characters != null){
+    for (let i = 0; i < currentScene.characters.length; i++) {
+      // draw characters here
+    }
+  }
+  let textId = currentScene.text;
+  textField.innerHTML = language[textId];
 }
-
-piirrä();
-//---------------------------------------------------------------------
-
-// ----------------------TARINAN KULKU---------------------------------------------
-
-fetch('Data/textdata.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Lataus Jsonfile epäonnistuu');
-    }
-    return response.json();
-  })
-  .then(data => {
-    let currentState = data['Hukkaputki tarina'][0];
-    let currentChoiceIndex = 0;
-
-    function updateUI() {
-      document.getElementById('btn1').innerText =
-        currentState['valinnat'][0]['teksti'];
-      document.getElementById('btn2').innerText =
-        currentState['valinnat'][1]['teksti'];
-      document.getElementById('teksti').innerText = currentState['teksti'];
-    }
-
-    updateUI();
-
-    document.getElementById('btn1').addEventListener('click', function () {
-      currentChoiceIndex = 0;
-      nextState();
-    });
-
-    document.getElementById('btn2').addEventListener('click', function () {
-      currentChoiceIndex = 1;
-      nextState();
-    });
-
-    function nextState() {
-      const nextID =
-        currentState['valinnat'][currentChoiceIndex]['seuraava_id'];
-      currentState = data['Hukkaputki tarina'].find(
-        state => state['id'] === nextID
-      );
-    }
-  });
-//-------------------------------------------------------------------------------

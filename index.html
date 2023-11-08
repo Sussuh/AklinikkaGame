@@ -1,67 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="styles.css" rel="stylesheet" />
-    <script defer src="Game.js"></script>
-    <title>Hukkaputki</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,100&family=Source+Code+Pro&display=swap"
-      rel="stylesheet"
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="module" src="./game.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Jura&display=swap" rel="stylesheet"> 
+    <!--
+      font-family: 'JetBrains Mono', monospace;
+    -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet"> 
+    <!--     font-family: 'Jura', sans-serif; -->
   </head>
   <body>
-    <div class="canvas-container">
-      <canvas id="gameCanvas" width="500" height="750"> </canvas>
-      <img
-        id="logo"
-        src="images/UI/Hukkaputki_logo.png"
-        alt="Hukkaputki_logo"
-      />
-
-      <img id="miro" src="images/Placeholders_Hahmot/miro_menu.png" />
-      <img id="sofi" src="images/Placeholders_Hahmot/sofi_menu.png" />
-      <button id="start_btn">
-        <img src="images/UI/startbutton.png" alt="" />
-      </button>
-      <button id="options_btn">
-        <img src="images/UI/settings.png" alt="" />
-      </button>
-      <button id="Kielivaihtoehto1">
-        <img src="images/Button_Images/English.png" alt="" />
-      </button>
-      <button id="Kielivaihtoehto2">
-        <img src="images/Button_Images/Svenska.png" alt="" />
-      </button>
-
-
-<!--  Ensimmäinen scene alkaa tästä -->
-
-      <div class="questContainer">
-
-<!--  Narrator -->
-        <div id="teksti">Text</div>
-
+    <!-- background irti game containerista? -->
+    <div class="background-container">
+      <div class="character-container">
+        <!-- luodaan character javascript kautta? -->
+          <div class="character">
+          </div>
+          <div class="character">
+          </div>
+      </div>
+    </div>
+    <!-- flexbox main container -->
+    <div class="game-flex-container">
+      <div class="top-options-menu">
+        <img src="images/UI/MenuIcon.png" alt="menu">
       </div>
 
-<!--- Kokeillaan saadaanko lisätttyä responsiiviset story buttonit, kopioin story-button-classin styles_canvastest -css:stä -->
+      <div class="top-text-container">
+        <!-- show/hide riippuen json? Muuta speech bubble muotoilua eri suuntiin puhujan vaihtuessa?-->
+        <div class="infobox">
+          <p>infobox text</p>
+        </div>
+        <div class="speech-bubble">
+          <p>speech bubble text</p>
+        </div>
+      </div>
 
-      <div id ="valinnat" class="btn-grid">
-        <button class="story-button" id="btn1">Button1</button>
-        <button class="story-button" id="btn2">Button2</button>
-
-<!--- Alkuperäiset on tallessa tässä
-      <div id="valinnat" class="btn-grid">
-        <button id="btn1">Button1</button>
-        <button id="btn2">Button2</button>
+      <div class="bottom-choice-container">
+        <!-- generoidaan optionit javascriptillä 
+          let div = document.createElement("BUTTON");
+          div.className = 'option-button';
         -->
-
+        <div class="choice-button">
+          <p>button options 1</p>
+        </div>
       </div>
-
     </div>
   </body>
 </html>
