@@ -7,7 +7,7 @@
     "characters" : null,
     "text_type" : "infobox",
     "text_position" : "middle",
-    "text" : "sofi_outside_narrator_1",
+    "text" : "t_SofillaOnTietoa_1",
     "next_scene" : "SofillaOnTietoa_2"
   },
   "SofillaOnTietoa_2":
