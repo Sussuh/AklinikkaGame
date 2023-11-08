@@ -21,7 +21,21 @@ function ChangeScene(scene) {
   //   optionButtons[i].textContent = scene.options[i].text;
   // }
 }
+//////////////////////////////////////////////////////////////
+/////////////// -----ARROW FUCTIONA tekstin haku buttoniin ja Scenen vaihto -------------
+/////////////// Varmaan vois implementoida jotenkin vielä fiksummin tämän
+/////////////// Voin huomenna kysellä Chat Gptltä saisko jotenki sillee et ei tarttis tehä montaa tällästä arrow funktiota.
+////////////// Tällä tyylillä kun joutuisi joka sceneen tekemään nämä rivit tai kuinka paljon buttoneita nyt onkaan.
+////////////////////////////////////////////////////////////////
+createButton(`t_sofi_outside_option_1`, () => {
+  ChangeScene(StartSceneData.SofillaOnTietoaRoskiksille);
+});
 
+createButton(`t_sofi_outside_option_2`, () => {
+  ChangeScene(StartSceneData.SofillaOnTietoaRoskiksille);
+});
+////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 function SceneChange() {
   if (currentScene.type == 'linear') {
     // event listener here?
@@ -35,16 +49,14 @@ function SceneChange() {
   }
   if (currentScene.characters != null) {
     for (let i = 0; i < currentScene.characters.length; i++) {
-      // draw characters here
-      drawCharacters(null); // ????????????????
+      drawCharacters(null); // draw characters here??
     }
   }
   let textId = currentScene.text;
   textField.innerHTML = language[textId];
 }
-//TODO:
-// Vaihtoehdot teksti päivittymään, klikatessa vaihtuu, Consoleen tieto
-// mikä scene....
+
+console.log(currentBackground);
 
 function updateBackground(backgroundImageSrc) {
   const backgroundImageElement = document.getElementById('backgroundImage');
@@ -58,4 +70,11 @@ function drawCharacters(characterImageSrc) {
   if (characterImageElement) {
     characterImageElement.src = `/image/characters/${characterImageSrc}`;
   }
+}
+
+function createButton(text, clickCallback) {
+  const button = document.createElement('button');
+  button.textContent = text;
+  button.addEventListener('click', clickCallback);
+  choiceBox.appendChild(button);
 }

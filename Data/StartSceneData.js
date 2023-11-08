@@ -2,7 +2,7 @@ const StartSceneData = {
   SofillaOnTietoa_1: {
     _comment: 'Tänne voi laittaa random kommentteja scenestä tai muuta?',
     type: 'linear',
-    background: 'KoulunPiha',
+    background: 'KoulunPiha.png',
     characters: null,
     text_type: 'infobox',
     text_position: 'middle',
@@ -11,7 +11,7 @@ const StartSceneData = {
   },
   SofillaOnTietoa_2: {
     type: 'options',
-    background: 'koulun_piha',
+    background: 'KoulunPiha.png',
     characters: ['npc_sofi_anxious'],
     text_type: 'dialogue',
     text_position: 'dialogue_left',
@@ -29,7 +29,7 @@ const StartSceneData = {
   },
   SofillaOnTietoaHaloo: {
     type: 'options',
-    background: 'koulun_piha',
+    background: 'KoulunPiha.png',
     characters: ['npc_sofi_angry'],
     text_type: 'dialogue',
     text_position: 'dialogue_left',
@@ -49,7 +49,7 @@ const StartSceneData = {
   SofillaOnTietoaRoskiksille: {
     comment: '____________Tästä alkaa terkkari keskustelu',
     type: 'linear',
-    background: 'koulun_piha_roskiksilla',
+    background: 'Roskikset.png',
     characters: null,
     text_type: 'infobox',
     text_position: 'middle',
@@ -58,7 +58,7 @@ const StartSceneData = {
   },
   SofillaOnTietoaTerkkarille_1: {
     type: 'options',
-    background: 'koulun_piha_roskiksilla',
+    background: 'Roskikset.png',
     characters: null,
     text_type: 'infobox',
     text_position: 'dialogue_left',
@@ -79,7 +79,7 @@ const StartSceneData = {
     comment:
       'tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi',
     type: 'linear',
-    background: 'koulun_piha_roskiksilla',
+    background: 'Roskikset.png',
     characters: ['npc_sofi_worried', 'npc_lydia'],
     text_type: 'dialogue',
     text_position: 'dialogue_left',
@@ -90,7 +90,7 @@ const StartSceneData = {
     comment:
       'tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi',
     type: 'linear',
-    background: 'koulun_piha_roskiksilla',
+    background: 'Roskikset.png',
     characters: ['npc_sofi_worried', 'npc_lydia_annoyed'],
     text_type: 'dialogue',
     text_position: 'dialogue_right',
@@ -101,7 +101,7 @@ const StartSceneData = {
     comment:
       'tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi',
     type: 'linear',
-    background: 'koulun_piha_roskiksilla',
+    background: 'Roskikset.png',
     characters: ['npc_sofi_worried', 'npc_lydia_annoyed'],
     text_type: 'dialogue',
     text_position: 'dialogue_left',
@@ -112,7 +112,7 @@ const StartSceneData = {
     comment:
       'tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi',
     type: 'linear',
-    background: 'koulun_piha_roskiksilla',
+    background: 'Roskikset.png',
     characters: ['npc_sofi_worried', 'npc_lydia_anxious'],
     text_type: 'dialogue',
     text_position: 'dialogue_left',
@@ -123,7 +123,7 @@ const StartSceneData = {
     comment:
       'tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi',
     type: 'linear',
-    background: 'koulun_piha_roskiksilla',
+    background: 'Roskikset.png',
     characters: ['npc_sofi_worried', 'npc_lydia_anxious'],
     text_type: 'dialogue',
     text_position: 'dialogue_right',
