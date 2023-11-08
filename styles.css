@@ -8,26 +8,23 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(142, 14, 247, 0.781);
+  background-color: rgba(142, 14, 247, 0.434);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.background-container{
+
+.character-container{
   position: absolute;
   height: 100vh;
-  width: 100vw;
   max-width: 700px;
-  
-  background-color: rgba(71, 204, 89, 0.357);
-}
-.character-container{
+  padding-bottom: 2vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-shrink: 3; 
+  justify-content:center;
+  align-items: flex-end;
   flex-direction: row;
-  background-color: rgba(113, 204, 71, 0.079);
 }
 /* tiedän että tästä tulee painful... 
   kaikki hahmojen asetukset tänne...
@@ -35,12 +32,10 @@ body {
 .character{
   aspect-ratio: 1/1;
   max-width: 500px;
-  flex-shrink: 1;
-  flex-grow: 1;
   height: 70vh;
   background-image:url("images/characters/HahmoSofi.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: contain;
   z-index: 1;
 }
 
@@ -52,18 +47,14 @@ body {
   align-items: center;
   flex-direction: column;
   z-index: 0;
-  background-color: rgba(45, 247, 14, 0.781);
+  background-image:url("images/backgrounds/KoulunPiha.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .top-options-menu{
   align-self: flex-end;
 }
 
-.top-text-container{
-  width: 100%;
-  padding: 3%;
-  flex-grow: 1;
-  background-color: rgba(138, 64, 94, 0.781);
-}
 .infobox{
   font-family: 'Jura', sans-serif;
   z-index: 2;
