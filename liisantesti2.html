@@ -5,55 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" type="text/css" href="liisantesti2.css" />
+    <script type="module" src="./game.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Jura&display=swap" rel="stylesheet"> 
-    <!--     
+    <!--
       font-family: 'JetBrains Mono', monospace;
-      font-family: 'Jura', sans-serif; -->
+    -->
     
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet"> 
     <!--     font-family: 'Jura', sans-serif; -->
   </head>
+
   <body>
+    <!-- background irti game containerista? -->
+    <div class="background-container">
+      <div class="character-container">
+        <!-- luodaan character javascript kautta? -->
+          <div class="character">
+          </div>
+          <div class="character">
+          </div>
+      </div>
+    </div>
 
-    
     <!-- flexbox main container -->
-    <div class="game-container-flex">
-      <div class="top-hamburger-menu">
-
+    <div class="game-flex-container">
+      <div class="top-options-menu">
+        <img src="images/UI/MenuIcon.png" alt="menu">
       </div>
 
       <div class="top-text-container">
         <!-- show/hide riippuen json? Muuta speech bubble muotoilua eri suuntiin puhujan vaihtuessa?-->
-        <div class="top-infobox">
+        <div class="infobox">
           <p>infobox text</p>
         </div>
-        <div class="top-speech-bubble">
+        <div class="speech-bubble">
           <p>speech bubble text</p>
         </div>
       </div>
 
-      <div class="character-container">
-        <!-- luodaan character javascript kautta? -->
-        <div class="character">
-          <img src="images/characters/HahmoMiro.png" alt="character">
-        </div>
-      </div>
-
-      <div class="bottom-option-container">
+      <div class="bottom-choice-container">
         <!-- generoidaan optionit javascriptillä 
           let div = document.createElement("BUTTON");
           div.className = 'option-button';
         -->
-        <button class="option-button">
+        <div class="choice-button">
           <p>button options 1</p>
-        </button>
+        </div>
+        
       </div>
-
     </div>
   </body>
 </html>
