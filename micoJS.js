@@ -3,7 +3,7 @@ import StartSceneData from '/Data/StartSceneData.js';
 import Suomi from './data/suomi.js';
 const textField = document.querySelector('.infobox');
 const speechBubble = document.querySelector('.SpeechBubble');
-const choiceBox = document.querySelector('.ChoiceBox');
+const choiceBox = document.querySelector('.bottom-choice-container');
 //const menuContainer = document.querySelector('.menu-container')
 
 let currentBackground;
@@ -27,13 +27,7 @@ function ChangeScene(scene) {
 /////////////// Voin huomenna kysellä Chat Gptltä saisko jotenki sillee et ei tarttis tehä montaa tällästä arrow funktiota.
 ////////////// Tällä tyylillä kun joutuisi joka sceneen tekemään nämä rivit tai kuinka paljon buttoneita nyt onkaan.
 ////////////////////////////////////////////////////////////////
-createButton(`t_sofi_outside_option_1`, () => {
-  ChangeScene(StartSceneData.SofillaOnTietoaRoskiksille);
-});
 
-createButton(`t_sofi_outside_option_2`, () => {
-  ChangeScene(StartSceneData.SofillaOnTietoaRoskiksille);
-});
 ////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 function SceneChange() {
@@ -78,3 +72,11 @@ function createButton(text, clickCallback) {
   button.addEventListener('click', clickCallback);
   choiceBox.appendChild(button);
 }
+
+createButton(`t_sofi_outside_option_1`, () => {
+  ChangeScene(StartSceneData.SofillaOnTietoaRoskiksille);
+});
+
+createButton(`t_sofi_outside_option_2`, () => {
+  ChangeScene(StartSceneData.SofillaOnTietoaRoskiksille);
+});
