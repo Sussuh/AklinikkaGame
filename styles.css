@@ -91,10 +91,6 @@ body {
   border: 0;
 }
 
-#start_btn:active {
-  transform: translate(-5%, 25px);
-}
-
 #options_btn {
   cursor: pointer;
   position: absolute;
