@@ -25,6 +25,8 @@ import StartSceneData from "/Data/StartSceneData.js";
 import Suomi from "./data/suomi.js";
 
 const textField = document.querySelector('.infobox');
+const bottomContainer = document.querySelector('.bottom-choice-container');
+const mainGameContainer = document.querySelector('.game-flex-container');
 
 let currentBackground;
 let language = Suomi;
@@ -34,14 +36,28 @@ ChangeScene(StartSceneData.SofillaOnTietoa_1);
 
 function ChangeScene(scene) {
   currentScene = scene;
+  console.log(scene);
   SceneChange();
 }
 
 function SceneChange() {
   if (currentScene.type == "linear") {
+    mainGameContainer.addEventListener('click', () => ChangeScene(currentScene.next_scene));
     // event listener here?
     //.addEventListener('click', function () {
     //ChangeScene(currentScene.next_scene);} ???
+  }
+  else if (currentScene.type == "options"){
+    console.log("test");
+    for (let i = 0; i< currentScene.player_choice.length; i++) {
+      let playerChoiceBox = document.createElement('playerChoiceButton_' + [i]);
+      bottomContainer.appendChild(playerChoiceBox);
+      playerChoiceBox.className = 'choice-button';
+
+      const text = document.createTextNode(language[currentScene.player_choice[i].text]);
+      playerChoiceBox.appendChild(text);
+      playerChoiceBox.addEventListener('click', () => ChangeScene(currentScene.player_choice[i].next_scene));
+    }
   }
   if (currentScene.background != currentBackground){
     currentBackground = currentScene.background;

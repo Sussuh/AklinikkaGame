@@ -17,8 +17,21 @@
     -->
   </head>
   <body>
-    <!-- background irti game containerista? -->
-    <div class="background-container">
+    <!-- flexbox main container -->
+    <div class="game-flex-container">
+      
+      <div class="top-options-menu">
+        <img src="images/UI/MenuIcon.png" alt="menu">
+      </div>
+
+      <!-- show/hide riippuen json? Muuta speech bubble muotoilua eri suuntiin puhujan vaihtuessa?-->
+      <div class="infobox">
+        <p>infobox text</p>
+      </div>
+      <div class="speech-bubble">
+        <p>speech bubble text</p>
+      </div>
+
       <div class="character-container">
         <!-- luodaan character javascript kautta? -->
           <div class="character">
@@ -26,28 +39,13 @@
           <div class="character">
           </div>
       </div>
-    </div>
-    <!-- flexbox main container -->
-    <div class="game-flex-container">
-      <div class="top-options-menu">
-        <img src="images/UI/MenuIcon.png" alt="menu">
-      </div>
-
-      <div class="top-text-container">
-        <!-- show/hide riippuen json? Muuta speech bubble muotoilua eri suuntiin puhujan vaihtuessa?-->
-        <div class="infobox">
-          <p>infobox text</p>
-        </div>
-        <div class="speech-bubble">
-          <p>speech bubble text</p>
-        </div>
-      </div>
 
       <div class="bottom-choice-container">
         <!-- generoidaan optionit javascriptillä 
           let div = document.createElement("BUTTON");
           div.className = 'option-button';
         -->
+
         <div class="choice-button">
           <p>button options 1</p>
         </div>
