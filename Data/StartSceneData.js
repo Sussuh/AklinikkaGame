@@ -18,7 +18,7 @@ const StartSceneData = {
     "text_type" : "dialogue",
     "text_position" : "dialogue_left",
     "text" : "sofi_outside_drama",
-    "player_options" : 
+    "player_choice" : 
     [{
       "text" : "t_sofi_outside_option_1",
       "next_scene" : "SofillaOnTietoaRoskiksille"
@@ -36,7 +36,7 @@ const StartSceneData = {
     "text_type" : "dialogue",
     "text_position" : "dialogue_left",
     "text" : "t_sofi_outside_drama_2",
-    "player_options" : 
+    "player_choice" : 
     [{
       "text" : "t_sofi_outside_drama_option_deny",
       "next_scene" : "EScene"
@@ -66,7 +66,7 @@ const StartSceneData = {
     "text_type" : "infobox",
     "text_position" : "dialogue_left",
     "text" : "t_sofi_outisde_nurse",
-    "player_options" : 
+    "player_choice" : 
     [{
       "text" : "t_sofi_outside_nurse_option_yes",
       "next_scene" : "wip"
