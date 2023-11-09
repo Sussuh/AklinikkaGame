@@ -1,4 +1,7 @@
 /*
+Random kysymyksiä: Tuleeko image latausaikoja backgroundeja vaihtamalla urlilla? 
+Vaihetaanko linkit dataurleiksi? 
+
 jos background ei liiku tai muutu usein. Pidetään se canvaksen ulkopuolella. Tai 2 canvasta: hahmot ja background. 
 
 checkaa scenen type:
@@ -28,46 +31,90 @@ const textField = document.querySelector('.infobox');
 const bottomContainer = document.querySelector('.bottom-choice-container');
 const mainGameContainer = document.querySelector('.game-flex-container');
 
+// array queries
+const characterElements = document.querySelectorAll('.character');
+const playerChoiceElements = document.querySelectorAll('.player-choice-button');
+
 let currentBackground;
 let language = Suomi;
 let currentScene;
+let choiceBoxArray = [];
 
-ChangeScene(StartSceneData.SofillaOnTietoa_1);
+StartGame();
+function StartGame(){
+  // starting scene here
+  currentScene = StartSceneData.SofillaOnTietoa_1;
+  for (let i = 0; i < playerChoiceElements.length; i++) {
+    playerChoiceElements[i].classList.add('hidden');
+  }
+  SceneChange();
+}
 
-function ChangeScene(scene) {
-  currentScene = scene;
-  console.log(scene);
+function StartSceneChange(scene) {
+  if (scene == null) {
+    console.log(scene);
+    console.log("Scene misstyped, doesnt exist or just null?");
+    return;
+  }
+  console.log(StartSceneData[scene]);
+  ResetListenersAndElements();
+
+  currentScene = StartSceneData[scene];
   SceneChange();
 }
 
 function SceneChange() {
+  // check scene type
   if (currentScene.type == "linear") {
-    mainGameContainer.addEventListener('click', () => ChangeScene(currentScene.next_scene));
-    // event listener here?
-    //.addEventListener('click', function () {
-    //ChangeScene(currentScene.next_scene);} ???
+    LinearSceneSetup();
   }
   else if (currentScene.type == "options"){
-    console.log("test");
-    for (let i = 0; i< currentScene.player_choice.length; i++) {
-      let playerChoiceBox = document.createElement('playerChoiceButton_' + [i]);
-      bottomContainer.appendChild(playerChoiceBox);
-      playerChoiceBox.className = 'choice-button';
+    PlayerChoiceSetup();
+  }
 
-      const text = document.createTextNode(language[currentScene.player_choice[i].text]);
-      playerChoiceBox.appendChild(text);
-      playerChoiceBox.addEventListener('click', () => ChangeScene(currentScene.player_choice[i].next_scene));
-    }
-  }
-  if (currentScene.background != currentBackground){
+  // check background
+  if (currentScene.background != currentBackground || currentScene.background != null){
     currentBackground = currentScene.background;
-    // change background here
+    mainGameContainer.body.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ")";
   }
-  if (currentScene.characters != null){
-    for (let i = 0; i < currentScene.characters.length; i++) {
-      // draw characters here
+
+  // draw characters here
+  // character string arrayna, iteroi läpi vertaa currenttiin ja replacee backgroundin jos eri?
+  for (let i = 0; i< currentScene.characters.length; i++){
+
+
+  }
+}
+
+function LinearSceneSetup(){
+  // Click anything, even children of maincontainer triggers scene change
+  mainGameContainer.addEventListener('click', () => StartSceneChange(currentScene.next_scene));
+}
+function PlayerChoiceSetup(){
+  for (let i = 0; i< currentScene.player_choice.length; i++) {
+    let playerChoiceBox = document.createElement('playerChoiceButton_' + [i]);
+    bottomContainer.appendChild(playerChoiceBox);
+    playerChoiceBox.className = 'choice-button';
+
+    const text = document.createTextNode(language[currentScene.player_choice[i].text]);
+    playerChoiceBox.appendChild(text);
+    choiceBoxArray.push(playerChoiceBox);
+    playerChoiceBox.addEventListener('click', () => StartSceneChange(currentScene.player_choice[i].next_scene));
+  }
+}
+
+// reset before current scene is changed to target event listeners
+function ResetListenersAndElements(){
+  if (currentScene.type == "linear") {
+  mainGameContainer.removeEventListener('click', StartSceneChange);
+  }
+
+  else if (currentScene.type == "options"){
+    for (let i = 0; i< choiceBoxArray.length; i++) {
+      choiceBoxArray[i].removeEventListener('click', StartSceneChange);
+      choiceBoxArray.remove();
     }
+    // reset choiceBoxArray
+    choiceBoxArray = [];
   }
-  let textId = currentScene.text;
-  textField.innerHTML = language[textId];
 }
