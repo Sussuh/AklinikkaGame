@@ -42,6 +42,7 @@ body {
 .game-flex-container{
   display: flex;
   height: 100vh;
+  width: 100vw;
   max-width: 700px;
   justify-content: space-between;
   align-items: center;
@@ -159,6 +160,7 @@ background-image: url('images/UI/ChoiceBoxBottom.png');
   font-size: 16px;
   font-family: 'Jura', sans-serif;
   text-align: left;
+  z-index: 4;
 }
 
 .details {
@@ -200,7 +202,7 @@ background-image: url('images/UI/ChoiceBoxBottom.png');
 }
 
 
-.main-content {
+.player-choice-text {
   padding: 16px;
   color: #333; /* Adjust text color */
   /* Add more styles as needed for your main content */
