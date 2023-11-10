@@ -8,26 +8,23 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(142, 14, 247, 0.781);
+  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.background-container{
+
+.character-container{
   position: absolute;
   height: 100vh;
-  width: 100vw;
   max-width: 700px;
-  
-  background-color: rgba(71, 204, 89, 0.357);
-}
-.character-container{
+  padding-bottom: 2vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-shrink: 3;
+  justify-content:center;
+  align-items: flex-end;
   flex-direction: row;
-  background-color: rgba(113, 204, 71, 0.079);
 }
 /* tiedän että tästä tulee painful... 
   kaikki hahmojen asetukset tänne...
@@ -35,40 +32,30 @@ body {
 .character{
   aspect-ratio: 1/1;
   max-width: 500px;
-  flex-shrink: 1;
-  flex-grow: 1;
   height: 70vh;
   background-image:url("images/characters/HahmoSofi.png");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: contain;
   z-index: 1;
 }
 
 .game-flex-container{
   display: flex;
   height: 100vh;
+  width: 100vw;
   max-width: 700px;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   z-index: 0;
-  background-color: rgba(45, 247, 14, 0.781);
+  background-image:url("images/backgrounds/KoulunPiha.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .top-options-menu{
   align-self: flex-end;
 }
 
-.top-text-container{
-  width: 100%;
-  padding: 3%;
-  flex-grow: 1;
-  background-color: rgba(138, 64, 94, 0.781);
-}
-.infobox{
-  font-family: 'Jura', sans-serif;
-  z-index: 2;
-  background-color: rgba(188, 126, 151, 0.781);
-}
 .speech-bubble{
   font-family: 'Jura', sans-serif;
   z-index: 2;
@@ -78,11 +65,151 @@ body {
 .bottom-choice-container{
 width: 100%;
 }
-.choice-button {
-  z-index: 3;
-  background-color: rgba(59, 67, 133, 0.781);
+
+/* Pilkotuilla elementeillä luodun infoboxin kokeilu, tämä elementti on siis myöhemmin tarkoitus nimetä NarratorBoxiksi. Ongelmana vielä responsiivisuus vaakasuuntaan. */
+
+.infobox {
+  position: relative;
+  display: inline-block;
+  width: 475px; 
+  min-height: 45px; /* Set a minimum height */
+  padding: 10px 20px;  /* Teksting padding */
+  font-size: 16px;
+  font-family: 'Jura', sans-serif;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  background: url('images/UI/NarratorBoxMiddle.png') repeat-y center center;
+  color: #333; /* Adjust the text color as needed */
+  background-color: transparent;
+  background-size: 100% auto; /* This will stretch the width of the middle part to cover the entire width of the button */
+  z-index: 3; /* Sijoittaa buttonit hahmo-assetin eteen */
 }
 
+.infobox::before, .infobox::after {
+  content: "";
+  width: 475px; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-size: cover;
+}
+
+.infobox::before {
+  height: 27px; /* Height of your top image */
+  top: -27px; /* This pushes the top image to sit just above the button */
+  background-image: url('images/UI/NarratorBoxTop.png');
+}
+
+.infobox::after {
+  height: 17px; /* Height of your bottom image */
+  bottom: -17px; /* This pushes the bottom image to sit just below the button */
+background-image: url('images/UI/NarratorBoxBottom.png');
+}
+
+
+/* Testaan vielä saanko saman toimimaan nykyisessä choice-buttonissa eli jatkossa ChoiceBoxissa */
+
+.choice-button {
+  position: relative;
+  display: inline-block;
+  width: 475px; 
+  min-height: 45px; /* Set a minimum height */
+  padding: 10px 20px;  /* Teksting padding */
+  font-size: 16px;
+  font-family: 'Jura', sans-serif;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  background: url('images/UI/ChoiceBoxMiddle.png') repeat-y center center;
+  color: #333; /* Adjust the text color as needed */
+  background-color: transparent;
+  background-size: 100% auto; /* This will stretch the width of the middle part to cover the entire width of the button */
+  z-index: 3; /* Sijoittaa buttonit hahmo-assetin eteen */
+}
+
+.choice-button::before, .choice-button::after {
+  content: "";
+  width: 475px; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-size: cover;
+}
+
+.choice-button::before {
+  height: 27px; /* Height of your top image */
+  top: -27px; /* This pushes the top image to sit just above the button */
+  background-image: url('images/UI/ChoiceBoxTop.png');
+}
+
+.choice-button::after {
+  height: 17px; /* Height of your bottom image */
+  bottom: -17px; /* This pushes the bottom image to sit just below the button */
+background-image: url('images/UI/ChoiceBoxBottom.png');
+}
+
+.player-choice-button {
+  display: grid;
+  grid-template-rows: auto 1fr; /* Two rows: auto for details, 1fr for main content */
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFECE8;
+  box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  font-family: 'Jura', sans-serif;
+  text-align: left;
+  z-index: 4;
+}
+
+.details {
+  display: flex;
+  align-items: center; /* Align elements vertically in the middle */
+  background-color: #A9A7FF;
+  height: 26px;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid #000;
+  grid-row: 1; /* Ensure details is in the first row */
+}
+
+.details .circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #C1BFFF;
+  margin-left: auto; /* Push circles to the right end */
+  margin-right: 5px; /* Add some spacing between circles if needed */
+}
+
+.details .shine {
+  height: 15px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-blend-mode: overlay;
+  background-color: #C1BFFF;
+  margin-right: auto; /* Make the gap responsive to available space */
+  margin-left: 5px; /* Add spacing between shines */
+}
+
+.details #shine1 {
+  width: 63px;
+  margin-right: 5px; /* Add some spacing between shine1 and shine2 */
+}
+
+.details #shine2 {
+  width: 20px;
+}
+
+
+.player-choice-text {
+  padding: 16px;
+  color: #333; /* Adjust text color */
+  /* Add more styles as needed for your main content */
+  grid-row: 2; /* Ensure main content is in the second row */
+}
+
+/* alempana isompi prio :S */
 .hidden {
   display: none;
 }

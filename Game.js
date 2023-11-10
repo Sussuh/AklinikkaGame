@@ -1,4 +1,8 @@
 /*
+Random kysymyksiä: Tuleeko image latausaikoja backgroundeja vaihtamalla urlilla? 
+Vaihetaanko linkit dataurleiksi? 
+Error handling javascript web devauksessa? Onko järkeviä työtapoja? :weary:
+
 jos background ei liiku tai muutu usein. Pidetään se canvaksen ulkopuolella. Tai 2 canvasta: hahmot ja background. 
 
 checkaa scenen type:
@@ -24,34 +28,121 @@ Jos options scene:
 import StartSceneData from "/Data/StartSceneData.js";
 import Suomi from "./data/suomi.js";
 
-const textField = document.querySelector('.infobox');
+const InfoboxElement = document.querySelector('.infobox');
+const SpeechBubbleElement = document.querySelector('.speech-bubble');
+const mainGameContainer = document.querySelector('.game-flex-container');
+
+// array queries
+const characterElements = document.querySelectorAll('.character');
+const playerChoiceElements = document.querySelectorAll('.player-choice-button');
+const playerChoiceTextElements = document.querySelectorAll('.player-choice-text');
 
 let currentBackground;
 let language = Suomi;
 let currentScene;
+let choiceBoxArray = [];
 
-ChangeScene(StartSceneData.SofillaOnTietoa_1);
+StartGame();
+function StartGame(){
+  // starting scene here
+  currentScene = StartSceneData.LydianHuolet_1;
 
-function ChangeScene(scene) {
-  currentScene = scene;
   SceneChange();
 }
 
+function StartSceneChange(scene) {
+  if (scene == "TempDemoEnd") {
+    console.log("Scene misstyped, doesnt exist or just null???");
+    
+  }
+  
+  ResetListenersAndElements();
+
+  currentScene = StartSceneData[scene];
+  console.log(currentScene);
+  SceneChange();
+}
+
+// main scene change function
 function SceneChange() {
+  // check scene type
   if (currentScene.type == "linear") {
-    // event listener here?
-    //.addEventListener('click', function () {
-    //ChangeScene(currentScene.next_scene);} ???
+    LinearSceneSetup();
   }
-  if (currentScene.background != currentBackground){
+  else if (currentScene.type == "options"){
+    PlayerChoiceSetup();
+  }
+
+  // check background
+  if (currentScene.background != currentBackground || currentScene.background != null){
     currentBackground = currentScene.background;
-    // change background here
+    //mainGameContainer.body.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ")";
   }
-  if (currentScene.characters != null){
-    for (let i = 0; i < currentScene.characters.length; i++) {
-      // draw characters here
+
+  // draw characters here
+  // character string arrayna, iteroi läpi vertaa currenttiin ja replacee backgroundin jos eri?
+  for (let i = 0; i< characterElements.length; i++){
+    if (i >= currentScene.characters.length){
+      characterElements[i].classList.add('hidden');
+      continue;
+    }
+    characterElements[i].style.backgroundImage = "url(images/characters/" + currentScene.characters[i] + ".png)";
+    characterElements[i].classList.remove('hidden');
+  }
+  if (currentScene.text_type == "dialogue"){
+    WriteDialogue();
+  }
+  if (currentScene.text_type == "infobox"){
+    WriteInfobox();
+  }
+}
+
+function WriteInfobox(){
+
+}
+
+function WriteDialogue(){
+  SpeechBubbleElement.classList.remove('hidden');
+  SpeechBubbleElement.textContent = language[currentScene.text];
+}
+
+function LinearSceneSetup(){
+  // Click anything, even children of maincontainer triggers scene change
+  mainGameContainer.addEventListener('click', () => StartSceneChange(currentScene.next_scene));
+}
+
+// iterate through 4 readymade choice boxes and populate if not null
+function PlayerChoiceSetup(){
+  for (let i = 0; i< playerChoiceElements.length; i++) {
+    // hide null choices
+    if (i >= currentScene.player_choice.length){
+      playerChoiceElements[i].classList.add('hidden');
+      continue;
+    }
+    playerChoiceElements[i].classList.remove('hidden');
+    playerChoiceTextElements[i].textContent = language[currentScene.player_choice[i].text];
+
+    playerChoiceElements[i].addEventListener('click', () => StartSceneChange(currentScene.player_choice[i].next_scene));
+  }
+}
+
+// reset before current scene is changed to target event listeners
+function ResetListenersAndElements(){
+  if (currentScene.type == "linear") {
+  mainGameContainer.removeEventListener('click', StartSceneChange);
+  }
+
+  else if (currentScene.type == "options"){
+    for (let i = 0; i< playerChoiceElements.length; i++) {
+      if (i >= currentScene.player_choice.length){
+        playerChoiceElements[i].classList.add('hidden');
+        continue;
+      }
+      playerChoiceElements[i].removeEventListener('click', StartSceneChange);
+      playerChoiceElements[i].classList.add('hidden');
     }
   }
-  let textId = currentScene.text;
-  textField.innerHTML = language[textId];
+  else {
+    console.log(currentScene + "type : misstype? options or linear only");
+  }
 }
