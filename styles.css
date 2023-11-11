@@ -8,7 +8,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(142, 14, 247, 0.434);
+  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +42,7 @@ body {
 .game-flex-container{
   display: flex;
   height: 100vh;
+  width: 100vw;
   max-width: 700px;
   justify-content: space-between;
   align-items: center;
@@ -63,11 +64,6 @@ body {
 
 .bottom-choice-container{
 width: 100%;
-}
-
-
-.hidden {
-  display: none;
 }
 
 /* Pilkotuilla elementeillä luodun infoboxin kokeilu, tämä elementti on siis myöhemmin tarkoitus nimetä NarratorBoxiksi. Ongelmana vielä responsiivisuus vaakasuuntaan. */
@@ -151,4 +147,69 @@ background-image: url('images/UI/NarratorBoxBottom.png');
   height: 17px; /* Height of your bottom image */
   bottom: -17px; /* This pushes the bottom image to sit just below the button */
 background-image: url('images/UI/ChoiceBoxBottom.png');
+}
+
+.player-choice-button {
+  display: grid;
+  grid-template-rows: auto 1fr; /* Two rows: auto for details, 1fr for main content */
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFECE8;
+  box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  font-family: 'Jura', sans-serif;
+  text-align: left;
+  z-index: 4;
+}
+
+.details {
+  display: flex;
+  align-items: center; /* Align elements vertically in the middle */
+  background-color: #A9A7FF;
+  height: 26px;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid #000;
+  grid-row: 1; /* Ensure details is in the first row */
+}
+
+.details .circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #C1BFFF;
+  margin-left: auto; /* Push circles to the right end */
+  margin-right: 5px; /* Add some spacing between circles if needed */
+}
+
+.details .shine {
+  height: 15px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-blend-mode: overlay;
+  background-color: #C1BFFF;
+  margin-right: auto; /* Make the gap responsive to available space */
+  margin-left: 5px; /* Add spacing between shines */
+}
+
+.details #shine1 {
+  width: 63px;
+  margin-right: 5px; /* Add some spacing between shine1 and shine2 */
+}
+
+.details #shine2 {
+  width: 20px;
+}
+
+
+.player-choice-text {
+  padding: 16px;
+  color: #333; /* Adjust text color */
+  /* Add more styles as needed for your main content */
+  grid-row: 2; /* Ensure main content is in the second row */
+}
+
+/* alempana isompi prio :S */
+.hidden {
+  display: none;
 }
