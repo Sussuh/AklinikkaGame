@@ -17,24 +17,34 @@ body {
 
 .game-flex-container{
   display: flex;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   max-width: 1080px;
   max-height: 1920px;
   justify-content: space-between;
-  align-items: center;
   flex-direction: column;
   z-index: 0;
-  aspect-ratio: 1/1;
   background-image:url("images/backgrounds/KoulunPiha.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center bottom;
 }
+
 
 .top-options-menu{
   align-self: flex-end;
+  padding: 3%;
 }
+
+.top-text-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 10;
+  align-items: center;
+  top: 50px; 
+} 
+
 
 .character-container{
   position: absolute;
@@ -48,12 +58,6 @@ body {
   flex-direction: row;
 }
 
-.top-text-container{
-  width: 100%;
-  z-index: 10;
-  } 
-
-
 .character{
   aspect-ratio: 1/1;
   max-width: 500px;
@@ -66,10 +70,16 @@ body {
 
 
 .bottom-choice-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  row-gap: 10px;
+  z-index: 10;
+  padding-bottom: 3vh;
 }
 
-/* alempana isompi prio :S */
+
 .hidden {
   display: none;
 }
