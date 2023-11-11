@@ -7,7 +7,7 @@
   .narratorBox {
     display: grid;
     grid-template-rows: auto 1fr; 
-    width: 80vw;
+    width: 80%;
     border: 1px solid #000;
     border-radius: 10px 10px 0px 0px;
     background: #FFECE8;
@@ -102,7 +102,7 @@
   .choiceBox {
     display: grid;
     grid-template-rows: auto 1fr; 
-    width: 80vw;
+    width: 80%;
     border: 1px solid #000;
     border-radius: 10px;
     background: #FFF8EE;
