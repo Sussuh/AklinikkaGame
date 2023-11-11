@@ -56,17 +56,19 @@ body {
   padding-bottom: 2vh;
   display: flex;
   flex-shrink: 3;
-  justify-content: center safe;
+  justify-content: flex-end safe;
   align-items: flex-end safe;
   flex-direction: row;
 }
 
 .character{
   aspect-ratio: 1/1;
+  padding-bottom: 10vh;
   max-width: 500px;
-  height: 70vh;
+  flex-shrink: 1;
   background-image:url("images/characters/HahmoSofi.png");
   background-repeat: no-repeat;
+  background-position: bottom;
   background-size: contain;
   z-index: 1;
 }
