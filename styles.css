@@ -43,7 +43,7 @@ body {
   padding-bottom: 2vh;
   display: flex;
   flex-shrink: 3;
-  justify-content:center;
+  justify-content: center;
   align-items: flex-end;
   flex-direction: row;
 }
