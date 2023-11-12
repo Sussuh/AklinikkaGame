@@ -31,8 +31,8 @@ function SceneChange() {
   if (currentScene.background != currentBackground) {
     currentBackground = currentScene.background;
     // change background here
-    updateBackground(currentBackground); // Checkkaa console.. en oikein ymmärrä miksei piirrä
-  }
+    updateBackground(currentBackground); 
+    
   if (currentScene.characters != null) {
     for (let i = 0; i < currentScene.characters.length; i++) {
       drawCharacters(null); // draw characters here??
