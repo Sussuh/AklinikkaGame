@@ -23,7 +23,10 @@ Lisää text boxiin:
 Jos linear type, next_scene ohjaa seuraavaan sceneen clickistä. 
 Jos options scene:
   Delayn jälkeen foreach buttontext in player_options lisää nappula niiden event listenereillä
-*/
+
+  event bubbling: https://www.youtube.com/watch?v=aZ3JWv0ofuA
+  only one event listener with tags to decide what triggers scene change?
+  */
 
 import StartSceneData from "/Data/StartSceneData.js";
 import Suomi from "./data/suomi.js";
@@ -40,25 +43,27 @@ const playerChoiceTextElements = document.querySelectorAll('.player-choice-text'
 let currentBackground;
 let language = Suomi;
 let currentScene;
-let choiceBoxArray = [];
+let nextScene;
 
 StartGame();
 function StartGame(){
   // starting scene here
-  currentScene = StartSceneData.LydianHuolet_1;
+  currentScene = StartSceneData.SofillaOnTietoa_1;
 
   SceneChange();
 }
 
 function StartSceneChange(scene) {
-  if (scene == "TempDemoEnd") {
-    console.log("Scene misstyped, doesnt exist or just null???");
-    
+  nextScene = scene;
+  if (scene === StartSceneData.TempDemoEnd) {
+    console.log("End reached jeee");
+    ResetListenersAndElements();
+    return;
   }
   
   ResetListenersAndElements();
 
-  currentScene = StartSceneData[scene];
+  currentScene = nextScene;
   console.log(currentScene);
   SceneChange();
 }
@@ -66,17 +71,17 @@ function StartSceneChange(scene) {
 // main scene change function
 function SceneChange() {
   // check scene type
-  if (currentScene.type == "linear") {
+  if (currentScene.type === "linear") {
     LinearSceneSetup();
   }
-  else if (currentScene.type == "options"){
+  else if (currentScene.type === "options"){
     PlayerChoiceSetup();
   }
 
   // check background
-  if (currentScene.background != currentBackground || currentScene.background != null){
+  if (currentScene.background !== currentBackground && currentScene.background !== null){
     currentBackground = currentScene.background;
-    //mainGameContainer.body.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ")";
+    mainGameContainer.body.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ")";
   }
 
   // draw characters here
@@ -108,7 +113,7 @@ function WriteDialogue(){
 
 function LinearSceneSetup(){
   // Click anything, even children of maincontainer triggers scene change
-  mainGameContainer.addEventListener('click', () => StartSceneChange(currentScene.next_scene));
+  mainGameContainer.addEventListener('click', () => StartSceneChange(StartSceneData[currentScene.next_scene]));
 }
 
 // iterate through 4 readymade choice boxes and populate if not null
@@ -122,7 +127,7 @@ function PlayerChoiceSetup(){
     playerChoiceElements[i].classList.remove('hidden');
     playerChoiceTextElements[i].textContent = language[currentScene.player_choice[i].text];
 
-    playerChoiceElements[i].addEventListener('click', () => StartSceneChange(currentScene.player_choice[i].next_scene));
+    playerChoiceElements[i].addEventListener('click', () => StartSceneChange(StartSceneData[currentScene.player_choice[i].next_scene]));
   }
 }
 
