@@ -149,7 +149,7 @@ const StartSceneData = {
     "text_type" : "infobox",
     "text_position" : "middle",
     "text" : "t_TempDemoEnd",
-    "next_scene" : null
+    "next_scene" : "TempDemoEnd"
   }
 }
 export default StartSceneData
