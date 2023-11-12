@@ -21,15 +21,7 @@ function ChangeScene(scene) {
   //   optionButtons[i].textContent = scene.options[i].text;
   // }
 }
-//////////////////////////////////////////////////////////////
-/////////////// -----ARROW FUCTIONA tekstin haku buttoniin ja Scenen vaihto -------------
-/////////////// Varmaan vois implementoida jotenkin vielä fiksummin tämän
-/////////////// Voin huomenna kysellä Chat Gptltä saisko jotenki sillee et ei tarttis tehä montaa tällästä arrow funktiota.
-////////////// Tällä tyylillä kun joutuisi joka sceneen tekemään nämä rivit tai kuinka paljon buttoneita nyt onkaan.
-////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////
 function SceneChange() {
   if (currentScene.type == 'linear') {
     // event listener here?
