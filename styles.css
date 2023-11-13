@@ -8,80 +8,84 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(142, 14, 247, 0.781);
+  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-.background-container{
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  max-width: 700px;
-
-  background-color: rgba(71, 204, 89, 0.357);
-}
-.character-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  background-color: rgba(113, 204, 71, 0.079);
-}
-/* tiedän että tästä tulee painful...
-  kaikki hahmojen asetukset tänne...
-*/
-.character{
-  aspect-ratio: 1/1;
-  max-width: 500px;
-  flex-shrink: 1;
-  flex-grow: 1;
-  height: 70vh;
-  background-image:url("images/characters/HahmoSofi.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  z-index: 1;
 }
 
 .game-flex-container{
   display: flex;
+  align-items:flex-start safe;
   height: 100vh;
-  max-width: 700px;
-  justify-content: space-between;
-  align-items: center;
+  width: 100vw;
+  max-width: 1080px;
+  max-height: 1920px;
+  justify-content: flex-start safe;
   flex-direction: column;
   z-index: 0;
-  background-color: rgba(45, 247, 14, 0.781);
+  background-image:url("images/backgrounds/KoulunPiha.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+
 .top-options-menu{
   align-self: flex-end;
+  padding: 3%;
 }
 
 .top-text-container{
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  padding: 3%;
-  flex-grow: 1;
-  background-color: rgba(138, 64, 94, 0.781);
-}
-.infobox{
-  font-family: 'Jura', sans-serif;
-  z-index: 2;
-  background-color: rgba(188, 126, 151, 0.781);
-}
-.speech-bubble{
-  font-family: 'Jura', sans-serif;
-  z-index: 2;
-  background-color: rgba(221, 39, 112, 0.781);
+  z-index: 10;
+  align-items: center;
+  top: 50px;
 }
 
+
+.character-container{
+  position: absolute;
+  /* copypaste from main game container*/
+  height: 100vh;
+  width: 100vw;
+  max-width: 1080px;
+  max-height: 1920px;
+  padding-bottom: 2vh;
+  display: flex;
+  flex-shrink: 3;
+  justify-content: flex-end safe;
+  align-items: flex-end safe;
+  flex-direction: row;
+}
+
+.character{
+  aspect-ratio: 1/1;
+  padding-bottom: 10vh;
+  max-width: 500px;
+  flex-shrink: 1;
+  background-image:url("images/characters/HahmoSofi.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  z-index: 1;
+}
+
+
 .bottom-choice-container{
-width: 100%;
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  row-gap: 10px;
+  z-index: 10;
+  padding-bottom: 3vh;
 }
-.choice-button {
-  z-index: 3;
-  background-color: rgba(59, 67, 133, 0.781);
-}
+
 
 .hidden {
   display: none;

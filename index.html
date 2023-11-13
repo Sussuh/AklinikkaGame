@@ -1,61 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script type="module" src="./game.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hukkaputki</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Jura&display=swap" rel="stylesheet"> 
-    <!--
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="UIstyles.css" />
+  <script type="module" src="./game.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Jura&display=swap"
+    rel="stylesheet">
+  <!--
       font-family: 'JetBrains Mono', monospace;
+      font-family: 'Jura', sans-serif;
     -->
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet"> 
-    <!--     font-family: 'Jura', sans-serif; -->
-  </head>
-  <body>
-    <!-- background irti game containerista? -->
-    <div class="background-container">
-      <div class="character-container">
-        <!-- luodaan character javascript kautta? -->
-          <div class="character">
-          </div>
-          <div class="character">
-          </div>
+</head>
+
+<body>
+  <!-- Fallback when JavaScript is not available -->
+  <noscript>
+    <div class="middle text--center">
+      <h2>JavaScript Disabled or not Supported.</h2>
+      <small>To play this game, please enable JavaScript executing or use a different browser.</small>
+    </div>
+  </noscript>
+
+  <!-- flexbox main container -->
+  <div class="game-flex-container">
+    <div class="top-options-menu">
+      <img src="images/UI/MenuIcon.png" alt="menu">
+    </div>
+
+
+    <!-- show/hide riippuen json? Muuta speech bubble muotoilua eri suuntiin puhujan vaihtuessa?-->
+      </div>
+    <div class="narratorBox">
+      <div class="details">
+        <div class="shine" id="shine1"></div>
+        <div class="shine" id="shine2"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle" id="lastCircle"></div>
+      </div>
+      <div class="main-content">
+        NarratorBox Text
       </div>
     </div>
-    <!-- flexbox main container -->
-    <div class="game-flex-container">
-      <div class="top-options-menu">
-        <img src="images/UI/MenuIcon.png" alt="menu">
+    
+   
+   
+    <div class="character-container">
+      <!-- luodaan character javascript kautta? -->
+      <div class="character">
       </div>
-
-      <div class="top-text-container">
-        <!-- show/hide riippuen json? Muuta speech bubble muotoilua eri suuntiin puhujan vaihtuessa?-->
-        <div class="infobox">
-          <p>infobox text</p>
-        </div>
-        <div class="speech-bubble">
-          <p>speech bubble text</p>
-        </div>
+      <div class="character">
       </div>
+      <div class="character">
+      </div>
+    </div>
 
-      <div class="bottom-choice-container">
-        <!-- generoidaan optionit javascriptillä 
+
+
+
+    <div class="bottom-choice-container">
+      <!-- generoidaan optionit javascriptillä 
           let div = document.createElement("BUTTON");
           div.className = 'option-button';
         -->
-        <div class="choice-button">
-          <p>button options 1</p>
+
+        <div class="choiceBox">
+          <div class="details">
+            <svg class="triangles" <svg xmlns="http://www.w3.org<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 27" fill="none">
+        <path d="M22.9265 10.5526C25.527 11.8447 25.5022 15.564 22.8847 16.8353L13.1634 21.5568C10.8302 22.69 8.12387 20.9865 8.14112 18.3954L8.20449 8.87532C8.22173 6.28426 10.9506 4.60232 13.2686 5.75404L22.9265 10.5526Z" fill="#90E2FD" stroke="black"/>
+        <path d="M44.4065 9.86121C47.007 11.1533 46.9822 14.8726 44.3647 16.1439L34.6434 20.8654C32.3102 21.9986 29.6039 20.2951 29.6211 17.704L29.6845 8.18391C29.7017 5.59285 32.4306 3.91092 34.7486 5.06263L44.4065 9.86121Z" fill="#90E2FD" stroke="black"/>
+        </svg>
+            <div class="shine" id="shine3"></div>
+            <div class="shine" id="shine4"></div>
+          </div>
+          <div class="main-content">
+            ChoiceBox Text 
+          </div>
+        </div>
+
+      <div class="player-choice-button">
+        <div class="details">
+          <div class="shine" id="shine1"></div>
+          <div class="shine" id="shine2"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+    
+      </div>
+
+
+      <div class="player-choice-button">
+        <div class="details">
+          <div class="shine" id="shine1"></div>
+          <div class="shine" id="shine2"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="player-choice-text">
+          sadsdadasdasdasasd. dsadsds id est laborum."
+        </div>
+      </div>
+      <div class="player-choice-button">
+        <div class="details">
+          <div class="shine" id="shine1"></div>
+          <div class="shine" id="shine2"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="player-choice-text">
+          asdasasdasdsdasdasdasdasdasd
+        </div>
+      </div>
+      <div class="player-choice-button">
+        <div class="details">
+          <div class="shine" id="shine1"></div>
+          <div class="shine" id="shine2"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="player-choice-text">
+          asddsadasasdasdasdasdasd das asd sdsadasd
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
