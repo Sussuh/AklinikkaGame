@@ -22,6 +22,8 @@ addClickEventListener();
 function addClickEventListener(){
   mainGameContainer.addEventListener("click", event => {
     
+    // double click speed timer here to avoid accidental progress?
+
     if (event.target.matches(settingsMenu)){
       //TODO settings menu opening?
       return;
