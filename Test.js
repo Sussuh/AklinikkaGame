@@ -8,7 +8,7 @@ const settingsMenu = document.querySelector('.top-options-menu');
 
 // array queries
 const characterElements = document.querySelectorAll('.character');
-const playerChoiceElements = document.querySelectorAll('.player-choice-button');
+const playerChoiceElements = document.querySelectorAll('.choiceBox');
 const playerChoiceTextElements = document.querySelectorAll('.player-choice-text');
 
 let currentBackground;
@@ -16,7 +16,7 @@ let language = Suomi;
 let currentScene;
 let nextScene;
 
-currentScene = StartSceneData.SofillaOnTietoa_1;
+currentScene = StartSceneData.SofillaOnTietoa_2;
 addClickEventListener();
 
 function addClickEventListener(){
@@ -24,7 +24,7 @@ function addClickEventListener(){
     
     // double click speed timer here to avoid accidental progress?
 
-    if (event.target.matches(settingsMenu)){
+    if (event.target === settingsMenu){
       //TODO settings menu opening?
       return;
     }
@@ -37,7 +37,7 @@ function addClickEventListener(){
     }
     // if choice elements clicked, set nextscene
     for (let i = 0; i< playerChoiceElements.length; i++){
-      if(event.target.matches(playerChoiceElements[i])){
+      if(event.target.parentElement === playerChoiceElements[i]){
         nextScene = StartSceneData[currentScene.player_choice[i].next_scene];
         console.log("player option selected" + playerChoiceElements[i]);
         PopulateScene();
