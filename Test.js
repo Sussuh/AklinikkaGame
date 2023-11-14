@@ -1,5 +1,5 @@
-import StartSceneData from "/Data/StartSceneData.js";
-import Suomi from "./data/suomi.js";
+import StartSceneData from '/Data/StartSceneData.js';
+import Suomi from './data/suomi.js';
 
 const infoboxElement = document.querySelector('.infobox');
 const speechBubbleElement = document.querySelector('.speech-bubble');
@@ -9,7 +9,9 @@ const settingsMenu = document.querySelector('.top-options-menu');
 // array queries
 const characterElements = document.querySelectorAll('.character');
 const playerChoiceElements = document.querySelectorAll('.choiceBox');
-const playerChoiceTextElements = document.querySelectorAll('.player-choice-text');
+const playerChoiceTextElements = document.querySelectorAll(
+  '.player-choice-text'
+);
 
 let currentBackground;
 let language = Suomi;
@@ -19,27 +21,26 @@ let nextScene;
 currentScene = StartSceneData.SofillaOnTietoa_2;
 addClickEventListener();
 
-function addClickEventListener(){
-  mainGameContainer.addEventListener("click", event => {
-    
+function addClickEventListener() {
+  mainGameContainer.addEventListener('click', event => {
     // double click speed timer here to avoid accidental progress?
 
-    if (event.target === settingsMenu){
+    if (event.target === settingsMenu) {
       //TODO settings menu opening?
       return;
     }
 
-    if (currentScene.type === "linear"){
-      console.log("linear scene clicked");
+    if (currentScene.type === 'linear') {
+      console.log('linear scene clicked');
       nextScene = StartSceneData[currentScene.next_scene];
       PopulateScene();
       return;
     }
     // if choice elements clicked, set nextscene
-    for (let i = 0; i< playerChoiceElements.length; i++){
-      if(event.target.parentElement === playerChoiceElements[i]){
+    for (let i = 0; i < playerChoiceElements.length; i++) {
+      if (event.target.parentElement === playerChoiceElements[i]) {
         nextScene = StartSceneData[currentScene.player_choice[i].next_scene];
-        console.log("player option selected" + playerChoiceElements[i]);
+        console.log('player option selected' + playerChoiceElements[i]);
         PopulateScene();
         return;
       }
@@ -47,7 +48,7 @@ function addClickEventListener(){
   });
 }
 
-function PopulateScene(){
+function PopulateScene() {
   console.log(currentScene);
   console.log(nextScene);
 }
