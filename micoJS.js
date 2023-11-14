@@ -19,6 +19,8 @@ let currentBackground;
 let language = Suomi;
 let currentScene;
 let nextScene;
+let transitionDelayTime;
+let delayTime = 2;
 
 currentScene = StartSceneData.SofillaOnTietoa_2;
 addClickEventListener();
@@ -26,6 +28,14 @@ addClickEventListener();
 function addClickEventListener() {
   mainGameContainer.addEventListener('click', event => {
     // double click speed timer here to avoid accidental progress?
+    const currentTimeInSeconds = new Date().getTime() / 1000;
+
+    if (currentTimeInSeconds - transitionDelayTime < delayTime) {
+      console.log(`Clicked too fast need to wait delayTime = ${delayTime}`);
+      return;
+    }
+
+    lastTransitionTime = currentTime;
 
     if (event.target === settingsMenu) {
       //TODO settings menu opening?
