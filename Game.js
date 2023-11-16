@@ -55,7 +55,7 @@ function addClickEventListener(){
 function PopulateScene(){
 
   // background image change
-  if (nextScene.background !== currentBackground && nextScene.background !== null){
+  if (nextScene.background !== null && nextScene.background !== currentBackground){
     currentBackground = nextScene.background;
     mainGameContainer.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ".png)";
   }
