@@ -1,5 +1,5 @@
-import StartSceneData from '/Data/StartSceneData.js';
-import Suomi from './data/suomi.js';
+import StartSceneData from "/data/StartSceneData.js";
+import Suomi from "./data/suomi.js";
 
 const mainGameContainer = document.querySelector('.game-flex-container');
 const settingsMenu = document.querySelector('.top-options-menu');
@@ -19,8 +19,6 @@ let currentBackground;
 let language = Suomi;
 let currentScene;
 let nextScene;
-let transitionDelayTime;
-let delayTime = 2;
 
 // game setup
 nextScene = StartSceneData.SofillaOnTietoa_1;
@@ -28,36 +26,24 @@ addClickEventListener();
 PopulateScene();
 
 // click event listener
-function addClickEventListener() {
-  mainGameContainer.addEventListener('click', event => {
+function addClickEventListener(){
+  mainGameContainer.addEventListener("click", event => {
+    
     // double click speed timer here to avoid accidental progress?
-    //---------------------------------------------------------
-    //---------------Double Clicker Blocker v2.0---------------
-    //---------------------------------------------------------
-    const currentTimeInSeconds = new Date().getTime() / 1000;
 
-    if (currentTimeInSeconds - transitionDelayTime < delayTime) {
-      console.log(`Clicked too fast need to wait delayTime = ${delayTime}`);
-      return;
-    }
-
-    transitionDelayTime = currentTimeInSeconds;
-
-    //------------------------------------------------------------
-
-    if (event.target === settingsMenu) {
+    if (event.target === settingsMenu){
       //TODO settings menu opening?
       return;
     }
 
-    if (currentScene.type === 'linear') {
+    if (currentScene.type === "linear"){
       nextScene = StartSceneData[currentScene.next_scene];
       PopulateScene();
       return;
     }
     // if choice elements clicked, set nextscene
-    for (let i = 0; i < playerChoiceElements.length; i++) {
-      if (event.target.parentElement === playerChoiceElements[i]) {
+    for (let i = 0; i< playerChoiceElements.length; i++){
+      if(event.target.parentElement === playerChoiceElements[i]){
         nextScene = StartSceneData[currentScene.player_choice[i].next_scene];
         PopulateScene();
         return;
@@ -66,32 +52,28 @@ function addClickEventListener() {
   });
 }
 
-function PopulateScene() {
+function PopulateScene(){
+
   // background image change
-  if (
-    nextScene.background !== currentBackground &&
-    nextScene.background !== null
-  ) {
+  if (nextScene.background !== currentBackground && nextScene.background !== null){
     currentBackground = nextScene.background;
-    mainGameContainer.style.backgroundImage =
-      'url(images/backgrounds/' + currentBackground + ')';
+    mainGameContainer.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ".png)";
   }
 
   // draw characters here
-  for (let i = 0; i < characterElements.length; i++) {
-    if (i >= nextScene.characters.length) {
+  for (let i = 0; i< characterElements.length; i++){
+    if (i >= nextScene.characters.length){
       characterElements[i].classList.add('hidden');
       continue;
     }
-    characterElements[i].style.backgroundImage =
-      'url(images/characters/' + nextScene.characters[i] + '.png)';
+    characterElements[i].style.backgroundImage = "url(images/characters/" + nextScene.characters[i] + ".png)";
     characterElements[i].classList.remove('hidden');
   }
 
-  if (nextScene.text_type === 'dialogue') {
+  if (nextScene.text_type === "dialogue" || nextScene.text_type === "speech_bubble"){
     WriteDialogue();
   }
-  if (nextScene.text_type === 'infobox') {
+  if (nextScene.text_type === "infobox" || nextScene.text_type === "narrator"){
     WriteInfobox();
   }
   PlayerChoiceSetup();
@@ -99,27 +81,27 @@ function PopulateScene() {
   // maybe use current scene later somewhere dunno
   currentScene = nextScene;
 }
-function WriteInfobox() {
+function WriteInfobox(){
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
   speechBubbleElement.classList.add('hidden');
 }
-function WriteDialogue() {
+function WriteDialogue(){
   speechBubbleElement.classList.remove('hidden');
   speechBubbleText.textContent = language[nextScene.text];
   infoboxElement.classList.add('hidden');
 }
 
 // player choice box setup
-function PlayerChoiceSetup() {
-  for (let i = 0; i < playerChoiceElements.length; i++) {
+function PlayerChoiceSetup(){
+  for (let i = 0; i< playerChoiceElements.length; i++) {
     // hide null choices
-    if (nextScene.type === 'linear' || i >= nextScene.player_choice.length) {
+    if (nextScene.type === "linear" || i >= nextScene.player_choice.length){
       playerChoiceElements[i].classList.add('hidden');
-    } else {
+    }
+    else{
       playerChoiceElements[i].classList.remove('hidden');
-      playerChoiceTextElements[i].textContent =
-        language[nextScene.player_choice[i].text];
+      playerChoiceTextElements[i].textContent = language[nextScene.player_choice[i].text];  
     }
   }
 }
