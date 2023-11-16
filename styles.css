@@ -8,147 +8,85 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(142, 14, 247, 0.434);
+  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.character-container{
-  position: absolute;
-  height: 100vh;
-  max-width: 700px;
-  padding-bottom: 2vh;
-  display: flex;
-  flex-shrink: 3;
-  justify-content:center;
-  align-items: flex-end;
-  flex-direction: row;
-}
-/* tiedän että tästä tulee painful... 
-  kaikki hahmojen asetukset tänne...
-*/
-.character{
-  aspect-ratio: 1/1;
-  max-width: 500px;
-  height: 70vh;
-  background-image:url("images/characters/HahmoSofi.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  z-index: 1;
-}
-
 .game-flex-container{
   display: flex;
+  align-items:flex-start safe;
   height: 100vh;
-  max-width: 700px;
-  justify-content: space-between;
-  align-items: center;
+  width: 100vw;
+  max-width: 1080px;
+  max-height: 1920px;
+  justify-content: flex-start safe;
   flex-direction: column;
   z-index: 0;
   background-image:url("images/backgrounds/KoulunPiha.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
 .top-options-menu{
   align-self: flex-end;
+  padding: 3%;
 }
 
-.speech-bubble{
-  font-family: 'Jura', sans-serif;
-  z-index: 2;
-  background-color: rgba(221, 39, 112, 0.781);
+.top-text-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 10;
+  align-items: center;
+  top: 50px; 
+} 
+
+
+.character-container{
+  position: absolute;
+  /* copypaste from main game container*/
+  height: 100vh;
+  width: 100vw;
+  max-width: 1080px;
+  max-height: 1920px;
+  padding-bottom: 2vh;
+  display: flex;
+  flex-shrink: 3;
+  justify-content: flex-end safe;
+  align-items: flex-end safe;
+  flex-direction: row;
 }
+
+.character{
+  aspect-ratio: 1/1;
+  padding-bottom: 10vh;
+  max-width: 500px;
+  flex-shrink: 1;
+  background-image:url("images/characters/HahmoSofi.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  z-index: 1;
+}
+
 
 .bottom-choice-container{
-width: 100%;
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  row-gap: 10px;
+  z-index: 10;
+  padding-bottom: 3vh;
 }
 
 
 .hidden {
   display: none;
-}
-
-/* Pilkotuilla elementeillä luodun infoboxin kokeilu, tämä elementti on siis myöhemmin tarkoitus nimetä NarratorBoxiksi. Ongelmana vielä responsiivisuus vaakasuuntaan. */
-
-.infobox {
-  position: relative;
-  display: inline-block;
-  width: 475px; 
-  min-height: 45px; /* Set a minimum height */
-  padding: 10px 20px;  /* Teksting padding */
-  font-size: 16px;
-  font-family: 'Jura', sans-serif;
-  text-align: left;
-  border: none;
-  cursor: pointer;
-  background: url('images/UI/NarratorBoxMiddle.png') repeat-y center center;
-  color: #333; /* Adjust the text color as needed */
-  background-color: transparent;
-  background-size: 100% auto; /* This will stretch the width of the middle part to cover the entire width of the button */
-  z-index: 3; /* Sijoittaa buttonit hahmo-assetin eteen */
-}
-
-.infobox::before, .infobox::after {
-  content: "";
-  width: 475px; 
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-size: cover;
-}
-
-.infobox::before {
-  height: 27px; /* Height of your top image */
-  top: -27px; /* This pushes the top image to sit just above the button */
-  background-image: url('images/UI/NarratorBoxTop.png');
-}
-
-.infobox::after {
-  height: 17px; /* Height of your bottom image */
-  bottom: -17px; /* This pushes the bottom image to sit just below the button */
-background-image: url('images/UI/NarratorBoxBottom.png');
-}
-
-
-/* Testaan vielä saanko saman toimimaan nykyisessä choice-buttonissa eli jatkossa ChoiceBoxissa */
-
-.choice-button {
-  position: relative;
-  display: inline-block;
-  width: 475px; 
-  min-height: 45px; /* Set a minimum height */
-  padding: 10px 20px;  /* Teksting padding */
-  font-size: 16px;
-  font-family: 'Jura', sans-serif;
-  text-align: left;
-  border: none;
-  cursor: pointer;
-  background: url('images/UI/ChoiceBoxMiddle.png') repeat-y center center;
-  color: #333; /* Adjust the text color as needed */
-  background-color: transparent;
-  background-size: 100% auto; /* This will stretch the width of the middle part to cover the entire width of the button */
-  z-index: 3; /* Sijoittaa buttonit hahmo-assetin eteen */
-}
-
-.choice-button::before, .choice-button::after {
-  content: "";
-  width: 475px; 
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-size: cover;
-}
-
-.choice-button::before {
-  height: 27px; /* Height of your top image */
-  top: -27px; /* This pushes the top image to sit just above the button */
-  background-image: url('images/UI/ChoiceBoxTop.png');
-}
-
-.choice-button::after {
-  height: 17px; /* Height of your bottom image */
-  bottom: -17px; /* This pushes the bottom image to sit just below the button */
-background-image: url('images/UI/ChoiceBoxBottom.png');
 }

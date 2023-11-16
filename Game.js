@@ -1,73 +1,107 @@
-/*
-jos background ei liiku tai muutu usein. Pidetään se canvaksen ulkopuolella. Tai 2 canvasta: hahmot ja background. 
-
-checkaa scenen type:
-  "linear": mihin tahansa clickaamalla menee seuraavaan sceneen
-  "options": tulee dialogi/infobox, jonka jälkeen pienellä delaylla(click nopeuttaa?) 
-    tulee pelaajan vaihtoehdot event listenereillä. 
-checkaa background: 
-  jos let bg != scene.background { vaihda background}
-checkaa character arrayn:
-  Parasta varmaan vaan piirtää uudestaan hahmot, joka kerta, niin ei tarvi checkailla mitään ja ilmeet vaihtuu helposti. 
-  canvakseen piirretään hahmot tai jotenkin muuten isketään ne screenille. foreach character in scene.characters?
-  Positiot ja animaatiot voidaan miettiä joskus?
-checkaa text_type:
-  infobox tyylinen vai puhekupla.
-  Pitäskö yhdistää text_type ja position? Luo yhden classin muotoilun mukaisen puhe boxin, jota saa säätää css puolella?
-Lisää text boxiin: 
-  valitusta language jsonista etsitään text kohdassa olleella id:llä. Oletus suomi
-Jos linear type, next_scene ohjaa seuraavaan sceneen clickistä. 
-Jos options scene:
-  Delayn jälkeen foreach buttontext in player_options lisää nappula niiden event listenereillä
-*/
-
 import StartSceneData from "/Data/StartSceneData.js";
 import Suomi from "./data/suomi.js";
 
-const textField = document.querySelector('.infobox');
-const bottomContainer = document.querySelector('.bottom-choice-container');
 const mainGameContainer = document.querySelector('.game-flex-container');
+const settingsMenu = document.querySelector('.top-options-menu');
+
+const infoboxElement = document.querySelector('.narratorBox');
+const infoboxText = document.querySelector('.narratorBoxText');
+
+const speechBubbleElement = document.querySelector('.speechBubble');
+const speechBubbleText = document.querySelector('.speechBubbleText');
+
+// array queries
+const characterElements = document.querySelectorAll('.character');
+const playerChoiceElements = document.querySelectorAll('.choiceBox');
+const playerChoiceTextElements = document.querySelectorAll('.choiceBoxText');
 
 let currentBackground;
 let language = Suomi;
 let currentScene;
+let nextScene;
 
-ChangeScene(StartSceneData.SofillaOnTietoa_1);
+// game setup
+nextScene = StartSceneData.SofillaOnTietoa_1;
+addClickEventListener();
+PopulateScene();
 
-function ChangeScene(scene) {
-  currentScene = scene;
-  console.log(scene);
-  SceneChange();
+// click event listener
+function addClickEventListener(){
+  mainGameContainer.addEventListener("click", event => {
+    
+    // double click speed timer here to avoid accidental progress?
+
+    if (event.target === settingsMenu){
+      //TODO settings menu opening?
+      return;
+    }
+
+    if (currentScene.type === "linear"){
+      nextScene = StartSceneData[currentScene.next_scene];
+      PopulateScene();
+      return;
+    }
+    // if choice elements clicked, set nextscene
+    for (let i = 0; i< playerChoiceElements.length; i++){
+      if(event.target.parentElement === playerChoiceElements[i]){
+        nextScene = StartSceneData[currentScene.player_choice[i].next_scene];
+        PopulateScene();
+        return;
+      }
+    }
+  });
 }
 
-function SceneChange() {
-  if (currentScene.type == "linear") {
-    mainGameContainer.addEventListener('click', () => ChangeScene(currentScene.next_scene));
-    // event listener here?
-    //.addEventListener('click', function () {
-    //ChangeScene(currentScene.next_scene);} ???
-  }
-  else if (currentScene.type == "options"){
-    console.log("test");
-    for (let i = 0; i< currentScene.player_choice.length; i++) {
-      let playerChoiceBox = document.createElement('playerChoiceButton_' + [i]);
-      bottomContainer.appendChild(playerChoiceBox);
-      playerChoiceBox.className = 'choice-button';
+function PopulateScene(){
 
-      const text = document.createTextNode(language[currentScene.player_choice[i].text]);
-      playerChoiceBox.appendChild(text);
-      playerChoiceBox.addEventListener('click', () => ChangeScene(currentScene.player_choice[i].next_scene));
+  // background image change
+  if (nextScene.background !== currentBackground && nextScene.background !== null){
+    currentBackground = nextScene.background;
+    mainGameContainer.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ")";
+  }
+
+  // draw characters here
+  for (let i = 0; i< characterElements.length; i++){
+    if (i >= nextScene.characters.length){
+      characterElements[i].classList.add('hidden');
+      continue;
+    }
+    characterElements[i].style.backgroundImage = "url(images/characters/" + nextScene.characters[i] + ".png)";
+    characterElements[i].classList.remove('hidden');
+  }
+
+  if (nextScene.text_type === "dialogue"){
+    WriteDialogue();
+  }
+  if (nextScene.text_type === "infobox"){
+    WriteInfobox();
+  }
+  PlayerChoiceSetup();
+
+  // maybe use current scene later somewhere dunno
+  currentScene = nextScene;
+}
+function WriteInfobox(){
+  infoboxElement.classList.remove('hidden');
+  infoboxText.textContent = language[nextScene.text];
+  speechBubbleElement.classList.add('hidden');
+}
+function WriteDialogue(){
+  speechBubbleElement.classList.remove('hidden');
+  speechBubbleText.textContent = language[nextScene.text];
+  infoboxElement.classList.add('hidden');
+}
+
+// player choice box setup
+function PlayerChoiceSetup(){
+  for (let i = 0; i< playerChoiceElements.length; i++) {
+    // hide null choices
+    if (nextScene.type === "linear" || i >= nextScene.player_choice.length){
+      playerChoiceElements[i].classList.add('hidden');
+    }
+    else{
+      playerChoiceElements[i].classList.remove('hidden');
+      playerChoiceTextElements[i].textContent = language[nextScene.player_choice[i].text];  
     }
   }
-  if (currentScene.background != currentBackground){
-    currentBackground = currentScene.background;
-    // change background here
-  }
-  if (currentScene.characters != null){
-    for (let i = 0; i < currentScene.characters.length; i++) {
-      // draw characters here
-    }
-  }
-  let textId = currentScene.text;
-  textField.innerHTML = language[textId];
 }

@@ -3,21 +3,21 @@ const StartSceneData = {
   {
     "_comment" : "Tänne voi laittaa random kommentteja scenestä tai muuta?",
     "type" : "linear",
-    "background" : "koulun_piha",
-    "characters" : null,
+    "background" : "KoulunPiha.png",
+    "characters" : [],
     "text_type" : "infobox",
     "text_position" : "middle",
-    "text" : "t_sofi_outside_drama",
+    "text" : "t_sofi_outside_narrator_1",
     "next_scene" : "SofillaOnTietoa_2"
   },
   "SofillaOnTietoa_2":
   {
     "type" : "options",
-    "background" : "koulun_piha",
-    "characters" : ["npc_sofi_anxious"],
+    "background" : "KoulunPiha.png",
+    "characters" : ["HahmoSofi"],
     "text_type" : "dialogue",
     "text_position" : "dialogue_left",
-    "text" : "sofi_outside_drama",
+    "text" : "t_sofi_outside_drama",
     "player_choice" : 
     [{
       "text" : "t_sofi_outside_option_1",
@@ -31,15 +31,15 @@ const StartSceneData = {
   "SofillaOnTietoaHaloo":
   {
     "type" : "options",
-    "background" : "koulun_piha",
-    "characters" : ["npc_sofi_angry"],
+    "background" : "KoulunPiha.png",
+    "characters" : ["HahmoSofi"],
     "text_type" : "dialogue",
     "text_position" : "dialogue_left",
     "text" : "t_sofi_outside_drama_2",
     "player_choice" : 
     [{
       "text" : "t_sofi_outside_drama_option_deny",
-      "next_scene" : "EScene"
+      "next_scene" : "TempDemoEnd"
     },
     {
       "text" : "t_sofi_outside_drama_option_okay",
@@ -51,8 +51,8 @@ const StartSceneData = {
   {
     "comment" : "____________Tästä alkaa terkkari keskustelu",
     "type" : "linear",
-    "background" : "koulun_piha_roskiksilla",
-    "characters" : null,
+    "background" : "Roskikset.png",
+    "characters" :  [],
     "text_type" : "infobox",
     "text_position" : "middle",
     "text" : "t_sofi_outside_towards_trash_narrator",
@@ -61,19 +61,19 @@ const StartSceneData = {
   "SofillaOnTietoaTerkkarille_1" : 
   {
     "type" : "options",
-    "background" : "koulun_piha_roskiksilla",
-    "characters" : null,
+    "background" : "Roskikset.png",
+    "characters" : ["HahmoKouluterkka"],
     "text_type" : "infobox",
     "text_position" : "dialogue_left",
     "text" : "t_sofi_outisde_nurse",
     "player_choice" : 
     [{
       "text" : "t_sofi_outside_nurse_option_yes",
-      "next_scene" : "wip"
+      "next_scene" : "TempDemoEnd"
     },
     {
       "text" : "t_sofi_outside_nurse_option_no",
-      "next_scene" : "wip"
+      "next_scene" : "LydianHuolet_1"
     }]
   },
 
@@ -81,8 +81,8 @@ const StartSceneData = {
   {
     "comment" : "tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi",
     "type" : "linear",
-    "background" : "koulun_piha_roskiksilla",
-    "characters" : ["npc_sofi_worried", "npc_lydia"],
+    "background" : "Roskikset.png",
+    "characters" : ["HahmoSofi", "HahmoLydia"],
     "text_type" : "dialogue",
     "text_position" : "dialogue_left",
     "text" : "t_sofia_lydia_vape_1",
@@ -92,8 +92,8 @@ const StartSceneData = {
   {
     "comment" : "tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi",
     "type" : "linear",
-    "background" : "koulun_piha_roskiksilla",
-    "characters" : ["npc_sofi_worried", "npc_lydia_annoyed"],
+    "background" : "Roskikset.png",
+    "characters" : ["HahmoSofi", "HahmoLydia"],
     "text_type" : "dialogue",
     "text_position" : "dialogue_right",
     "text" : "t_sofia_lydia_vape_2",
@@ -103,8 +103,8 @@ const StartSceneData = {
   {
     "comment" : "tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi",
     "type" : "linear",
-    "background" : "koulun_piha_roskiksilla",
-    "characters" : ["npc_sofi_worried", "npc_lydia_annoyed"],
+    "background" : "Roskikset.png",
+    "characters" : ["HahmoSofi", "HahmoLydia"],
     "text_type" : "dialogue",
     "text_position" : "dialogue_left",
     "text" : "t_sofia_lydia_vape_3",
@@ -114,8 +114,8 @@ const StartSceneData = {
   {
     "comment" : "tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi",
     "type" : "linear",
-    "background" : "koulun_piha_roskiksilla",
-    "characters" : ["npc_sofi_worried", "npc_lydia_anxious"],
+    "background" : "Roskikset.png",
+    "characters" : ["HahmoSofi", "HahmoLydia"],
     "text_type" : "dialogue",
     "text_position" : "dialogue_left",
     "text" : "t_sofia_lydia_vape_4",
@@ -124,13 +124,32 @@ const StartSceneData = {
   "LydianHuolet_5":
   {
     "comment" : "tän scenen avulla vois pohtia animaatioita/fadein/hahmo focusta selkeyden vuoksi",
-    "type" : "linear",
-    "background" : "koulun_piha_roskiksilla",
-    "characters" : ["npc_sofi_worried", "npc_lydia_anxious"],
+    "type" : "options",
+    "background" : "Roskikset.png",
+    "characters" : ["HahmoLydia"],
     "text_type" : "dialogue",
     "text_position" : "dialogue_right",
     "text" : "t_sofia_lydia_vape_5",
-    "next_scene" : "wip"
+    "player_choice" : 
+    [{
+      "text" : "t_sofia_lydia_vape_choice_help",
+      "next_scene" : "TempDemoEnd"
+    },
+    {
+      "text" : "t_sofia_lydia_vape_choice_leave",
+      "next_scene" : "TempDemoEnd"
+    }]
+  },
+  "TempDemoEnd":
+  {
+    "comment" : "MUISTETAAN POISTAA",
+    "type" : "linear",
+    "background" : null,
+    "characters" : [],
+    "text_type" : "infobox",
+    "text_position" : "middle",
+    "text" : "t_TempDemoEnd",
+    "next_scene" : "TempDemoEnd"
   }
 }
 export default StartSceneData
