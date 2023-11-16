@@ -1,4 +1,4 @@
-import StartSceneData from "/Data/StartSceneData.js";
+import StartSceneData from "/data/StartSceneData.js";
 import Suomi from "./data/suomi.js";
 
 const mainGameContainer = document.querySelector('.game-flex-container');
@@ -57,7 +57,7 @@ function PopulateScene(){
   // background image change
   if (nextScene.background !== currentBackground && nextScene.background !== null){
     currentBackground = nextScene.background;
-    mainGameContainer.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ")";
+    mainGameContainer.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ".png)";
   }
 
   // draw characters here
@@ -70,10 +70,10 @@ function PopulateScene(){
     characterElements[i].classList.remove('hidden');
   }
 
-  if (nextScene.text_type === "dialogue"){
+  if (nextScene.text_type === "dialogue" || nextScene.text_type === "speech_bubble"){
     WriteDialogue();
   }
-  if (nextScene.text_type === "infobox"){
+  if (nextScene.text_type === "infobox" || nextScene.text_type === "narrator"){
     WriteInfobox();
   }
   PlayerChoiceSetup();
