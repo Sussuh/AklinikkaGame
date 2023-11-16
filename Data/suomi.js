@@ -15,6 +15,9 @@ const Suomi = {
   "t_sofia_lydia_vape_3" : "Vapekin on haitallista! Ja se voi olla yhtä addiktoivaa kuin tavallinen tupakka.",
   "t_sofia_lydia_vape_4" : "Eikä sen pitkäaikaisista vaikutuksista edes tiedetä!",
   "t_sofia_lydia_vape_5" : "Antakaa mun olla, mul on täl hetkellä riittävästi vaikeuksii!",
-  "t_sofia_lydia_vape_6" : "Saan varmaan paniikkikohtauksen, jos en vapeta!"
+  "t_sofia_lydia_vape_6" : "Saan varmaan paniikkikohtauksen, jos en vapeta!",
+  "t_sofia_lydia_vape_choice_help" : "Voi ei kuulostaa hirveeltä! Voidaanks me jotenkin auttaa?",
+  "t_sofia_lydia_vape_choice_leave" : "Parasta lähtee ja antaa sen olla rauhassa.",
+  "t_TempDemoEnd" : "Ended outside demo scenes?!"
 }
 export default Suomi;
