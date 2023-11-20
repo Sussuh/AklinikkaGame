@@ -1,5 +1,6 @@
-import StartSceneData from "/data/StartSceneData.js";
-import Suomi from "./data/suomi.js";
+'use strict:';
+import StartSceneData from '/data/StartSceneData.js';
+import Suomi from '/data/suomi.js';
 
 const mainGameContainer = document.querySelector('.game-flex-container');
 const settingsMenu = document.querySelector('.top-options-menu');
@@ -28,31 +29,32 @@ addClickEventListener();
 PopulateScene();
 
 // click event listener
-function addClickEventListener(){
-  mainGameContainer.addEventListener("click", event => {
-
+function addClickEventListener() {
+  mainGameContainer.addEventListener('click', event => {
     // double click speed timer here to avoid accidental progress?
     const currentTimeInSeconds = new Date().getTime() / 1000;
-    
+
     if (currentTimeInSeconds - transitionDelayTime < delayTimeInSeconds) {
-      console.log(`Clicked too fast need to wait delayTime = ${delayTimeInSeconds}`);
+      console.log(
+        `Clicked too fast need to wait delayTime = ${delayTimeInSeconds}`
+      );
       return;
     }
     transitionDelayTime = currentTimeInSeconds;
 
-    if (event.target === settingsMenu){
+    if (event.target === settingsMenu) {
       //TODO settings menu opening?
       return;
     }
 
-    if (currentScene.type === "linear"){
+    if (currentScene.type === 'linear') {
       nextScene = StartSceneData[currentScene.next_scene];
       PopulateScene();
       return;
     }
     // if choice elements clicked, set nextscene
-    for (let i = 0; i< playerChoiceElements.length; i++){
-      if(event.target.parentElement === playerChoiceElements[i]){
+    for (let i = 0; i < playerChoiceElements.length; i++) {
+      if (event.target.parentElement === playerChoiceElements[i]) {
         nextScene = StartSceneData[currentScene.player_choice[i].next_scene];
         PopulateScene();
         return;
@@ -61,28 +63,32 @@ function addClickEventListener(){
   });
 }
 
-function PopulateScene(){
-
+function PopulateScene() {
   // background image change
-  if (nextScene.background !== null && nextScene.background !== currentBackground){
+  if (
+    nextScene.background !== null &&
+    nextScene.background !== currentBackground
+  ) {
     currentBackground = nextScene.background;
-    mainGameContainer.style.backgroundImage = "url(images/backgrounds/" + currentBackground + ".png)";
+    mainGameContainer.style.backgroundImage =
+      'url(images/backgrounds/' + currentBackground + '.png)';
   }
 
   // draw characters here
-  for (let i = 0; i< characterElements.length; i++){
-    if (i >= nextScene.characters.length){
+  for (let i = 0; i < characterElements.length; i++) {
+    if (i >= nextScene.characters.length) {
       characterElements[i].classList.add('hidden');
       continue;
     }
-    characterElements[i].style.backgroundImage = "url(images/characters/" + nextScene.characters[i] + ".png)";
+    characterElements[i].style.backgroundImage =
+      'url(images/characters/' + nextScene.characters[i] + '.png)';
     characterElements[i].classList.remove('hidden');
   }
 
-  if (nextScene.text_type === "dialogue" || nextScene.text_type === "speech"){
+  if (nextScene.text_type === 'dialogue' || nextScene.text_type === 'speech') {
     WriteDialogue();
   }
-  if (nextScene.text_type === "infobox" || nextScene.text_type === "narrator"){
+  if (nextScene.text_type === 'infobox' || nextScene.text_type === 'narrator') {
     WriteInfobox();
   }
   PlayerChoiceSetup();
@@ -90,21 +96,20 @@ function PopulateScene(){
   // maybe use current scene later somewhere dunno
   currentScene = nextScene;
 }
-function WriteInfobox(){
+function WriteInfobox() {
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
   speechBubbleLeft.classList.add('hidden');
   speechBubbleRight.classList.add('hidden');
 }
-function WriteDialogue(){
+function WriteDialogue() {
   infoboxElement.classList.add('hidden');
 
-  if (nextScene.text_position === "speechLeft"){
+  if (nextScene.text_position === 'speechLeft') {
     speechBubbleLeft.classList.remove('hidden');
     speechBubbleRight.classList.add('hidden');
     speechBubbleLeft.textContent = language[nextScene.text];
-  }
-  else{
+  } else {
     speechBubbleRight.classList.remove('hidden');
     speechBubbleLeft.classList.add('hidden');
     speechBubbleRight.textContent = language[nextScene.text];
@@ -112,15 +117,15 @@ function WriteDialogue(){
 }
 
 // player choice box setup
-function PlayerChoiceSetup(){
-  for (let i = 0; i< playerChoiceElements.length; i++) {
+function PlayerChoiceSetup() {
+  for (let i = 0; i < playerChoiceElements.length; i++) {
     // hide null choices
-    if (nextScene.type === "linear" || i >= nextScene.player_choice.length){
+    if (nextScene.type === 'linear' || i >= nextScene.player_choice.length) {
       playerChoiceElements[i].classList.add('hidden');
-    }
-    else{
+    } else {
       playerChoiceElements[i].classList.remove('hidden');
-      playerChoiceTextElements[i].textContent = language[nextScene.player_choice[i].text];  
+      playerChoiceTextElements[i].textContent =
+        language[nextScene.player_choice[i].text];
     }
   }
 }
