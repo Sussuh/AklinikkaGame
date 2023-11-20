@@ -1,5 +1,5 @@
 import StartSceneData from '/data/StartSceneData.js';
-import Suomi from './data/suomi.js';
+import Suomi from '/data/suomi.js';
 
 const mainGameContainer = document.querySelector('.game-flex-container');
 const settingsMenu = document.querySelector('.top-options-menu');
@@ -117,7 +117,6 @@ function PlayerChoiceSetup() {
     }
   }
 }
-*/
 
 function PlayerChoiceSetup() {
   for (let i = 0; i < playerChoiceElements.length; i++) {
@@ -132,6 +131,24 @@ function PlayerChoiceSetup() {
         playerChoiceTextElements[i].textContent =
           language[nextScene.player_choice[i].text];
       }, delay);
+    }
+  }
+}
+*/
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function PlayerChoiceSetup() {
+  for (let i = 0; i < playerChoiceElements.length; i++) {
+    // hide null choices
+    if (nextScene.type === 'linear' || i >= nextScene.player_choice.length) {
+      playerChoiceElements[i].classList.add('hidden');
+    } else {
+      await delay(1000);
+      playerChoiceElements[i].classList.remove('hidden');
+      playerChoiceTextElements[i].textContent =
+        language[nextScene.player_choice[i].text];
     }
   }
 }
