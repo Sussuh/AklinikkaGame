@@ -19,6 +19,8 @@ let currentBackground;
 let language = Suomi;
 let currentScene;
 let nextScene;
+let transitionDelayTime;
+let delayTimeInSeconds = 0.25;
 
 // game setup
 nextScene = StartSceneData.SofillaOnTietoaAlku;
@@ -28,9 +30,16 @@ PopulateScene();
 // click event listener
 function addClickEventListener(){
   mainGameContainer.addEventListener("click", event => {
-    
+
     // double click speed timer here to avoid accidental progress?
+    const currentTimeInSeconds = new Date().getTime() / 1000;
     
+    if (currentTimeInSeconds - transitionDelayTime < delayTimeInSeconds) {
+      console.log(`Clicked too fast need to wait delayTime = ${delayTimeInSeconds}`);
+      return;
+    }
+    transitionDelayTime = currentTimeInSeconds;
+
     if (event.target === settingsMenu){
       //TODO settings menu opening?
       return;
