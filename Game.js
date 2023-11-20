@@ -82,15 +82,26 @@ function PopulateScene(){
   if (nextScene.text_type === "dialogue" || nextScene.text_type === "speech"){
     WriteDialogue();
   }
-  if (nextScene.text_type === "infobox" || nextScene.text_type === "narrator"){
+  if (nextScene.text_type === "narrator"){
+    WriteNarrator();
+  }
+  if (nextScene.text_type === "infobox"){
     WriteInfobox();
   }
+
   PlayerChoiceSetup();
 
   // maybe use current scene later somewhere dunno
   currentScene = nextScene;
 }
+// infobox / narrator identical so far :shrug:
 function WriteInfobox(){
+  infoboxElement.classList.remove('hidden');
+  infoboxText.textContent = language[nextScene.text];
+  speechBubbleLeft.classList.add('hidden');
+  speechBubbleRight.classList.add('hidden');
+}
+function WriteNarrator(){
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
   speechBubbleLeft.classList.add('hidden');
