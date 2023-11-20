@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+'use strict:';
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 import StartSceneData from '/data/StartSceneData.js';
 import Suomi from '/data/suomi.js';
 
@@ -87,31 +91,40 @@ function PopulateScene() {
   if (nextScene.text_type === 'dialogue' || nextScene.text_type === 'speech') {
     WriteDialogue();
   }
+<<<<<<< HEAD
   if (nextScene.text_type === 'narrator') {
     WriteNarrator();
   }
   if (nextScene.text_type === 'infobox') {
+=======
+  if (nextScene.text_type === 'infobox' || nextScene.text_type === 'narrator') {
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
     WriteInfobox();
   }
-
   PlayerChoiceSetup();
 
   // maybe use current scene later somewhere dunno
   currentScene = nextScene;
 }
+<<<<<<< HEAD
 // infobox / narrator identical so far :shrug:
+=======
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 function WriteInfobox() {
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
   speechBubbleLeft.classList.add('hidden');
   speechBubbleRight.classList.add('hidden');
 }
+<<<<<<< HEAD
 function WriteNarrator() {
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
   speechBubbleLeft.classList.add('hidden');
   speechBubbleRight.classList.add('hidden');
 }
+=======
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 function WriteDialogue() {
   infoboxElement.classList.add('hidden');
 
