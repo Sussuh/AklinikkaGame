@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .narratorBox {
+    display: grid;
+    grid-template-rows: auto 1fr; 
+    width: 80%;
+    border: 1px solid #000;
+    border-radius: 10px 10px 0px 0px;
+    background: #FFECE8;
+    box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.25);
+    font-size: 1.5rem; 
+    font-family: 'Jura', sans-serif;
+    text-align: left;
+  }
+  
+  .details {
+    align-items: center;
+    height: 26px;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 1px solid #000;
+    grid-row: 1;
+    display: flex;
+  }
+  
+  .narratorBox .details {
+    background-color: #A9A7FF;
+    display: flex;
+    justify-content: space-between; 
+  }
+  
+  .choiceBox .details {
+    background-color: #90E2FD;
+    display: flex;
+    justify-content: space-between; 
+  }
+  
+  .details .circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #C1BFFF;
+    margin-right: 2px; 
+  }
+  
+  .details #lastCircle {
+    margin-right: 10px; 
+  }
+  
+  .details .triangles {
+    width: 52px;
+    height: 27px;
+    margin-right: 2px;
+    margin-left: 10px; 
+  }
+  
+  .details .shine {
+    height: 11px;
+    flex-shrink: 0;
+    border-radius: 10px;
+  }
+  
+  .details #shine1 {
+    background-color: #C1BFFF;
+    width: 63px;
+    margin-right: 5px;
+    margin-left: 10px;
+  }
+  
+  .details #shine2 {
+    background-color: #C1BFFF;
+    width: 15px;
+    margin-right: auto; 
+  } 
+  
+  .details #shine3 {
+    background-color: #AFEAFE;
+    width: 63px;
+    margin-left: auto;
+  }
+  
+  .details #shine4 {
+    background-color: #AFEAFE;
+    width: 15px;
+    margin-right: 10px;
+    margin-left: 5px;
+  } 
+  
+  .main-content {
+    padding: 10px 16px 16px;
+    color: #000000; 
+    font-size: 1.5rem;
+    font-family: 'Jura', sans-serif;
+    text-align: left;
+    grid-row: 2; 
+  }
+  
+  
+  .choiceBox {
+    display: grid;
+    grid-template-rows: auto 1fr; 
+    width: 80%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #FFF8EE;
+    box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    font-family: 'Jura', sans-serif;
+    text-align: left;
+  }
+
+.speechBubbleLeft {
+  position: relative;
+  width: 80%;
+  display: flex;
+  padding: 10px 16px 10px;
+  align-items: flex-start;
+  font-size: 1.5rem;
+  font-family: 'Jura', sans-serif;
+  text-align: left;
+  flex-direction: column;
+  background: #E4FCFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.speechBubbleLeft:after{
+   content: '';
+   position: absolute;
+   border-style: solid;
+   border-width: 15px 15px 0;
+   border-color: #E4FCFF transparent;
+   display: block;
+   width: 0;
+   z-index: 1;
+   bottom: -15px;
+   left: 7%;
+}
+
+.speechBubbleLeft:before{
+   content: '';
+   position: absolute;
+   border-style: solid;
+   border-width: 15px 15px 0;
+   border-color: #000000 transparent;
+   display: block;
+   width: 0;
+   z-index: 0;
+   bottom: -16px;
+   left: 7%;
+ }
+
+.speechBubbleRight{
+  position: relative;
+  width: 80%;
+ display: flex;
+  padding: 10px 16px 10px;
+  align-items: flex-start;
+  font-size: 1.5rem;
+  font-family: 'Jura', sans-serif;
+  text-align: left;
+  flex-direction: column;
+  background: #E4FCFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.speechBubbleRight:after{
+   content: '';
+   position: absolute;
+   border-style: solid;
+   border-width: 15px 15px 0;
+   border-color: #E4FCFF transparent;
+   display: block;
+   width: 0;
+   z-index: 1;
+   bottom: -15px;
+   right: 7%;
+}
+
+.speechBubbleRight:before{
+   content: '';
+   position: absolute;
+   border-style: solid;
+   border-width: 15px 15px 0;
+   border-color: #000000 transparent;
+   display: block;
+   width: 0;
+   z-index: 0;
+   bottom: -16px;
+   right: 7%;
+ }
+ .infoBox {
+  display: grid;
+  grid-template-rows: auto 1fr; 
+  width: 70%;
+  border: 1px solid #000;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFECE8;
+  box-shadow: 3px 4px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.infoBox .details {
+  height: 40px;
+  background-color: #A9A7FF;
+  display: flex;
+  justify-content: space-between; 
+  font-size: 1.5rem; 
+}
+
+.infoBox .details .shine {
+  position: relative;
+  top: -5px;
+}
