@@ -1,4 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+'use strict:';
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 =======
 'use strict:';
 >>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
@@ -92,10 +96,14 @@ function PopulateScene() {
     WriteDialogue();
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (nextScene.text_type === 'narrator') {
     WriteNarrator();
   }
   if (nextScene.text_type === 'infobox') {
+=======
+  if (nextScene.text_type === 'infobox' || nextScene.text_type === 'narrator') {
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 =======
   if (nextScene.text_type === 'infobox' || nextScene.text_type === 'narrator') {
 >>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
@@ -107,7 +115,10 @@ function PopulateScene() {
   currentScene = nextScene;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 // infobox / narrator identical so far :shrug:
+=======
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 =======
 >>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 function WriteInfobox() {
@@ -117,12 +128,15 @@ function WriteInfobox() {
   speechBubbleRight.classList.add('hidden');
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 function WriteNarrator() {
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
   speechBubbleLeft.classList.add('hidden');
   speechBubbleRight.classList.add('hidden');
 }
+=======
+>>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 =======
 >>>>>>> parent of 2fcad63 (Merge branch 'RikuTestground' into mico-2)
 function WriteDialogue() {
