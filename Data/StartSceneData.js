@@ -66,8 +66,8 @@ const StartSceneData = {
     "type": "options",
     "background": "KoulunPiha",
     "characters": ["HahmoKouluterkka"],
-    "text_type": "speech",
-    "text_position": "speechLeft",
+    "text_type": "narrator",
+    "text_position": "",
     "text": "tKerrotaankoTerkalle",
     "player_choice": [
       {
