@@ -60,7 +60,7 @@ const LydianHuolet = {
           "background": "Roskikset",
           "characters": ["HahmoSofi", "HahmoLydia"],
           "text_type": "speech",
-          "text_position": "speechRigth",
+          "text_position": "speechRight",
           "text": "tLydianHuolet6",
           "player_choice": [
             {

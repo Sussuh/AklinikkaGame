@@ -7,8 +7,8 @@ const settingsMenu = document.querySelector('.top-options-menu');
 const infoboxElement = document.querySelector('.narratorBox');
 const infoboxText = document.querySelector('.narratorBoxText');
 
-const speechBubbleElement = document.querySelector('.speechBubble');
-const speechBubbleText = document.querySelector('.speechBubbleText');
+const speechBubbleLeft = document.querySelector('.speechBubbleLeft');
+const speechBubbleRight = document.querySelector('.speechBubbleRight');
 
 // array queries
 const characterElements = document.querySelectorAll('.character');
@@ -21,7 +21,7 @@ let currentScene;
 let nextScene;
 
 // game setup
-nextScene = StartSceneData.SofillaOnTietoa_1;
+nextScene = StartSceneData.SofillaOnTietoaAlku;
 addClickEventListener();
 PopulateScene();
 
@@ -30,7 +30,7 @@ function addClickEventListener(){
   mainGameContainer.addEventListener("click", event => {
     
     // double click speed timer here to avoid accidental progress?
-
+    
     if (event.target === settingsMenu){
       //TODO settings menu opening?
       return;
@@ -70,7 +70,7 @@ function PopulateScene(){
     characterElements[i].classList.remove('hidden');
   }
 
-  if (nextScene.text_type === "dialogue" || nextScene.text_type === "speech_bubble"){
+  if (nextScene.text_type === "dialogue" || nextScene.text_type === "speech"){
     WriteDialogue();
   }
   if (nextScene.text_type === "infobox" || nextScene.text_type === "narrator"){
@@ -84,12 +84,22 @@ function PopulateScene(){
 function WriteInfobox(){
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
-  speechBubbleElement.classList.add('hidden');
+  speechBubbleLeft.classList.add('hidden');
+  speechBubbleRight.classList.add('hidden');
 }
 function WriteDialogue(){
-  speechBubbleElement.classList.remove('hidden');
-  speechBubbleText.textContent = language[nextScene.text];
   infoboxElement.classList.add('hidden');
+
+  if (nextScene.text_position === "speechLeft"){
+    speechBubbleLeft.classList.remove('hidden');
+    speechBubbleRight.classList.add('hidden');
+    speechBubbleLeft.textContent = language[nextScene.text];
+  }
+  else{
+    speechBubbleRight.classList.remove('hidden');
+    speechBubbleLeft.classList.add('hidden');
+    speechBubbleRight.textContent = language[nextScene.text];
+  }
 }
 
 // player choice box setup
