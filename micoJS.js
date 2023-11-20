@@ -1,7 +1,7 @@
 'use strict';
 
 import StartSceneData from '/Data/StartSceneData.js';
-import Suomi from '/data/suomi.js';
+import Suomi from './data/suomi.js';
 
 const infoboxElement = document.querySelector('.infobox');
 const speechBubbleElement = document.querySelector('.speech-bubble');
