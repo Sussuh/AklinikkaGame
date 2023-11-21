@@ -25,6 +25,10 @@
     margin-right: -8px;
     }
   
+    .startbutton:active {
+      box-shadow: 5px 5px 14px 4px rgba(0, 0, 0, 0.35) inset;
+        }
+
   .pausemenubutton {
     background-color: #FFF8EE;
     border-radius: 11px;
@@ -59,6 +63,9 @@
     flex-shrink: 0;
     }
   
+  .pausemenubutton:active {
+  box-shadow: 5px 5px 14px 4px rgba(0, 0, 0, 0.35) inset;
+    }
   
   .languagebutton {
     background-color: #FFECE8;
