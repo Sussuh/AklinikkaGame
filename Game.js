@@ -2,7 +2,7 @@ import StartSceneData from "/data/StartSceneData.js";
 import Suomi from "./data/suomi.js";
 
 const mainGameContainer = document.querySelector('.game-flex-container');
-const settingsMenu = document.querySelector('.top-options-menu');
+
 
 const infoboxElement = document.querySelector('.narratorBox');
 const infoboxText = document.querySelector('.narratorBoxText');
@@ -40,10 +40,47 @@ function addClickEventListener(){
     }
     transitionDelayTime = currentTimeInSeconds;
 
-    if (event.target === settingsMenu){
-      //TODO settings menu opening?
-      return;
-    }
+
+
+//Menu
+var settingsMenu = document.querySelector('.top-options-menu');
+var gameButtons = document.getElementById("game-buttons");
+
+var startButton = document.getElementById("start-button");
+var continueButton = document.getElementById("pause-button");
+var restartButton = document.getElementById("restart-button");
+
+if (event.target === settingsMenu){
+  
+  gameButtons.style.display = "flex";
+  // gameButtons.classList.toggle("active"); it doesn't work
+  console.log("settingsMenu clicked");
+  document.body.style.overflow = 'hidden';
+
+  startButton.addEventListener("click", event => {
+    console.log("start button clicked");
+    nextScene = StartSceneData.SofillaOnTietoaAlku;
+    gameButtons.style.display = "none";
+    addClickEventListener();
+    PopulateScene();
+  });
+
+  continueButton.addEventListener("click", event => {
+    console.log("continue button clicked");
+    gameButtons.style.display = "none";
+  });
+
+  restartButton.addEventListener("click", event => {
+    console.log("restart button clicked");
+    nextScene = StartSceneData.SofillaOnTietoaAlku;
+    addClickEventListener();
+    PopulateScene();
+    gameButtons.style.display = "none";
+  });
+};
+
+
+
 
     if (currentScene.type === "linear"){
       nextScene = StartSceneData[currentScene.next_scene];
