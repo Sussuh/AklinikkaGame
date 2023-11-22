@@ -220,6 +220,27 @@ body {
   padding-bottom: 3vh;
 }
 
+.choiceBox {
+  position: relative;
+  left: -100%; /* Initial position off-screen to the left */
+  opacity: 0; /* Initially set opacity to 0 to make it invisible */
+  visibility: hidden; /* Initially set visibility to hidden */
+  animation: slideFromLeft 3s forwards; /* Apply the animation with a duration of 2 seconds */
+}
+
+@keyframes slideFromLeft {
+  from {
+    left: -100%; /* Initial position off-screen to the left */
+    opacity: 0; /* Initial opacity set to 0 */
+    visibility: hidden; /* Initial visibility set to hidden */
+  }
+  to {
+    left: 0; /* Move the element to its intended position */
+    opacity: 1; /* Set opacity to 1 to make it visible */
+    visibility: visible; /* Set visibility to visible */
+  }
+}
+
 .startpage-container{
   display: flex;
   flex-direction: row;
