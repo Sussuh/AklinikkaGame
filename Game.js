@@ -7,8 +7,11 @@ const mainGameContainer = document.querySelector('.game-flex-container');
 const infoboxElement = document.querySelector('.narratorBox');
 const infoboxText = document.querySelector('.narratorBoxText');
 
+
 const speechBubbleLeft = document.querySelector('.speechBubbleLeft');
 const speechBubbleRight = document.querySelector('.speechBubbleRight');
+
+
 
 // array queries
 const characterElements = document.querySelectorAll('.character');
@@ -57,13 +60,13 @@ if (event.target === settingsMenu){
   console.log("settingsMenu clicked");
   document.body.style.overflow = 'hidden';
 
-  startButton.addEventListener("click", event => {
+ /* startButton.addEventListener("click", event => {
     console.log("start button clicked");
     nextScene = StartSceneData.SofillaOnTietoaAlku;
     gameButtons.style.display = "none";
     addClickEventListener();
     PopulateScene();
-  });
+  });*/
 
   continueButton.addEventListener("click", event => {
     console.log("continue button clicked");
@@ -132,6 +135,7 @@ function WriteInfobox(){
   infoboxText.textContent = language[nextScene.text];
   speechBubbleLeft.classList.add('hidden');
   speechBubbleRight.classList.add('hidden');
+
 }
 function WriteDialogue(){
   infoboxElement.classList.add('hidden');

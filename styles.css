@@ -70,14 +70,6 @@ body {
   display: block;
 }
 
-.top-text-container{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  z-index: 10;
-  align-items: center;
-  top: 50px; 
-} 
 
 .startbutton {
   background-color: #FFF8EE;
@@ -140,6 +132,16 @@ body {
     flex-shrink: 0;
     }
   
+.top-text-container{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   z-index: 10;
+   align-items: center;
+   top: 50px;
+} 
+
+
 
 .character-container{
   position: absolute;
