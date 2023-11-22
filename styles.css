@@ -141,6 +141,44 @@ body {
    top: 50px;
 } 
 
+/* Animation */
+ @keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+ }
+
+ .speechBubbleLeft {
+  opacity: 0;
+}
+
+ .speechBubbleLeft {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.speechBubbleRight {
+  opacity: 0;
+}
+
+ .speechBubbleRight {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.top-text-container {
+  opacity: 0;
+}
+
+.top-text-container {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
 
 
 .character-container{
@@ -181,7 +219,6 @@ body {
   z-index: 10;
   padding-bottom: 3vh;
 }
-
 
 .startpage-container{
   display: flex;

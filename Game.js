@@ -7,10 +7,12 @@ const mainGameContainer = document.querySelector('.game-flex-container');
 const infoboxElement = document.querySelector('.narratorBox');
 const infoboxText = document.querySelector('.narratorBoxText');
 
+//const bottomChoiceContainer = document.querySelector('.bottom-choice-container ');
+//bottomChoiceContainer.style.transfrom = "translateX(-100%)";
+
 
 const speechBubbleLeft = document.querySelector('.speechBubbleLeft');
 const speechBubbleRight = document.querySelector('.speechBubbleRight');
-
 
 
 // array queries
@@ -133,6 +135,7 @@ function PopulateScene(){
 function WriteInfobox(){
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
+ // bottomChoiceContainer.transfrom = "translateX(0%)";
   speechBubbleLeft.classList.add('hidden');
   speechBubbleRight.classList.add('hidden');
 
@@ -141,11 +144,13 @@ function WriteDialogue(){
   infoboxElement.classList.add('hidden');
 
   if (nextScene.text_position === "speechLeft"){
+    //bottomChoiceContainer.transfrom = "translateX(0%)";
     speechBubbleLeft.classList.remove('hidden');
     speechBubbleRight.classList.add('hidden');
     speechBubbleLeft.textContent = language[nextScene.text];
   }
   else{
+    //bottomChoiceContainer.transfrom = "translateX(0%)";
     speechBubbleRight.classList.remove('hidden');
     speechBubbleLeft.classList.add('hidden');
     speechBubbleRight.textContent = language[nextScene.text];
