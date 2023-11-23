@@ -2,8 +2,8 @@ const RoopenNuuskat = {
   MitaTiedatVapesta: {
     _comment: '',
     type: 'options',
-    background: '',
-    characters: [''],
+    background: 'Kaytava',
+    characters: ['HahmoRoope'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tMitaTiedatVapesta',
@@ -22,7 +22,7 @@ const RoopenNuuskat = {
   VapeInfobox: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -33,7 +33,7 @@ const RoopenNuuskat = {
   Juomaautomaatti1: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -44,7 +44,7 @@ const RoopenNuuskat = {
   Juomaautomaatti2: {
     _comment: '',
     type: 'options',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -64,7 +64,7 @@ const RoopenNuuskat = {
   Energiajuomat: {
     _comment: '',
     type: 'options',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -95,8 +95,8 @@ const RoopenNuuskat = {
   RoopenNuuskat1: {
     _comment: '',
     type: 'linear',
-    background: '',
-    characters: [''],
+    background: 'Kaytava',
+    characters: ['HahmoRoope'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tRoopenNuuskat1',
@@ -106,8 +106,8 @@ const RoopenNuuskat = {
   RoopenNuuskat2: {
     _comment: '',
     type: 'options',
-    background: '',
-    characters: [''],
+    background: 'Kaytava',
+    characters: ['HahmoRoope'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tRoopenNuuskat2',
@@ -126,7 +126,7 @@ const RoopenNuuskat = {
   NuuskaInfobox: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -137,8 +137,8 @@ const RoopenNuuskat = {
   RoopenNuuskat3: {
     _comment: '',
     type: 'options',
-    background: '',
-    characters: [''],
+    background: 'Kaytava',
+    characters: ['HahmoRoope'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tRoopenNuuskat3',
@@ -157,8 +157,8 @@ const RoopenNuuskat = {
   RoopenNuuskat4: {
     _comment: '',
     type: 'linear',
-    background: '',
-    characters: [''],
+    background: 'Kaytava',
+    characters: ['HahmoRoope'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tRoopenNuuskat4',
@@ -168,8 +168,8 @@ const RoopenNuuskat = {
   RoopenRahapelit: {
     _comment: '',
     type: 'options',
-    background: '',
-    characters: [''],
+    background: 'Kaytava',
+    characters: ['HahmoRoope'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tRoopenRahapelit',
@@ -188,7 +188,7 @@ const RoopenNuuskat = {
   RoopenRahapelitTodennakHyva: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -199,7 +199,7 @@ const RoopenNuuskat = {
   RoopenRahapelitTodennakHaviit: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -210,7 +210,7 @@ const RoopenNuuskat = {
   RahapelitInfobox: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
