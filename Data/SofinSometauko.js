@@ -2,7 +2,7 @@ const SofinSometauko = {
   SofinSometauko1: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: ['HahmoSofi'],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -12,7 +12,7 @@ const SofinSometauko = {
   SofinSometauko2Tiedoksi: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: ['HahmoSofi'],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -22,7 +22,7 @@ const SofinSometauko = {
   SofinSometauko3EnVastaa: {
     _comment: '',
     type: 'options',
-    background: '',
+    background: 'Kaytava',
     characters: ['HahmoSofi'],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -41,7 +41,7 @@ const SofinSometauko = {
   SofinSometauko4: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: ['HahmoSofi'],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -51,7 +51,7 @@ const SofinSometauko = {
   SofinSometauko5: {
     _comment: '',
     type: 'options',
-    background: '',
+    background: 'Kaytava',
     characters: ['HahmoSofi'],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -70,7 +70,7 @@ const SofinSometauko = {
   SometaukoInfobox1: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: ['HahmoSofi'],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -80,7 +80,7 @@ const SofinSometauko = {
   SometaukoInfobox2: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Kaytava',
     characters: ['HahmoSofi'],
     text_type: 'speech',
     text_position: 'speechLeft',
