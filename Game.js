@@ -16,6 +16,10 @@ const characterElements = document.querySelectorAll('.character');
 const playerChoiceElements = document.querySelectorAll('.choiceBox');
 const playerChoiceTextElements = document.querySelectorAll('.choiceBoxText');
 
+// animation containers
+const topTextElement = document.querySelector('.top-text-container');
+const bottomTextElement = document.querySelector('.bottom-choice-container');
+
 //Pause menu
 const pauseMenuIcon = document.querySelector('.top-options-menu');
 const pauseMenu = document.querySelector('.pauseMenuBox');
@@ -128,7 +132,7 @@ function ClickedTooFast() {
 }
 
 function PopulateScene() {
-
+  
   // background image change
   if (nextScene.background !== null && nextScene.background !== currentBackground) {
     currentBackground = nextScene.background;
@@ -152,10 +156,25 @@ function PopulateScene() {
     WriteInfobox();
   }
   PlayerChoiceSetup();
-
+  
+  ResetAnimations();
+  AnimateScene();
   // maybe use current scene later somewhere dunno
   currentScene = nextScene;
 }
+
+function ResetAnimations(){
+  topTextElement.classList.remove('fade-in-animation');
+  bottomTextElement.classList.remove('fade-in-animation');
+  // "in order to know what the offsetWidth is, the browser has to abandon 
+  // its plan of batching the changes and perform the reflow of the page right now"
+  void topTextElement.offsetWidth;
+}
+function AnimateScene(){
+  topTextElement.classList.add('fade-in-animation');
+  bottomTextElement.classList.add('fade-in-animation');
+}
+
 function WriteInfobox() {
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
