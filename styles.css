@@ -37,7 +37,7 @@ body {
   padding: 3%;
   z-index: 11;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   /* position: relative; it doesn't work */
  
 }
@@ -178,7 +178,7 @@ body {
 
 .top-text-container {
   animation-name: fadeIn;
-  animation-duration: 2s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 

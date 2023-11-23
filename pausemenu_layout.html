@@ -8,7 +8,8 @@
 
   <link rel="stylesheet" type="text/css" href="UIstyles.css" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
-  <script type="module" src="/Game.js"></script>
+  <link rel="stylesheet" type="text/css" href="buttonstyles.css" />
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +22,8 @@
 </head>
 
 <body>
-  <!-- pause menu -->
-  <div class="pauseMenuBox hidden">
+
+  <div class="pauseMenuBox">
     <div class="details">
       <div class="shine" id="shine1"></div>
       <div class="shine" id="shine2"></div>
@@ -31,7 +32,7 @@
     </div>
     <div class="main-content">
       <div class="pausemenu-buttoncontainer">
-        <button class="pausemenubutton continue-button">
+        <button class="pausemenubutton">
           <svg class="backicon" viewBox="0 0 55 54" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="&#240;&#159;&#166;&#134; icon &#34;back square&#34;">
               <g id="Group">
@@ -58,7 +59,7 @@
           Jatka peliä
         </button>
 
-        <button class="pausemenubutton restart-button">
+        <button class="pausemenubutton">
           <svg class="homeicon" viewBox="0 0 59 57" fill="none" role="img" xmlns="http://www.w3.org/2000/svg">
             <g id="&#240;&#159;&#166;&#134; icon &#34;home 1&#34;">
               <path id="Vector"
@@ -68,9 +69,10 @@
           </svg>
           Palaa alkuun
         </button>
+
         <br>
 
-        <button class="languagebutton suomi-button">
+        <button class="languagebutton">
           <svg class="langicon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M29.559 0H9.853C4.41415 0 0 4.39444 0 9.81359V21.5978V23.5684C0 28.9875 4.41415 33.382 9.853 33.382H12.8089C13.341 33.382 14.0504 33.7367 14.3854 34.1702L17.3413 38.0917C18.6419 39.8258 20.7701 39.8258 22.0707 38.0917L25.0266 34.1702C25.401 33.6776 25.9922 33.382 26.6031 33.382H29.559C34.9979 33.382 39.412 28.9875 39.412 23.5684V9.81359C39.412 4.39444 34.9979 0 29.559 0ZM11.8236 19.706C10.7201 19.706 9.853 18.8192 9.853 17.7354C9.853 16.6516 10.7398 15.7648 11.8236 15.7648C12.9074 15.7648 13.7942 16.6516 13.7942 17.7354C13.7942 18.8192 12.9271 19.706 11.8236 19.706ZM19.706 19.706C18.6025 19.706 17.7354 18.8192 17.7354 17.7354C17.7354 16.6516 18.6222 15.7648 19.706 15.7648C20.7898 15.7648 21.6766 16.6516 21.6766 17.7354C21.6766 18.8192 20.8095 19.706 19.706 19.706ZM27.5884 19.706C26.4849 19.706 25.6178 18.8192 25.6178 17.7354C25.6178 16.6516 26.5046 15.7648 27.5884 15.7648C28.6722 15.7648 29.559 16.6516 29.559 17.7354C29.559 18.8192 28.6919 19.706 27.5884 19.706Z"
@@ -79,7 +81,7 @@
           Suomi
         </button>
 
-        <button class="languagebutton english-button">
+        <button class="languagebutton">
           <svg class="langicon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M29.559 0H9.853C4.41415 0 0 4.39444 0 9.81359V21.5978V23.5684C0 28.9875 4.41415 33.382 9.853 33.382H12.8089C13.341 33.382 14.0504 33.7367 14.3854 34.1702L17.3413 38.0917C18.6419 39.8258 20.7701 39.8258 22.0707 38.0917L25.0266 34.1702C25.401 33.6776 25.9922 33.382 26.6031 33.382H29.559C34.9979 33.382 39.412 28.9875 39.412 23.5684V9.81359C39.412 4.39444 34.9979 0 29.559 0ZM11.8236 19.706C10.7201 19.706 9.853 18.8192 9.853 17.7354C9.853 16.6516 10.7398 15.7648 11.8236 15.7648C12.9074 15.7648 13.7942 16.6516 13.7942 17.7354C13.7942 18.8192 12.9271 19.706 11.8236 19.706ZM19.706 19.706C18.6025 19.706 17.7354 18.8192 17.7354 17.7354C17.7354 16.6516 18.6222 15.7648 19.706 15.7648C20.7898 15.7648 21.6766 16.6516 21.6766 17.7354C21.6766 18.8192 20.8095 19.706 19.706 19.706ZM27.5884 19.706C26.4849 19.706 25.6178 18.8192 25.6178 17.7354C25.6178 16.6516 26.5046 15.7648 27.5884 15.7648C28.6722 15.7648 29.559 16.6516 29.559 17.7354C29.559 18.8192 28.6919 19.706 27.5884 19.706Z"
@@ -88,7 +90,7 @@
           English
         </button>
 
-        <button class="languagebutton swedish-button">
+        <button class="languagebutton">
           <svg class="langicon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M29.559 0H9.853C4.41415 0 0 4.39444 0 9.81359V21.5978V23.5684C0 28.9875 4.41415 33.382 9.853 33.382H12.8089C13.341 33.382 14.0504 33.7367 14.3854 34.1702L17.3413 38.0917C18.6419 39.8258 20.7701 39.8258 22.0707 38.0917L25.0266 34.1702C25.401 33.6776 25.9922 33.382 26.6031 33.382H29.559C34.9979 33.382 39.412 28.9875 39.412 23.5684V9.81359C39.412 4.39444 34.9979 0 29.559 0ZM11.8236 19.706C10.7201 19.706 9.853 18.8192 9.853 17.7354C9.853 16.6516 10.7398 15.7648 11.8236 15.7648C12.9074 15.7648 13.7942 16.6516 13.7942 17.7354C13.7942 18.8192 12.9271 19.706 11.8236 19.706ZM19.706 19.706C18.6025 19.706 17.7354 18.8192 17.7354 17.7354C17.7354 16.6516 18.6222 15.7648 19.706 15.7648C20.7898 15.7648 21.6766 16.6516 21.6766 17.7354C21.6766 18.8192 20.8095 19.706 19.706 19.706ZM27.5884 19.706C26.4849 19.706 25.6178 18.8192 25.6178 17.7354C25.6178 16.6516 26.5046 15.7648 27.5884 15.7648C28.6722 15.7648 29.559 16.6516 29.559 17.7354C29.559 18.8192 28.6919 19.706 27.5884 19.706Z"
@@ -100,120 +102,8 @@
     </div>
   </div>
 
-  <!-- flexbox main container -->
-  <div class="game-flex-container">
-
-    <div class="top-options-menu">
-    </div>
-
-    <div class="top-text-container">
-      <div class="narratorBox">
-        <div class="details">
-          <div class="shine" id="shine1"></div>
-          <div class="shine" id="shine2"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle" id="lastCircle"></div>
-        </div>
-        <div class="main-content narratorBoxText">
-          NarratorBox Text
-        </div>
-      </div>
-
-      <div class="speechBubbleLeft">
-        Speech Bubble Left
-      </div>
-
-      <div class="speechBubbleRight">
-        Speech Bubble Right
-      </div>
-    </div>
-
-    <div class="character-container">
-      <div class="character">
-      </div>
-      <div class="character">
-      </div>
-      <div class="character">
-      </div>
-    </div>
 
 
-
-    <div class="bottom-choice-container">
-      <div class="choiceBox">
-        <div class="details">
-          <svg class="triangles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 27" fill="none">
-            <path
-              d="M22.9265 10.5526C25.527 11.8447 25.5022 15.564 22.8847 16.8353L13.1634 21.5568C10.8302 22.69 8.12387 20.9865 8.14112 18.3954L8.20449 8.87532C8.22173 6.28426 10.9506 4.60232 13.2686 5.75404L22.9265 10.5526Z"
-              fill="#90E2FD" stroke="black" />
-            <path
-              d="M44.4065 9.86121C47.007 11.1533 46.9822 14.8726 44.3647 16.1439L34.6434 20.8654C32.3102 21.9986 29.6039 20.2951 29.6211 17.704L29.6845 8.18391C29.7017 5.59285 32.4306 3.91092 34.7486 5.06263L44.4065 9.86121Z"
-              fill="#90E2FD" stroke="black" />
-          </svg>
-          <div class="shine" id="shine3"></div>
-          <div class="shine" id="shine4"></div>
-        </div>
-        <div class="main-content choiceBoxText">
-          test1
-        </div>
-      </div>
-
-      <div class="choiceBox">
-        <div class="details">
-          <svg class="triangles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 27" fill="none">
-            <path
-              d="M22.9265 10.5526C25.527 11.8447 25.5022 15.564 22.8847 16.8353L13.1634 21.5568C10.8302 22.69 8.12387 20.9865 8.14112 18.3954L8.20449 8.87532C8.22173 6.28426 10.9506 4.60232 13.2686 5.75404L22.9265 10.5526Z"
-              fill="#90E2FD" stroke="black" />
-            <path
-              d="M44.4065 9.86121C47.007 11.1533 46.9822 14.8726 44.3647 16.1439L34.6434 20.8654C32.3102 21.9986 29.6039 20.2951 29.6211 17.704L29.6845 8.18391C29.7017 5.59285 32.4306 3.91092 34.7486 5.06263L44.4065 9.86121Z"
-              fill="#90E2FD" stroke="black" />
-          </svg>
-          <div class="shine" id="shine3"></div>
-          <div class="shine" id="shine4"></div>
-        </div>
-        <div class="main-content choiceBoxText">
-          test2
-        </div>
-      </div>
-
-      <div class="choiceBox">
-        <div class="details">
-          <svg class="triangles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 27" fill="none">
-            <path
-              d="M22.9265 10.5526C25.527 11.8447 25.5022 15.564 22.8847 16.8353L13.1634 21.5568C10.8302 22.69 8.12387 20.9865 8.14112 18.3954L8.20449 8.87532C8.22173 6.28426 10.9506 4.60232 13.2686 5.75404L22.9265 10.5526Z"
-              fill="#90E2FD" stroke="black" />
-            <path
-              d="M44.4065 9.86121C47.007 11.1533 46.9822 14.8726 44.3647 16.1439L34.6434 20.8654C32.3102 21.9986 29.6039 20.2951 29.6211 17.704L29.6845 8.18391C29.7017 5.59285 32.4306 3.91092 34.7486 5.06263L44.4065 9.86121Z"
-              fill="#90E2FD" stroke="black" />
-          </svg>
-          <div class="shine" id="shine3"></div>
-          <div class="shine" id="shine4"></div>
-        </div>
-        <div class="main-content choiceBoxText">
-          test3
-        </div>
-      </div>
-
-      <div class="choiceBox">
-        <div class="details">
-          <svg class="triangles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 27" fill="none">
-            <path
-              d="M22.9265 10.5526C25.527 11.8447 25.5022 15.564 22.8847 16.8353L13.1634 21.5568C10.8302 22.69 8.12387 20.9865 8.14112 18.3954L8.20449 8.87532C8.22173 6.28426 10.9506 4.60232 13.2686 5.75404L22.9265 10.5526Z"
-              fill="#90E2FD" stroke="black" />
-            <path
-              d="M44.4065 9.86121C47.007 11.1533 46.9822 14.8726 44.3647 16.1439L34.6434 20.8654C32.3102 21.9986 29.6039 20.2951 29.6211 17.704L29.6845 8.18391C29.7017 5.59285 32.4306 3.91092 34.7486 5.06263L44.4065 9.86121Z"
-              fill="#90E2FD" stroke="black" />
-          </svg>
-          <div class="shine" id="shine3"></div>
-          <div class="shine" id="shine4"></div>
-        </div>
-        <div class="main-content choiceBoxText">
-          test4
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 
 </html>

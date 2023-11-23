@@ -1,64 +1,100 @@
 import StartSceneData from "/data/StartSceneData.js";
-import Suomi from "./data/suomi.js";
+import SuomiData from "./data/suomi.js";
+//import EnglishData from "./data/english.js";
+//import SwedishData from "./data/swedish.js";
 
 const mainGameContainer = document.querySelector('.game-flex-container');
-
 
 const infoboxElement = document.querySelector('.narratorBox');
 const infoboxText = document.querySelector('.narratorBoxText');
 
-//const bottomChoiceContainer = document.querySelector('.bottom-choice-container ');
-//bottomChoiceContainer.style.transfrom = "translateX(-100%)";
-
-
 const speechBubbleLeft = document.querySelector('.speechBubbleLeft');
 const speechBubbleRight = document.querySelector('.speechBubbleRight');
-
 
 // array queries
 const characterElements = document.querySelectorAll('.character');
 const playerChoiceElements = document.querySelectorAll('.choiceBox');
 const playerChoiceTextElements = document.querySelectorAll('.choiceBoxText');
 
-//Menu
-const settingsMenu = document.querySelector('.top-options-menu');
-const gameButtons = document.getElementById("game-buttons");
+//Pause menu
+const pauseMenuIcon = document.querySelector('.top-options-menu');
+const pauseMenu = document.querySelector('.pauseMenuBox');
+const continueButton = document.querySelector('.continue-button');
+const restartButton = document.querySelector('.restart-button');
+// pause language switch buttons
+const suomiButton = document.querySelector('.suomi-button');
+const englishButton = document.querySelector('.english-button');
+const swedishButton = document.querySelector('.swedish-button');
 
-// const startButton = document.getElementById("start-button");
-const continueButton = document.getElementById("pause-button");
-const restartButton = document.getElementById("restart-button");
 
 let currentBackground;
-let language = Suomi;
+let language = SuomiData;
 let currentScene;
 let nextScene;
 let transitionDelayTime;
-let delayTimeInSeconds = 0.25;
+let delayTimeInSeconds = 0.22;
 let pauseMenuOpen = false;
 
+let gameStartingScene = StartSceneData.SofillaOnTietoaAlku;
+
 // game setup
-nextScene = StartSceneData.SofillaOnTietoaAlku;
+nextScene = gameStartingScene;
 addClickEventListener();
 PopulateScene();
+continueButton.addEventListener("click", ContinueGame);
+restartButton.addEventListener("click", RestartGame);
+suomiButton.addEventListener("click", ChangeLanguage("suomi"));
+englishButton.addEventListener("click", ChangeLanguage("english"));
+swedishButton.addEventListener("click", ChangeLanguage("swedish"));
+
+
+function OpenPauseMenu() {
+  pauseMenuOpen = true;
+  pauseMenu.classList.remove('hidden');
+}
+function ContinueGame() {
+  pauseMenuOpen = false;
+  pauseMenu.classList.add('hidden');
+}
+function RestartGame() {
+  nextScene = gameStartingScene;
+  PopulateScene();
+  pauseMenuOpen = false;
+  pauseMenu.classList.add('hidden');
+}
+function ChangeLanguage(chosenLanguage) {
+  switch (chosenLanguage) {
+    case "suomi":
+      language = SuomiData;
+      break;
+    case "english":
+      //language = EnglishData;
+      break;
+    case "swedish":
+      //language = SwedishData;
+      break;
+    default:
+      console.log("typo in language button events??");
+      break;
+  }
+}
 
 // click event listener
 function addClickEventListener() {
   mainGameContainer.addEventListener("click", event => {
 
-    // double click speed timer here to avoid accidental progress?
-    const currentTimeInSeconds = new Date().getTime() / 1000;
-
-    if (currentTimeInSeconds - transitionDelayTime < delayTimeInSeconds) {
-      console.log(`Clicked too fast need to wait delayTime = ${delayTimeInSeconds}`);
+    if (ClickedTooFast() === true) {
       return;
     }
-    transitionDelayTime = currentTimeInSeconds;
-
+    
+    // if pause menu is open and player clicks outside it into game screen, pause ends
     if (pauseMenuOpen === true) {
+      ContinueGame();
       return;
     }
 
-    if (event.target === settingsMenu) {
+    if (event.target === pauseMenuIcon) {
+      pauseMenuOpen = true;
       OpenPauseMenu();
       return;
     }
@@ -77,6 +113,18 @@ function addClickEventListener() {
       }
     }
   });
+}
+
+function ClickedTooFast() {
+  // double click speed timer here to avoid accidental progress?
+  const currentTimeInSeconds = new Date().getTime() / 1000;
+
+  if (currentTimeInSeconds - transitionDelayTime < delayTimeInSeconds) {
+    console.log(`Clicked too fast, delayTime = ${delayTimeInSeconds}`);
+    return true;
+  }
+  transitionDelayTime = currentTimeInSeconds;
+  return false;
 }
 
 function PopulateScene() {
@@ -146,22 +194,3 @@ function PlayerChoiceSetup() {
     }
   }
 }
-
-function OpenPauseMenu() {
-  gameButtons.style.display = "flex";
-  // gameButtons.classList.toggle("active"); it doesn't work
-  console.log("settingsMenu clicked");
-  pauseMenuOpen = true;
-}
-continueButton.addEventListener("click", event => {
-  console.log("continue button clicked");
-  gameButtons.style.display = "none";
-});
-
-restartButton.addEventListener("click", event => {
-  console.log("restart button clicked");
-  nextScene = StartSceneData.SofillaOnTietoaAlku;
-  addClickEventListener();
-  PopulateScene();
-  gameButtons.style.display = "none";
-});
