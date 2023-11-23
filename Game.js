@@ -20,11 +20,15 @@ const characterElements = document.querySelectorAll('.character');
 const playerChoiceElements = document.querySelectorAll('.choiceBox');
 const playerChoiceTextElements = document.querySelectorAll('.choiceBoxText');
 
+// Start menu
+const startButton = document.getElementById("startBtnId");
+const startPage = document.getElementById("startPageId");
+
+
 //Menu
 const settingsMenu = document.querySelector('.top-options-menu');
 const gameButtons = document.getElementById("game-buttons");
 
-// const startButton = document.getElementById("start-button");
 const continueButton = document.getElementById("pause-button");
 const restartButton = document.getElementById("restart-button");
 
@@ -145,6 +149,16 @@ function PlayerChoiceSetup() {
       playerChoiceTextElements[i].textContent = language[nextScene.player_choice[i].text];
     }
   }
+}
+
+startButton.addEventListener("click", event => {
+  console.log("start button clicked");
+  StartGame();
+});
+
+function StartGame () {
+  mainGameContainer.style.display = "flex";
+  startPage.style.display = "none";
 }
 
 function OpenPauseMenu() {
