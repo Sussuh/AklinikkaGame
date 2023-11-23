@@ -48,12 +48,12 @@ function addClickEventListener(){
 
 
 //Menu
-var settingsMenu = document.querySelector('.top-options-menu');
-var gameButtons = document.getElementById("game-buttons");
+const settingsMenu = document.querySelector('.top-options-menu');
+const gameButtons = document.getElementById("game-buttons");
 
-var startButton = document.getElementById("start-button");
-var continueButton = document.getElementById("pause-button");
-var restartButton = document.getElementById("restart-button");
+// const startButton = document.getElementById("start-button");
+const continueButton = document.getElementById("pause-button");
+const restartButton = document.getElementById("restart-button");
 
 if (event.target === settingsMenu){
   
