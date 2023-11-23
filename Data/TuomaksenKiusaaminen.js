@@ -2,8 +2,8 @@ const TuomaksenKiusaaminen = {
   TuomaksenKiusaaminen1: {
     _comment: '',
     type: 'linear',
-    background: '',
-    characters: [''],
+    background: 'Luokkahuone',
+    characters: ['HahmoTuomas'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tTuomaksenKiusaaminen1',
@@ -12,8 +12,8 @@ const TuomaksenKiusaaminen = {
   TuomaksenKiusaaminen2: {
     _comment: '',
     type: 'options',
-    background: '',
-    characters: [''],
+    background: 'Luokkahuone',
+    characters: ['HahmoTuomas'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tTuomaksenKiusaaminen2',
@@ -35,8 +35,8 @@ const TuomaksenKiusaaminen = {
   OpettajaApuun1: {
     _comment: '',
     type: 'linear',
-    background: '',
-    characters: [''],
+    background: 'Luokkahuone',
+    characters: ['HahmoTuomas', 'HahmoOpe'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tOpettajaApuun1',
@@ -45,8 +45,8 @@ const TuomaksenKiusaaminen = {
   OpettajaApuun2: {
     _comment: '',
     type: 'linear',
-    background: '',
-    characters: [''],
+    background: 'Luokkahuone',
+    characters: ['HahmoTuomas', 'HahmoOpe'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tOpettajaApuun2',
@@ -55,8 +55,8 @@ const TuomaksenKiusaaminen = {
   TuomaksenTukeminen: {
     _comment: '',
     type: 'options',
-    background: '',
-    characters: [''],
+    background: 'Luokkahuone',
+    characters: ['HahmoTuomas'],
     text_type: 'speech',
     text_position: 'speechLeft',
     text: 'tTuomaksenTukeminen',
@@ -74,7 +74,7 @@ const TuomaksenKiusaaminen = {
   TuomaksenTukeminenHyvaPaatos: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Luokkahuone',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
@@ -84,7 +84,7 @@ const TuomaksenKiusaaminen = {
   TuomaksenTukeminenTiesitko: {
     _comment: '',
     type: 'linear',
-    background: '',
+    background: 'Luokkahuone',
     characters: [''],
     text_type: 'speech',
     text_position: 'speechLeft',
