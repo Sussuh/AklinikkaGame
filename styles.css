@@ -42,8 +42,6 @@ body {
   z-index: 11;
   background-repeat: no-repeat;
   background-size: cover;
-  /* position: relative; it doesn't work */
- 
 }
 
 #game-buttons {
