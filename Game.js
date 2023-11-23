@@ -2,13 +2,18 @@ import StartSceneData from "/data/StartSceneData.js";
 import Suomi from "./data/suomi.js";
 
 const mainGameContainer = document.querySelector('.game-flex-container');
-const settingsMenu = document.querySelector('.top-options-menu');
+
 
 const infoboxElement = document.querySelector('.narratorBox');
 const infoboxText = document.querySelector('.narratorBoxText');
 
+//const bottomChoiceContainer = document.querySelector('.bottom-choice-container ');
+//bottomChoiceContainer.style.transfrom = "translateX(-100%)";
+
+
 const speechBubbleLeft = document.querySelector('.speechBubbleLeft');
 const speechBubbleRight = document.querySelector('.speechBubbleRight');
+
 
 // array queries
 const characterElements = document.querySelectorAll('.character');
@@ -40,10 +45,47 @@ function addClickEventListener(){
     }
     transitionDelayTime = currentTimeInSeconds;
 
-    if (event.target === settingsMenu){
-      //TODO settings menu opening?
-      return;
-    }
+
+
+//Menu
+var settingsMenu = document.querySelector('.top-options-menu');
+var gameButtons = document.getElementById("game-buttons");
+
+var startButton = document.getElementById("start-button");
+var continueButton = document.getElementById("pause-button");
+var restartButton = document.getElementById("restart-button");
+
+if (event.target === settingsMenu){
+  
+  gameButtons.style.display = "flex";
+  // gameButtons.classList.toggle("active"); it doesn't work
+  console.log("settingsMenu clicked");
+  document.body.style.overflow = 'hidden';
+
+ /* startButton.addEventListener("click", event => {
+    console.log("start button clicked");
+    nextScene = StartSceneData.SofillaOnTietoaAlku;
+    gameButtons.style.display = "none";
+    addClickEventListener();
+    PopulateScene();
+  });*/
+
+  continueButton.addEventListener("click", event => {
+    console.log("continue button clicked");
+    gameButtons.style.display = "none";
+  });
+
+  restartButton.addEventListener("click", event => {
+    console.log("restart button clicked");
+    nextScene = StartSceneData.SofillaOnTietoaAlku;
+    addClickEventListener();
+    PopulateScene();
+    gameButtons.style.display = "none";
+  });
+};
+
+
+
 
     if (currentScene.type === "linear"){
       nextScene = StartSceneData[currentScene.next_scene];
@@ -98,8 +140,10 @@ function PopulateScene(){
 function WriteInfobox(){
   infoboxElement.classList.remove('hidden');
   infoboxText.textContent = language[nextScene.text];
+ // bottomChoiceContainer.transfrom = "translateX(0%)";
   speechBubbleLeft.classList.add('hidden');
   speechBubbleRight.classList.add('hidden');
+
 }
 function WriteNarrator(){
   infoboxElement.classList.remove('hidden');
@@ -111,11 +155,13 @@ function WriteDialogue(){
   infoboxElement.classList.add('hidden');
 
   if (nextScene.text_position === "speechLeft"){
+    //bottomChoiceContainer.transfrom = "translateX(0%)";
     speechBubbleLeft.classList.remove('hidden');
     speechBubbleRight.classList.add('hidden');
     speechBubbleLeft.textContent = language[nextScene.text];
   }
   else{
+    //bottomChoiceContainer.transfrom = "translateX(0%)";
     speechBubbleRight.classList.remove('hidden');
     speechBubbleLeft.classList.add('hidden');
     speechBubbleRight.textContent = language[nextScene.text];
