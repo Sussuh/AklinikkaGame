@@ -32,10 +32,12 @@ body {
 
 
 .top-options-menu{
+  background-image:url("images/UI/MenuIcon.png");
   align-self: flex-end;
   padding: 3%;
   z-index: 11;
-
+  background-repeat: no-repeat;
+  background-size: cover;
   /* position: relative; it doesn't work */
  
 }
